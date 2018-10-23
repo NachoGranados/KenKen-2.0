@@ -6,7 +6,7 @@ import random
 import pygame,sys
 from pygame.locals import *
 
-# Ventana Principal
+# Ventana Principal ligvig
 class menu(tkinter.Tk):
 
     def __init__(menu):
@@ -91,7 +91,7 @@ class Jugar(tkinter.Tk):
         # Variable Nivel que se utilizara para indicar el nivel que se pulso y su respetiva condicion que determina cual label mostar.
         Nivel = StringVar()
         self.labelNivel = Label(self,textvariable = Nivel, width = 20, font = ("Serif", 17))
-        self.labelNivel.place(x = 44, y = 20)
+        self.labelNivel.place(x = 435, y = 585)
 
         if N == 1:
 
@@ -171,7 +171,6 @@ class Jugar(tkinter.Tk):
         global listaF
         global listaI
         global listaD
-        global T
 
         listaTop = []
 
@@ -184,177 +183,19 @@ class Jugar(tkinter.Tk):
         listaD = []
 
         # Algoritmo para poder extraer una partida aleatoria del archivo segun el nivel elegido.
-        try:
-            
-            if T == 1:
+        for letra in dic:
 
-                for letra in dic:
+            if letra[0] == "F":
 
-                    guia = letra[:2]
+                listaF.append(letra)
 
-                    if guia[-1] == "3":
-                        
-                        if guia[0] == "F":
+            elif letra[0] == "I":
 
-                            listaF.append(letra)
+                listaI.append(letra)
 
-                        elif guia[0] == "I":
+            elif letra[0] == "D":
 
-                            listaI.append(letra)
-
-                        elif guia[0] == "D":
-
-                            listaD.append(letra)
-
-            elif T == 2:
-
-                for letra in dic:
-
-                    guia = letra[:2]
-
-                    if guia[-1] == "4":
-                        
-                        if guia[0] == "F":
-
-                            listaF.append(letra)
-
-                        elif guia[0] == "I":
-
-                            listaI.append(letra)
-
-                        elif guia[0] == "D":
-
-                            listaD.append(letra)
-
-            elif T == 3:
-
-                for letra in dic:
-
-                    guia = letra[:2]
-
-                    if guia[-1] == "5":
-                        
-                        if guia[0] == "F":
-
-                            listaF.append(letra)
-
-                        elif guia[0] == "I":
-
-                            listaI.append(letra)
-
-                        elif guia[0] == "D":
-
-                            listaD.append(letra)
-
-            elif T == 4:
-
-                for letra in dic:
-
-                    guia = letra[:2]
-
-                    if guia[-1] == "6":
-                        
-                        if guia[0] == "F":
-
-                            listaF.append(letra)
-
-                        elif guia[0] == "I":
-
-                            listaI.append(letra)
-
-                        elif guia[0] == "D":
-
-                            listaD.append(letra)
-
-            elif T == 5:
-
-                for letra in dic:
-
-                    guia = letra[:2]
-
-                    if guia[-1] == "7":
-                        
-                        if guia[0] == "F":
-
-                            listaF.append(letra)
-
-                        elif guia[0] == "I":
-
-                            listaI.append(letra)
-
-                        elif guia[0] == "D":
-
-                            listaD.append(letra)
-
-            elif T == 6:
-
-                for letra in dic:
-
-                    guia = letra[:2]
-
-                    if guia[-1] == "8":
-                        
-                        if guia[0] == "F":
-
-                            listaF.append(letra)
-
-                        elif guia[0] == "I":
-
-                            listaI.append(letra)
-
-                        elif guia[0] == "D":
-
-                            listaD.append(letra)
-
-            elif T == 7:
-
-                for letra in dic:
-
-                    guia = letra[:2]
-
-                    if guia[-1] == "9":
-                        
-                        if guia[0] == "F":
-
-                            listaF.append(letra)
-
-                        elif guia[0] == "I":
-
-                            listaI.append(letra)
-
-                        elif guia[0] == "D":
-
-                            listaD.append(letra)
-
-            """
-
-            multitamano
-
-            elif T == 8:
-
-                for letra in dic:
-
-                    guia = letra[:2]
-
-                    if guia[-1] == "4":
-                        
-                        if guia[0] == "F":
-
-                            listaF.append(letra)
-
-                        elif guia[0] == "I":
-
-                            listaI.append(letra)
-
-                        elif guia[0] == "D":
-
-                            listaD.append(letra)
-
-            """
-
-        except:
-
-            pass
+                listaD.append(letra)
 
         if N == 1:
 
@@ -435,9 +276,10 @@ class Jugar(tkinter.Tk):
         self.s65 = StringVar()
         self.s66 = StringVar()
 
-        """
 
-        Solucion 6x6 Facil
+
+
+
 
         self.s11.set(3)
         self.s21.set(1)
@@ -481,7 +323,17 @@ class Jugar(tkinter.Tk):
         self.s56.set(1)
         self.s66.set(2)
 
-        """
+
+
+
+
+
+
+
+
+
+
+        
 
         # Lista que contendra todas las 36 casillas la cuadricula con un par de elementos para un mejor manejo de la lista.
         SV = [[],[0,self.s11,self.s12,self.s13,self.s14,self.s15,self.s16],
@@ -1017,8 +869,6 @@ class Jugar(tkinter.Tk):
 
                 string = tupla[0]
 
-                print([int(tupla[0][:-1]),tupla[0][-1],tupla[1:]])
-
                 paresOrdenados = tupla[1:]
 
                 nuevos = []
@@ -1321,6 +1171,7 @@ class Jugar(tkinter.Tk):
             t65 = self.s65.set("")
             t66 = self.s66.set("")
 
+
             if R == 1 or R == 2:
                 
                 self.TiempoHoras.set(0)
@@ -1408,7 +1259,7 @@ class Jugar(tkinter.Tk):
         global Jugador
         global SegundosTime
 
-        SegundosTime = int(self.TiempoSegundos.get())
+        SegundosTime=int(self.TiempoSegundos.get())
         # Valor que se le asignara a la variable global.
         Activo = True
 
@@ -1421,7 +1272,7 @@ class Jugar(tkinter.Tk):
 
             # Se llamara la funcion solicitada.
             self.Iniciar()
-            if SegundosTime == 0 and S == 1:
+            if SegundosTime==0 and S==1:
                 pygame.mixer.music.play(-1)
 
     # Funcion del boton asignado.
@@ -1567,7 +1418,7 @@ class Configurar(tkinter.Tk):
         # Ventana de configurar con sus respectivas caracteristicas.        
         tkinter.Tk.__init__(self)
         self.title("Configurar")
-        self.geometry("845x615")
+        self.geometry("530x615")
 
         global guiaN
 
@@ -1620,45 +1471,11 @@ class Configurar(tkinter.Tk):
         self.buttonSonidoNo = Radiobutton(self, text = "No", value = 2, font = ("Serif", 17), variable = guiaS, command = self.DeterminarSonido)
         self.buttonSonidoNo.place(x = 270, y = 400)
 
-        global guiaT
-
-        guiaT = IntVar()
-
-        # Etiqueta que aparecera en la ventana.
-        self.labelSonido = Label(self, text = "¿Cuál tamaño desea jugar?", fg =  "#000000", font = ("Serif", 17))
-        self.labelSonido.place(x = 500, y = 50)
-
-        # Botones que apareceran en la ventana.
-        self.button3x3 = Radiobutton(self, text = "3x3", value = 1, font = ("Serif", 17), variable = guiaT, command = self.DeterminarTamaño)
-        self.button3x3.place(x = 610, y = 100)
-
-        self.button4x4 = Radiobutton(self, text = "4x4", value = 2, font = ("Serif", 17), variable = guiaT, command = self.DeterminarTamaño)
-        self.button4x4.place(x = 610, y = 150)
-
-        self.button5x5 = Radiobutton(self, text = "5x5", value = 3, font = ("Serif", 17), variable = guiaT, command = self.DeterminarTamaño)
-        self.button5x5.place(x = 610, y = 200)
-
-        self.button6x6 = Radiobutton(self, text = "6x6", value = 4, font = ("Serif", 17), variable = guiaT, command = self.DeterminarTamaño)
-        self.button6x6.place(x = 610, y = 250)
-
-        self.button7x7 = Radiobutton(self, text = "7x7", value = 5, font = ("Serif", 17), variable = guiaT, command = self.DeterminarTamaño)
-        self.button7x7.place(x = 610, y = 300)
-
-        self.button8x8 = Radiobutton(self, text = "8x8", value = 6, font = ("Serif", 17), variable = guiaT, command = self.DeterminarTamaño)
-        self.button8x8.place(x = 610, y = 350)
-
-        self.button9x9 = Radiobutton(self, text = "9x9", value = 7, font = ("Serif", 17), variable = guiaT, command = self.DeterminarTamaño)
-        self.button9x9.place(x = 610, y = 400)
-
-        self.buttonMultitamaño = Radiobutton(self, text = "Multitamaño", value = 8, font = ("Serif", 17), variable = guiaT, command = self.DeterminarTamaño)
-        self.buttonMultitamaño.place(x = 610, y = 450)
-
-        # Botones que apareceran en la ventana.
         self.buttonJugar = Button(self, text = "Jugar", width = 8, activebackground = "#db4437", command = self.Jugar, fg = "white", bg = "#66CD00", font = ("Serif", 20))
-        self.buttonJugar.place(x = 190, y = 500)  
+        self.buttonJugar.place(x = 60, y = 500)  
 
         self.buttonRegresarMenu = Button(self, text = "Regresar al Menú", width = 15, activebackground = "#db4437", command = self.RegresarMenu, fg = "white", bg = "#db4437", font = ("Serif", 20))
-        self.buttonRegresarMenu.place(x = 500, y = 500)
+        self.buttonRegresarMenu.place(x = 210, y = 500)
 
     # Funcion del boton asignado.
     def DeterminarNivel(self):
@@ -1680,13 +1497,6 @@ class Configurar(tkinter.Tk):
         global S
 
         S = guiaS.get()
-
-    # Funcion del boton asignado.
-    def DeterminarTamaño(self):
-
-        global T
-
-        T = guiaT.get()
 
     # Funcion del boton asignado.
     def Jugar(self):
