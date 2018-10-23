@@ -534,52 +534,61 @@ class Jugar(tkinter.Tk):
 
         # Estos seran todos los botones que apareceran en la ventana.
         self.buttonIniciar = Button(self, text = "Iniciar \nJuego", width = 6, activebackground = "#4285f4", command = self.Activar, fg = "White", bg = "#4285f4", font = ("Comic Sans Ms", 15))
-        self.buttonIniciar.place(x = 100, y = 400)
+        self.buttonIniciar.place(x = 483, y = 500)
 
         self.buttonValidar = Button(self, text = "Validar \nJuego", width = 6, activebackground = "#4285f4", command = self.Validar, fg = "#4285f4", bg = "White", font = ("Comic Sans Ms", 15))
-        self.buttonValidar.place(x = 199, y = 400)
+        self.buttonValidar.place(x = 605, y = 500)
 
         self.buttonOtro = Button(self, text = "Otro \nJuego", width = 6, activebackground = "#4285f4", command = self.Otro, fg = "white", bg = "#4285f4", font = ("Comic Sans Ms", 15))
-        self.buttonOtro.place(x = 299, y = 400)
+        self.buttonOtro.place(x = 715, y = 500)
 
         self.buttonReiniciar = Button(self, text = "Reiniciar \nJuego", width = 8, activebackground = "#4285f4",command = self.Reiniciar, fg = "#4285f4", bg = "White", font = ("Comic Sans Ms", 15))
-        self.buttonReiniciar.place(x = 399, y = 400)        
+        self.buttonReiniciar.place(x = 470, y = 600)        
 
         self.buttonTerminar = Button(self, text = "Terminar \nJuego", width = 8, activebackground = "#4285f4", command = self.Terminar, fg = "white", bg = "#4285f4", font = ("Comic Sans Ms", 15))
-        self.buttonTerminar.place(x = 525, y = 400)        
+        self.buttonTerminar.place(x = 593, y = 600)        
 
         self.buttonPausa = Button(self, text = "Pausa", width = 5, activebackground = "#4285f4",command = self.Pausa, fg = "White", bg = "#4285f4", font = ("Comic Sans Ms", 15))
         self.buttonPausa.place(x = 775, y = 35)        
 
         self.buttonTOP = Button(self, text = "TOP 10", width = 6, activebackground = "#4285f4", command = self.TOP, fg = "#4285f4", bg = "White", font = ("Comic Sans Ms", 15))
-        self.buttonTOP.place(x = 650, y = 415)        
+        self.buttonTOP.place(x = 715, y = 615)        
 
         self.buttonGuardarNombre = Button(self, text = "Guardar Nombre", width = 14, activebackground = "#4285f4", command = self.GuardarNombre, fg = "#4285f4", bg = "White", font= ("Comic Sans Ms", 15))
         self.buttonGuardarNombre.place(x = 100, y = 635)
 
         self.buttonBorrar = Button(self, text = "Borrar", width = 6, activebackground = "#4285f4", command = self.Borrar, fg = "#4285f4", bg = "White", font= ("Comic Sans Ms", 15))
-        self.buttonBorrar.place(x = 100, y = 335)
+        self.buttonBorrar.place(x = 131, y = 345)
 
         self.buttonRegresarMenu = Button(self, text = "Regresar al Menú", width = 15, activebackground = "#db4437", command = self.RegresarMenu, fg = "white", bg = "#db4437", font = ("Serif", 20))
         self.buttonRegresarMenu.place(x = 100, y = 500)
 
         self.button1 = Button(self, text = "1", width = 3, activebackground = "#9C661F", command = self.button1, fg = "white", bg = "#7F7F7F", font = ("Serif", 17))
-        self.button1.place(x = 100, y = 225)
+        self.button1.place(x = 100, y = 200)
 
         self.button2 = Button(self, text = "2", width = 3, activebackground = "#9C661F", command = self.button2, fg = "white", bg = "#7F7F7F", font = ("Serif", 17))
-        self.button2.place(x = 148, y = 225)
+        self.button2.place(x = 148, y = 200)
 
         self.button3 = Button(self, text = "3", width = 3, activebackground = "#9C661F", command = self.button3, fg = "white", bg = "#7F7F7F", font = ("Serif", 17))
-        self.button3.place(x = 196, y = 225)
+        self.button3.place(x = 196, y = 200)
 
         self.button4 = Button(self, text = "4", width = 3, activebackground = "#9C661F", command = self.button4, fg = "white", bg = "#7F7F7F", font = ("Serif", 17))
-        self.button4.place(x = 100, y = 270)
+        self.button4.place(x = 100, y = 245)
 
         self.button5 = Button(self, text = "5", width = 3, activebackground = "#9C661F", command = self.button5, fg = "white", bg = "#7F7F7F", font = ("Serif", 17))
-        self.button5.place(x = 148, y = 270)
+        self.button5.place(x = 148, y = 245)
 
         self.button6 = Button(self, text = "6", width = 3, activebackground = "#9C661F", command = self.button6, fg = "white", bg = "#7F7F7F", font = ("Serif", 17))
-        self.button6.place(x = 196, y = 270)
+        self.button6.place(x = 196, y = 245)
+
+        self.button7 = Button(self, text = "7", width = 3, activebackground = "#9C661F", command = self.button7, fg = "white", bg = "#7F7F7F", font = ("Serif", 17))
+        self.button7.place(x = 100, y = 290)
+
+        self.button8 = Button(self, text = "8", width = 3, activebackground = "#9C661F", command = self.button8, fg = "white", bg = "#7F7F7F", font = ("Serif", 17))
+        self.button8.place(x = 148, y = 290)
+
+        self.button9 = Button(self, text = "9", width = 3, activebackground = "#9C661F", command = self.button9, fg = "white", bg = "#7F7F7F", font = ("Serif", 17))
+        self.button9.place(x = 196, y = 290)
 
         # Condicion que determinara si el reloj aparecera o no segun lo solicitado por el usuario.
         try:
@@ -714,6 +723,24 @@ class Jugar(tkinter.Tk):
     def button6(self):
 
         n = 6
+        self.CuadroDeTexto(n)
+
+    # Funcion del boton asignado.
+    def button7(self):
+
+        n = 7
+        self.CuadroDeTexto(n)
+
+    # Funcion del boton asignado.
+    def button8(self):
+
+        n = 8
+        self.CuadroDeTexto(n)
+
+    # Funcion del boton asignado.
+    def button9(self):
+
+        n = 9
         self.CuadroDeTexto(n)
 
     # Funcion del boton asignado.
