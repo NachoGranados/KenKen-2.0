@@ -376,12 +376,20 @@ class Jugar(tkinter.Tk):
 
                 break
 
-        nivel = linea[0]
-
         global a
                 
         a = eval(linea[2:-1])
 
+        suposiciones = []
+
+        for i in a:
+
+            s = a[i][0]
+
+            final = [s[0:-1],s[-1],a[i][0][-1],a[i][1:]]
+
+            suposiciones.append(final)
+           
         lista = []
 
         colores = []
