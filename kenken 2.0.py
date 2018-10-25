@@ -71,7 +71,7 @@ class Jugar(tkinter.Tk):
         # La ventana de Jugar con sus respectivas caracteristicas.
         tkinter.Tk.__init__(self)
         self.title("Jugar")
-        self.geometry("900x700")
+        self.geometry("1185x700")
 
         # Esta sera una variable global necesaria porque se utilizara en distintas funciones.
         global ImagenKenKen
@@ -171,6 +171,7 @@ class Jugar(tkinter.Tk):
         global listaF
         global listaI
         global listaD
+        global tamaño
         global T
 
         listaTop = []
@@ -187,6 +188,8 @@ class Jugar(tkinter.Tk):
         try:
             
             if T == 1:
+
+                tamaño = 3
 
                 for letra in dic:
 
@@ -208,6 +211,8 @@ class Jugar(tkinter.Tk):
 
             elif T == 2:
 
+                tamaño = 4
+
                 for letra in dic:
 
                     guia = letra[:2]
@@ -227,6 +232,8 @@ class Jugar(tkinter.Tk):
                             listaD.append(letra)
 
             elif T == 3:
+
+                tamaño = 5
 
                 for letra in dic:
 
@@ -248,6 +255,8 @@ class Jugar(tkinter.Tk):
 
             elif T == 4:
 
+                tamaño = 6
+
                 for letra in dic:
 
                     guia = letra[:2]
@@ -267,6 +276,8 @@ class Jugar(tkinter.Tk):
                             listaD.append(letra)
 
             elif T == 5:
+
+                tamaño = 7
 
                 for letra in dic:
 
@@ -288,6 +299,8 @@ class Jugar(tkinter.Tk):
 
             elif T == 6:
 
+                tamaño = 8
+
                 for letra in dic:
 
                     guia = letra[:2]
@@ -307,6 +320,8 @@ class Jugar(tkinter.Tk):
                             listaD.append(letra)
 
             elif T == 7:
+
+                tamaño = 9
 
                 for letra in dic:
 
@@ -375,12 +390,21 @@ class Jugar(tkinter.Tk):
                 linea = letra
 
                 break
-
-        nivel = linea[0]
+        
+        # Valor que se le asignara a la siguiente variable y sus respectivas caracteristicas.
+        labelPredicciones = Label(self, width = 12,text = "Predicciones", font = ("Serif", 16)) 
+        labelPredicciones.place(x = 950, y = 15)
+        
+        self.p = StringVar()
+        self.p.set("")
+        self.Labelp = Label(self, textvariable = self.p, font = ("Serif", 16))
+        self.Labelp.place(x = 980, y = 50)
 
         global a
                 
         a = eval(linea[2:-1])
+        
+        nivel = linea[0]
 
         lista = []
 
@@ -549,7 +573,10 @@ class Jugar(tkinter.Tk):
         self.buttonTerminar.place(x = 593, y = 600)        
 
         self.buttonPausa = Button(self, text = "Pausa", width = 5, activebackground = "#4285f4",command = self.Pausa, fg = "White", bg = "#4285f4", font = ("Comic Sans Ms", 15))
-        self.buttonPausa.place(x = 775, y = 35)        
+        self.buttonPausa.place(x = 775, y = 35)
+
+        self.buttonPredicciones = Button(self, text = "Predicciones", width = 10, activebackground = "#4285f4",command = self.Predicciones, fg = "White", bg = "#4285f4", font = ("Comic Sans Ms", 15))
+        self.buttonPredicciones.place(x = 755, y = 135)
 
         self.buttonTOP = Button(self, text = "TOP 10", width = 6, activebackground = "#4285f4", command = self.TOP, fg = "#4285f4", bg = "White", font = ("Comic Sans Ms", 15))
         self.buttonTOP.place(x = 715, y = 615)        
@@ -772,6 +799,103 @@ class Jugar(tkinter.Tk):
            Cuadro == "61" or Cuadro == "62" or Cuadro == "63" or Cuadro == "64" or Cuadro == "65" or Cuadro == "66":
 
             posicion.insert(END,num)
+
+    def Predicciones(self):
+
+        global tamaño
+
+        posicion = self.focus_get()
+        Cuadro = posicion.winfo_name()
+
+        fila = Cuadro[1]
+        columna = Cuadro[0]
+        
+        lista = []
+
+        for i in a:
+
+            s = a[i][0]
+
+            final = [int(s[:-1]),s[-1],a[i][1:]]
+
+            lista.append(final)
+            for e in range(0,len(final[2])):
+                if str(final[2][e][0]) == fila and str(final[2][e][1])==columna:
+                    op = final
+
+        resultado = "\n"
+
+        if op[1] == "+":
+
+            if len(op[2]) == 2:
+                for e in range(1,tamaño + 1):
+                    for i in range(1,tamaño + 1):
+                        suma = e + i
+                        if suma == op[0]:
+                            resultado = resultado + str(e) + " + " + str(i) + "\n"
+
+            if len(op[2]) == 3:
+                for e in range(1,tamaño + 1):
+                    for i in range(1,tamaño + 1):
+                        for j in range(1,tamaño + 1):
+                            suma = e + i + j
+                            if suma == op[0]:
+                                resultado = resultado + str(e) + " + " + str(i) +  " + "  + str(j) + "\n"
+
+        if op[1] == "-":
+
+            if len(op[2]) == 2:
+
+                for e in range(1,tamaño + 1):
+                    for i in range(1,tamaño + 1):
+                        resta = abs(e - i)
+                        if resta == op[0]:
+                            resultado = resultado + str(e) + " - "  + str(i) + "\n"
+
+            if len(op[2]) == 3:
+                for e in range(1,tamaño + 1):
+                    for i in range(1,tamaño + 1):
+                        for j in range(1,tamaño + 1):
+                            resta = abs(e - i - j)
+                            if resta == op[0]:
+                                resultado = resultado + str(e) + " - " + str(i)  +  " - " + str(j) + "\n"
+
+        if op[1] == "x":
+
+            if len(op[2]) == 2:
+                for e in range(1,tamaño + 1):
+                    for i in range(1,tamaño + 1):
+                        resta = e * i
+                        if resta == op[0]:
+                            resultado = resultado  + str(e) + " x " + str(i) + "\n"
+
+            if len(op[2]) == 3:
+                for e in range(1,tamaño + 1):
+                    for i in range(1,tamaño + 1):
+                        for j in range(1,tamaño + 1):
+                            resta = e * i * j
+                            if resta == op[0]:
+                                resultado = resultado + str(e)  + " x " + str(i)  +  " x " + str(j) + "\n"
+
+        if op[1] == "/":
+
+            if len(op[2]) == 2:
+                for e in range(1,tamaño + 1):
+                    for i in range(1,tamaño + 1):
+
+                        if e > i:
+                            div = e / i
+                        else:
+                            div = i / e
+                            
+                        if div == op[0]:
+
+                            if e > i:
+                                resultado = resultado  + str(e) + " / " + str(i) + "\n"
+                            else:
+                                resultado = resultado  + str(i) + " / " + str(e) + "\n"
+
+        self.p.set(resultado)
 
     # Funcion del boton asignado.
     def Validar(self):
@@ -1043,8 +1167,6 @@ class Jugar(tkinter.Tk):
                 tupla = a[e]
 
                 string = tupla[0]
-
-                print([int(tupla[0][:-1]),tupla[0][-1],tupla[1:]])
 
                 paresOrdenados = tupla[1:]
 
@@ -1449,6 +1571,7 @@ class Jugar(tkinter.Tk):
             # Se llamara la funcion solicitada.
             self.Iniciar()
             if SegundosTime == 0 and S == 1:
+                pass
                 pygame.mixer.music.play(-1)
 
     # Funcion del boton asignado.
