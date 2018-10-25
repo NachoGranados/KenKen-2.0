@@ -1,0 +1,15 @@
+[Jugador,linea #diccionario del nivel, Jugadas # lista con .get(), [horas, minutos, segundos], Nivel # StringVar, Sonido # StringVar]
+
+
+
+
+
+
+# eliminar
+import os
+
+os.remove(guardar.dat)
+
+#crear
+
+archivo = open("jugadas","w")
