@@ -1,4 +1,5 @@
-[Jugador,linea #diccionario del nivel, Jugadas # lista con .get(), [horas, minutos, segundos], Nivel # StringVar, Sonido # StringVar]
+[Jugador,linea #diccionario del nivel, Jugadas # lista con .get(), 
+[horas, minutos, segundos],Reloj, Nivel # StringVar, Sonido # StringVar]
 
 
 

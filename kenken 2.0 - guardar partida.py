@@ -3,7 +3,8 @@ from tkinter import messagebox
 import tkinter
 import webbrowser
 import random
-import pygame,sys
+import pygame, sys
+import os
 from pygame.locals import *
 
 # Ventana Principal
@@ -89,6 +90,8 @@ class Jugar(tkinter.Tk):
         self.textBoxJugador.place(x = 100, y = 600)
 
         # Variable Nivel que se utilizara para indicar el nivel que se pulso y su respetiva condicion que determina cual label mostar.
+        global Nivel
+        
         Nivel = StringVar()
         self.labelNivel = Label(self,textvariable = Nivel, width = 20, font = ("Serif", 17))
         self.labelNivel.place(x = 44, y = 20)
@@ -96,19 +99,21 @@ class Jugar(tkinter.Tk):
         if N == 1:
 
             Nivel.set("Nivel \nFácil")
-            Nivel = "F"
+            n = "F"
             
         elif N == 2:
 
             Nivel.set("Nivel \nIntermedio")
-            Nivel = "I"
+            n = "I"
 
         elif N == 3:
 
             Nivel.set("Nivel \nDifícil")
-            Nivel = "D"
+            n = "D"
             
         # Variable Sonido que se utilizara para indicar si el nivel se completo con exito o no.
+        global Sonido
+        
         Sonido = StringVar()
         self.labelSonido = Label(self,textvariable = Sonido, width = 20, font = ("Serif", 17))
         self.labelSonido.place(x = 44, y = 115)
@@ -172,15 +177,14 @@ class Jugar(tkinter.Tk):
         global listaI
         global listaD
         global tamaño
-        global hacer
-        global puntero
+        global linea
+        global guardar
         global T
-
-        puntero = -1
+        global l
 
         listaTop = []
 
-        hacer = []
+        guardar = False
 
         linea = archivo.readline()
 
@@ -391,7 +395,7 @@ class Jugar(tkinter.Tk):
 
         for letra in archivo:
 
-            if letra[0] == Nivel:
+            if letra[0] == n:
 
                 linea = letra
 
@@ -579,16 +583,35 @@ class Jugar(tkinter.Tk):
         self.buttonTerminar.place(x = 593, y = 600)        
 
         self.buttonPausa = Button(self, text = "Pausa", width = 5, activebackground = "#4285f4",command = self.Pausa, fg = "White", bg = "#4285f4", font = ("Comic Sans Ms", 15))
-        self.buttonPausa.place(x = 785, y = 35)
+        self.buttonPausa.place(x = 775, y = 35)
 
         self.buttonPredicciones = Button(self, text = "Predicciones", width = 10, activebackground = "#4285f4",command = self.Predicciones, fg = "White", bg = "#4285f4", font = ("Comic Sans Ms", 15))
-        self.buttonPredicciones.place(x = 755, y = 115)
+        self.buttonPredicciones.place(x = 755, y = 135)
 
-        self.buttonDeshacer = Button(self, text = "Deshacer", width = 10, activebackground = "#4285f4",command = self.Deshacer, fg = "#4285f4", bg = "White", font = ("Comic Sans Ms", 15))
-        self.buttonDeshacer.place(x = 813, y = 515)
 
-        self.buttonRehacer = Button(self, text = "Rehacer", width = 10, activebackground = "#4285f4",command = self.Rehacer, fg = "White", bg = "#4285f4", font = ("Comic Sans Ms", 15))
-        self.buttonRehacer.place(x = 813, y = 615)
+
+
+
+
+
+        self.buttonGuardar = Button(self, text = "Guardar \n Juego", width = 10, activebackground = "#4285f4",command = self.Guardar, fg = "White", bg = "#4285f4", font = ("Comic Sans Ms", 15))
+        self.buttonGuardar.place(x = 955, y = 135)
+
+        self.buttonCargar = Button(self, text = "Cargar \n Juego", width = 10, activebackground = "#4285f4",command = self.Cargar, fg = "White", bg = "#4285f4", font = ("Comic Sans Ms", 15))
+        self.buttonCargar.place(x = 955, y = 335)
+
+
+
+
+
+
+
+
+
+
+
+
+        
 
         self.buttonTOP = Button(self, text = "TOP 10", width = 6, activebackground = "#4285f4", command = self.TOP, fg = "#4285f4", bg = "White", font = ("Comic Sans Ms", 15))
         self.buttonTOP.place(x = 715, y = 615)        
@@ -651,15 +674,21 @@ class Jugar(tkinter.Tk):
                 self.labelDosPuntos2.place(x = 560, y = 60)
 
                 # Valores que se les asignaran a las siguientes variables junto con sus características.
+                global TimepoHoras
+                
                 self.TiempoHoras = IntVar()
                 self.TiempoHoras.set(0)
                 self.labelTimepoHorasActivo = Label(self, textvariable = self.TiempoHoras, font = ("Serif", 15 ))
                 self.labelTimepoHorasActivo.place(x = 300, y = 60)
 
+                global TimepoMinutos
+
                 self.TiempoMinutos = IntVar()
                 self.TiempoMinutos.set(0)
                 self.labelTimepoMinutosActivo = Label(self, textvariable = self.TiempoMinutos, font = ("Serif", 15 ))
                 self.labelTimepoMinutosActivo.place(x = 475, y = 60)
+
+                global TimepoSegundos
 
                 self.TiempoSegundos = IntVar()
                 self.TiempoSegundos.set(0)
@@ -785,48 +814,32 @@ class Jugar(tkinter.Tk):
     # Funcion del boton asignado.
     def Borrar(self):
 
-        global hacer
-        global puntero
-
         posicion = self.focus_get()
         Cuadro = posicion.winfo_name()
 
-        if Cuadro == "11" or Cuadro == "12" or Cuadro == "13" or Cuadro == "14" or Cuadro == "15" or Cuadro == "16" or Cuadro == "17" or Cuadro == "18" or Cuadro == "19" or\
-           Cuadro == "21" or Cuadro == "22" or Cuadro == "23" or Cuadro == "24" or Cuadro == "25" or Cuadro == "26" or Cuadro == "27" or Cuadro == "28" or Cuadro == "29" or\
-           Cuadro == "31" or Cuadro == "32" or Cuadro == "33" or Cuadro == "34" or Cuadro == "35" or Cuadro == "36" or Cuadro == "37" or Cuadro == "38" or Cuadro == "39" or\
-           Cuadro == "41" or Cuadro == "42" or Cuadro == "43" or Cuadro == "44" or Cuadro == "45" or Cuadro == "46" or Cuadro == "47" or Cuadro == "48" or Cuadro == "49" or\
-           Cuadro == "51" or Cuadro == "52" or Cuadro == "53" or Cuadro == "54" or Cuadro == "55" or Cuadro == "56" or Cuadro == "57" or Cuadro == "58" or Cuadro == "59" or\
-           Cuadro == "61" or Cuadro == "62" or Cuadro == "63" or Cuadro == "64" or Cuadro == "65" or Cuadro == "66" or Cuadro == "67" or Cuadro == "68" or Cuadro == "69" or\
-           Cuadro == "71" or Cuadro == "72" or Cuadro == "73" or Cuadro == "74" or Cuadro == "75" or Cuadro == "76" or Cuadro == "77" or Cuadro == "78" or Cuadro == "79" or\
-           Cuadro == "81" or Cuadro == "82" or Cuadro == "83" or Cuadro == "84" or Cuadro == "85" or Cuadro == "86" or Cuadro == "87" or Cuadro == "88" or Cuadro == "89" or\
-           Cuadro == "91" or Cuadro == "92" or Cuadro == "93" or Cuadro == "94" or Cuadro == "95" or Cuadro == "96" or Cuadro == "97" or Cuadro == "98" or Cuadro == "99":
-            
+        if Cuadro == "11" or Cuadro == "12" or Cuadro == "13" or Cuadro == "14" or Cuadro == "15" or Cuadro == "16" or\
+           Cuadro == "21" or Cuadro == "22" or Cuadro == "23" or Cuadro == "24" or Cuadro == "25" or Cuadro == "26" or\
+           Cuadro == "31" or Cuadro == "32" or Cuadro == "33" or Cuadro == "34" or Cuadro == "35" or Cuadro == "36" or\
+           Cuadro == "41" or Cuadro == "42" or Cuadro == "43" or Cuadro == "44" or Cuadro == "45" or Cuadro == "46" or\
+           Cuadro == "51" or Cuadro == "52" or Cuadro == "53" or Cuadro == "54" or Cuadro == "55" or Cuadro == "56" or\
+           Cuadro == "61" or Cuadro == "62" or Cuadro == "63" or Cuadro == "64" or Cuadro == "65" or Cuadro == "66":
+
             posicion.delete(0,END)
-            hacer.append([Cuadro,posicion.get()])
-            puntero = puntero + 1
 
     # Funcion que determinara la posicion del cursor para poder colocar el numero en dicho cuadro de texto.
     def CuadroDeTexto(self,num):
 
-        global hacer
-        global puntero
-
         posicion = self.focus_get()
         Cuadro = posicion.winfo_name()
 
-        if Cuadro == "11" or Cuadro == "12" or Cuadro == "13" or Cuadro == "14" or Cuadro == "15" or Cuadro == "16" or Cuadro == "17" or Cuadro == "18" or Cuadro == "19" or\
-           Cuadro == "21" or Cuadro == "22" or Cuadro == "23" or Cuadro == "24" or Cuadro == "25" or Cuadro == "26" or Cuadro == "27" or Cuadro == "28" or Cuadro == "29" or\
-           Cuadro == "31" or Cuadro == "32" or Cuadro == "33" or Cuadro == "34" or Cuadro == "35" or Cuadro == "36" or Cuadro == "37" or Cuadro == "38" or Cuadro == "39" or\
-           Cuadro == "41" or Cuadro == "42" or Cuadro == "43" or Cuadro == "44" or Cuadro == "45" or Cuadro == "46" or Cuadro == "47" or Cuadro == "48" or Cuadro == "49" or\
-           Cuadro == "51" or Cuadro == "52" or Cuadro == "53" or Cuadro == "54" or Cuadro == "55" or Cuadro == "56" or Cuadro == "57" or Cuadro == "58" or Cuadro == "59" or\
-           Cuadro == "61" or Cuadro == "62" or Cuadro == "63" or Cuadro == "64" or Cuadro == "65" or Cuadro == "66" or Cuadro == "67" or Cuadro == "68" or Cuadro == "69" or\
-           Cuadro == "71" or Cuadro == "72" or Cuadro == "73" or Cuadro == "74" or Cuadro == "75" or Cuadro == "76" or Cuadro == "77" or Cuadro == "78" or Cuadro == "79" or\
-           Cuadro == "81" or Cuadro == "82" or Cuadro == "83" or Cuadro == "84" or Cuadro == "85" or Cuadro == "86" or Cuadro == "87" or Cuadro == "88" or Cuadro == "89" or\
-           Cuadro == "91" or Cuadro == "92" or Cuadro == "93" or Cuadro == "94" or Cuadro == "95" or Cuadro == "96" or Cuadro == "97" or Cuadro == "98" or Cuadro == "99":
+        if Cuadro == "11" or Cuadro == "12" or Cuadro == "13" or Cuadro == "14" or Cuadro == "15" or Cuadro == "16" or\
+           Cuadro == "21" or Cuadro == "22" or Cuadro == "23" or Cuadro == "24" or Cuadro == "25" or Cuadro == "26" or\
+           Cuadro == "31" or Cuadro == "32" or Cuadro == "33" or Cuadro == "34" or Cuadro == "35" or Cuadro == "36" or\
+           Cuadro == "41" or Cuadro == "42" or Cuadro == "43" or Cuadro == "44" or Cuadro == "45" or Cuadro == "46" or\
+           Cuadro == "51" or Cuadro == "52" or Cuadro == "53" or Cuadro == "54" or Cuadro == "55" or Cuadro == "56" or\
+           Cuadro == "61" or Cuadro == "62" or Cuadro == "63" or Cuadro == "64" or Cuadro == "65" or Cuadro == "66":
 
             posicion.insert(END,num)
-            hacer.append([Cuadro,posicion.get()])
-            puntero = puntero + 1
 
     def Predicciones(self):
 
@@ -931,690 +944,12 @@ class Jugar(tkinter.Tk):
 
         self.p.set(resultado)
 
-    # Funcion que determinara la posicion del cursor para poder colocar el numero en dicho cuadro de texto.
-    def Deshacer(self):
-
-        global hacer
-        global puntero
-
-        if puntero >= 0:
-
-            lista = hacer[puntero - 1]
-
-            puntero = puntero - 1
-
-            if lista[0] == "11":
-
-                self.s11.set(lista[1])
-
-            elif lista[0] == "12":
-
-                self.s12.set(lista[1])
-
-            elif lista[0] == "13":
-
-                self.s13.set(lista[1])
-
-            elif lista[0] == "14":
-
-                self.s14.set(lista[1])
-
-            elif lista[0] == "15":
-
-                self.s15.set(lista[1])
-
-            elif lista[0] == "16":
-
-                self.s16.set(lista[1])
-
-            elif lista[0] == "17":
-
-                self.s17.set(lista[1])
-
-            elif lista[0] == "18":
-
-                self.s18.set(lista[1])
-
-            elif lista[0] == "19":
-
-                self.s19.set(lista[1])
-
-            elif lista[0] == "21":
-
-                self.s21.set(lista[1])
-
-            elif lista[0] == "22":
-
-                self.s22.set(lista[1])
-
-            elif lista[0] == "23":
-
-                self.s23.set(lista[1])
-
-            elif lista[0] == "24":
-
-                self.s24.set(lista[1])
-
-            elif lista[0] == "25":
-
-                self.s25.set(lista[1])
-
-            elif lista[0] == "26":
-
-                self.s26.set(lista[1])
-
-            elif lista[0] == "27":
-
-                self.s27.set(lista[1])
-
-            elif lista[0] == "28":
-
-                self.s28.set(lista[1])
-
-            elif lista[0] == "29":
-
-                self.s29.set(lista[1])
-
-            elif lista[0] == "31":
-
-                self.s31.set(lista[1])
-
-            elif lista[0] == "32":
-
-                self.s32.set(lista[1])
-
-            elif lista[0] == "33":
-
-                self.s33.set(lista[1])
-
-            elif lista[0] == "34":
-
-                self.s34.set(lista[1])
-
-            elif lista[0] == "35":
-
-                self.s35.set(lista[1])
-
-            elif lista[0] == "36":
-
-                self.s36.set(lista[1])
-
-            elif lista[0] == "37":
-
-                self.s37.set(lista[1])
-
-            elif lista[0] == "38":
-
-                self.s38.set(lista[1])
-
-            elif lista[0] == "39":
-
-                self.s39.set(lista[1])
-
-            elif lista[0] == "41":
-
-                self.s41.set(lista[1])
-
-            elif lista[0] == "42":
-
-                self.s42.set(lista[1])
-
-            elif lista[0] == "43":
-
-                self.s43.set(lista[1])
-
-            elif lista[0] == "44":
-
-                self.s44.set(lista[1])
-
-            elif lista[0] == "45":
-
-                self.s45.set(lista[1])
-
-            elif lista[0] == "46":
-
-                self.s46.set(lista[1])
-
-            elif lista[0] == "47":
-
-                self.s47.set(lista[1])
-
-            elif lista[0] == "48":
-
-                self.s48.set(lista[1])
-
-            elif lista[0] == "49":
-
-                self.s49.set(lista[1])
-
-            elif lista[0] == "51":
-
-                self.s51.set(lista[1])
-
-            elif lista[0] == "52":
-
-                self.s52.set(lista[1])
-
-            elif lista[0] == "53":
-
-                self.s53.set(lista[1])
-
-            elif lista[0] == "54":
-
-                self.s54.set(lista[1])
-
-            elif lista[0] == "55":
-
-                self.s55.set(lista[1])
-
-            elif lista[0] == "56":
-
-                self.s56.set(lista[1])
-
-            elif lista[0] == "57":
-
-                self.s57.set(lista[1])
-
-            elif lista[0] == "58":
-
-                self.s58.set(lista[1])
-
-            elif lista[0] == "59":
-
-                self.s59.set(lista[1])
-
-            elif lista[0] == "61":
-
-                self.s61.set(lista[1])
-
-            elif lista[0] == "62":
-
-                self.s62.set(lista[1])
-
-            elif lista[0] == "63":
-
-                self.s63.set(lista[1])
-
-            elif lista[0] == "64":
-
-                self.s64.set(lista[1])
-
-            elif lista[0] == "65":
-
-                self.s65.set(lista[1])
-
-            elif lista[0] == "66":
-
-                self.s66.set(lista[1])
-
-            elif lista[0] == "67":
-
-                self.s67.set(lista[1])
-
-            elif lista[0] == "68":
-
-                self.s68.set(lista[1])
-
-            elif lista[0] == "69":
-
-                self.s69.set(lista[1])
-
-            elif lista[0] == "71":
-
-                self.s71.set(lista[1])
-
-            elif lista[0] == "72":
-
-                self.s72.set(lista[1])
-
-            elif lista[0] == "73":
-
-                self.s73.set(lista[1])
-
-            elif lista[0] == "74":
-
-                self.s74.set(lista[1])
-
-            elif lista[0] == "75":
-
-                self.s75.set(lista[1])
-
-            elif lista[0] == "76":
-
-                self.s76.set(lista[1])
-
-            elif lista[0] == "77":
-
-                self.s77.set(lista[1])
-
-            elif lista[0] == "78":
-
-                self.s78.set(lista[1])
-
-            elif lista[0] == "79":
-
-                self.s79.set(lista[1])
-
-            elif lista[0] == "81":
-
-                self.s81.set(lista[1])
-
-            elif lista[0] == "82":
-
-                self.s82.set(lista[1])
-
-            elif lista[0] == "83":
-
-                self.s83.set(lista[1])
-
-            elif lista[0] == "84":
-
-                self.s84.set(lista[1])
-
-            elif lista[0] == "85":
-
-                self.s85.set(lista[1])
-
-            elif lista[0] == "86":
-
-                self.s86.set(lista[1])
-
-            elif lista[0] == "87":
-
-                self.s87.set(lista[1])
-
-            elif lista[0] == "88":
-
-                self.s88.set(lista[1])
-
-            elif lista[0] == "89":
-
-                self.s89.set(lista[1])
-
-            elif lista[0] == "91":
-
-                self.s91.set(lista[1])
-
-            elif lista[0] == "92":
-
-                self.s92.set(lista[1])
-
-            elif lista[0] == "93":
-
-                self.s93.set(lista[1])
-
-            elif lista[0] == "94":
-
-                self.s94.set(lista[1])
-
-            elif lista[0] == "95":
-
-                self.s95.set(lista[1])
-
-            elif lista[0] == "96":
-
-                self.s96.set(lista[1])
-
-            elif lista[0] == "97":
-
-                self.s97.set(lista[1])
-
-            elif lista[0] == "98":
-
-                self.s98.set(lista[1])
-
-            elif lista[0] == "99":
-
-                self.s99.set(lista[1])
-                
-        else:
-
-            messagebox.showinfo("Aviso", "No existen más jugadas", icon = "warning")
-
-    # Funcion que determinara la posicion del cursor para poder colocar el numero en dicho cuadro de texto.
-    def Rehacer(self):
-
-        global hacer
-        global puntero
-
-        try:
-
-            if puntero < len(hacer):
-
-                lista = hacer[puntero + 1]
-                
-                puntero = puntero + 1
-
-                if lista[0] == "11":
-
-                    self.s11.set(lista[1])
-
-                elif lista[0] == "12":
-
-                    self.s12.set(lista[1])
-
-                elif lista[0] == "13":
-
-                    self.s13.set(lista[1])
-
-                elif lista[0] == "14":
-
-                    self.s14.set(lista[1])
-
-                elif lista[0] == "15":
-
-                    self.s15.set(lista[1])
-
-                elif lista[0] == "16":
-
-                    self.s16.set(lista[1])
-
-                elif lista[0] == "17":
-
-                    self.s17.set(lista[1])
-
-                elif lista[0] == "18":
-
-                    self.s18.set(lista[1])
-
-                elif lista[0] == "19":
-
-                    self.s19.set(lista[1])
-
-                elif lista[0] == "21":
-
-                    self.s21.set(lista[1])
-
-                elif lista[0] == "22":
-
-                    self.s22.set(lista[1])
-
-                elif lista[0] == "23":
-
-                    self.s23.set(lista[1])
-
-                elif lista[0] == "24":
-
-                    self.s24.set(lista[1])
-
-                elif lista[0] == "25":
-
-                    self.s25.set(lista[1])
-
-                elif lista[0] == "26":
-
-                    self.s26.set(lista[1])
-
-                elif lista[0] == "27":
-
-                    self.s27.set(lista[1])
-
-                elif lista[0] == "28":
-
-                    self.s28.set(lista[1])
-
-                elif lista[0] == "29":
-
-                    self.s29.set(lista[1])
-
-                elif lista[0] == "31":
-
-                    self.s31.set(lista[1])
-
-                elif lista[0] == "32":
-
-                    self.s32.set(lista[1])
-
-                elif lista[0] == "33":
-
-                    self.s33.set(lista[1])
-
-                elif lista[0] == "34":
-
-                    self.s34.set(lista[1])
-
-                elif lista[0] == "35":
-
-                    self.s35.set(lista[1])
-
-                elif lista[0] == "36":
-
-                    self.s36.set(lista[1])
-
-                elif lista[0] == "37":
-
-                    self.s37.set(lista[1])
-
-                elif lista[0] == "38":
-
-                    self.s38.set(lista[1])
-
-                elif lista[0] == "39":
-
-                    self.s39.set(lista[1])
-
-                elif lista[0] == "41":
-
-                    self.s41.set(lista[1])
-
-                elif lista[0] == "42":
-
-                    self.s42.set(lista[1])
-
-                elif lista[0] == "43":
-
-                    self.s43.set(lista[1])
-
-                elif lista[0] == "44":
-
-                    self.s44.set(lista[1])
-
-                elif lista[0] == "45":
-
-                    self.s45.set(lista[1])
-
-                elif lista[0] == "46":
-
-                    self.s46.set(lista[1])
-
-                elif lista[0] == "47":
-
-                    self.s47.set(lista[1])
-
-                elif lista[0] == "48":
-
-                    self.s48.set(lista[1])
-
-                elif lista[0] == "49":
-
-                    self.s49.set(lista[1])
-
-                elif lista[0] == "51":
-
-                    self.s51.set(lista[1])
-
-                elif lista[0] == "52":
-
-                    self.s52.set(lista[1])
-
-                elif lista[0] == "53":
-
-                    self.s53.set(lista[1])
-
-                elif lista[0] == "54":
-
-                    self.s54.set(lista[1])
-
-                elif lista[0] == "55":
-
-                    self.s55.set(lista[1])
-
-                elif lista[0] == "56":
-
-                    self.s56.set(lista[1])
-
-                elif lista[0] == "57":
-
-                    self.s57.set(lista[1])
-
-                elif lista[0] == "58":
-
-                    self.s58.set(lista[1])
-
-                elif lista[0] == "59":
-
-                    self.s59.set(lista[1])
-
-                elif lista[0] == "61":
-
-                    self.s61.set(lista[1])
-
-                elif lista[0] == "62":
-
-                    self.s62.set(lista[1])
-
-                elif lista[0] == "63":
-
-                    self.s63.set(lista[1])
-
-                elif lista[0] == "64":
-
-                    self.s64.set(lista[1])
-
-                elif lista[0] == "65":
-
-                    self.s65.set(lista[1])
-
-                elif lista[0] == "66":
-
-                    self.s66.set(lista[1])
-
-                elif lista[0] == "67":
-
-                    self.s67.set(lista[1])
-
-                elif lista[0] == "68":
-
-                    self.s68.set(lista[1])
-
-                elif lista[0] == "69":
-
-                    self.s69.set(lista[1])
-
-                elif lista[0] == "71":
-
-                    self.s71.set(lista[1])
-
-                elif lista[0] == "72":
-
-                    self.s72.set(lista[1])
-
-                elif lista[0] == "73":
-
-                    self.s73.set(lista[1])
-
-                elif lista[0] == "74":
-
-                    self.s74.set(lista[1])
-
-                elif lista[0] == "75":
-
-                    self.s75.set(lista[1])
-
-                elif lista[0] == "76":
-
-                    self.s76.set(lista[1])
-
-                elif lista[0] == "77":
-
-                    self.s77.set(lista[1])
-
-                elif lista[0] == "78":
-
-                    self.s78.set(lista[1])
-
-                elif lista[0] == "79":
-
-                    self.s79.set(lista[1])
-
-                elif lista[0] == "81":
-
-                    self.s81.set(lista[1])
-
-                elif lista[0] == "82":
-
-                    self.s82.set(lista[1])
-
-                elif lista[0] == "83":
-
-                    self.s83.set(lista[1])
-
-                elif lista[0] == "84":
-
-                    self.s84.set(lista[1])
-
-                elif lista[0] == "85":
-
-                    self.s85.set(lista[1])
-
-                elif lista[0] == "86":
-
-                    self.s86.set(lista[1])
-
-                elif lista[0] == "87":
-
-                    self.s87.set(lista[1])
-
-                elif lista[0] == "88":
-
-                    self.s88.set(lista[1])
-
-                elif lista[0] == "89":
-
-                    self.s89.set(lista[1])
-
-                elif lista[0] == "91":
-
-                    self.s91.set(lista[1])
-
-                elif lista[0] == "92":
-
-                    self.s92.set(lista[1])
-
-                elif lista[0] == "93":
-
-                    self.s93.set(lista[1])
-
-                elif lista[0] == "94":
-
-                    self.s94.set(lista[1])
-
-                elif lista[0] == "95":
-
-                    self.s95.set(lista[1])
-
-                elif lista[0] == "96":
-
-                    self.s96.set(lista[1])
-
-                elif lista[0] == "97":
-
-                    self.s97.set(lista[1])
-
-                elif lista[0] == "98":
-
-                    self.s98.set(lista[1])
-
-                elif lista[0] == "99":
-
-                    self.s99.set(lista[1])
-
-        except IndexError:
-
-            messagebox.showinfo("Aviso", "No existen más jugadas", icon = "warning")
-
     # Funcion del boton asignado.
     def Validar(self):
+
+        global Activo
+
+        Activo = False
 
         # Se le asignara un valor especifico a las siguientes variables.
         guia = 1
@@ -2110,7 +1445,7 @@ class Jugar(tkinter.Tk):
 
                 # Condicion que determina si el usuario quiere reproducir el sonido o no.
                 if S == 1:
-                    
+
                     pygame.init()
 
                     zelda = pygame.mixer.music.load("You win sound effect 5.mp3")
@@ -2129,6 +1464,126 @@ class Jugar(tkinter.Tk):
             self.destroy()
             # Se abrira la nueva ventana solicitada.
             Jugar().mainloop()
+
+
+
+
+
+
+
+
+
+
+    # Funcion del boton asignado.
+    def Guardar(self):
+
+        global Jugador
+        global Activo
+
+        Activo = False
+
+        s = Sonido.get()
+        s = s[-2:]
+
+        lista = [Jugador,linea,["textboxes"],self.TiempoHoras.get(),self.TiempoMinutos.get(),self.TiempoSegundos.get(),R,Nivel.get(),s]
+
+        jugada = open("jugada.txt","w")
+
+        jugada.write(str(lista))
+
+        jugada.close
+
+        
+
+        
+
+
+
+
+
+
+
+    # Funcion del boton asignado.
+    def Cargar(self):
+
+        global R
+
+        jugada = open("jugada.txt","r")
+
+        linea = eval(jugada.read())
+
+        self.textBoxJugador.insert(0,linea[0])
+
+        l = linea[1]
+
+        self.TiempoHoras.set(linea[3])
+        self.TiempoMinutos.set(linea[4])
+        self.TiempoSegundos.set(linea[5])
+
+        R = linea[6]
+
+        if linea[-1] == "Sí":
+
+            Sonido.set("Sonido \nSí")
+
+        else:
+
+            Sonido.set("Sonido \nNo")        
+
+        if linea[7] == "Nivel \nFácil":
+
+            Nivel.set("Nivel \nFácil")
+
+        elif linea[7] == "Nivel \nIntermedio":
+
+            Nivel.set("Nivel \nIntermedio")
+
+        elif linea[7] == "Nivel \nDifiícil":
+
+            Nivel.set("Nivel \nDifiícil")
+
+
+            
+
+        
+
+
+
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
 
     # Funcion del boton asignado.
     def Reiniciar(self):
