@@ -621,6 +621,40 @@ class Jugar(tkinter.Tk):
         self.buttonPredicciones = Button(self, text = "Predicciones", width = 10, activebackground = "#4285f4",command = self.Predicciones, fg = "White", bg = "#4285f4", font = ("Comic Sans Ms", 15))
         self.buttonPredicciones.place(x = 755, y = 115)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+        self.buttonGuardar = Button(self, text = "Guardar \n Juego", width = 10, activebackground = "#4285f4",command = self.Guardar, fg = "White", bg = "#4285f4", font = ("Comic Sans Ms", 15))
+        self.buttonGuardar.place(x = 955, y = 135)
+
+        self.buttonCargar = Button(self, text = "Cargar \n Juego", width = 10, activebackground = "#4285f4",command = self.Cargar, fg = "White", bg = "#4285f4", font = ("Comic Sans Ms", 15))
+        self.buttonCargar.place(x = 955, y = 335)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
         self.buttonDeshacer = Button(self, text = "Deshacer", width = 10, activebackground = "#4285f4",command = self.Deshacer, fg = "#4285f4", bg = "White", font = ("Comic Sans Ms", 15))
         self.buttonDeshacer.place(x = 813, y = 515)
 
@@ -5393,6 +5427,132 @@ class Jugar(tkinter.Tk):
             self.destroy()
             # Se abrira la nueva ventana solicitada.
             Jugar().mainloop()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    # Funcion del boton asignado.
+    def Guardar(self):
+
+        global Jugador
+        global Activo
+
+        Activo = False
+
+        s = Sonido.get()
+        s = s[-2:]
+
+        lista = [Jugador,linea,["textboxes"],self.TiempoHoras.get(),self.TiempoMinutos.get(),self.TiempoSegundos.get(),R,Nivel.get(),s]
+
+        print(lista)
+
+        jugada = open("jugada.txt","w")
+
+        jugada.write(str(lista))
+
+        jugada.close
+
+        
+
+        
+
+
+
+
+
+
+
+    # Funcion del boton asignado.
+    def Cargar(self):
+
+        global R
+
+        jugada = open("jugada.txt","r")
+
+        linea = eval(jugada.read())
+
+        self.textBoxJugador.insert(0,linea[0])
+
+        l = linea[1]
+
+        self.TiempoHoras.set(linea[3])
+        self.TiempoMinutos.set(linea[4])
+        self.TiempoSegundos.set(linea[5])
+
+        R = linea[6]
+
+        if linea[-1] == "Sí":
+
+            Sonido.set("Sonido \nSí")
+
+        else:
+
+            Sonido.set("Sonido \nNo")        
+
+        if linea[7] == "Nivel \nFácil":
+
+            Nivel.set("Nivel \nFácil")
+
+        elif linea[7] == "Nivel \nIntermedio":
+
+            Nivel.set("Nivel \nIntermedio")
+
+        elif linea[7] == "Nivel \nDifiícil":
+
+            Nivel.set("Nivel \nDifiícil")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
 
     # Funcion del boton asignado.
     def Reiniciar(self):

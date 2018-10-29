@@ -1487,6 +1487,8 @@ class Jugar(tkinter.Tk):
 
         lista = [Jugador,linea,["textboxes"],self.TiempoHoras.get(),self.TiempoMinutos.get(),self.TiempoSegundos.get(),R,Nivel.get(),s]
 
+        print(lista)
+
         jugada = open("jugada.txt","w")
 
         jugada.write(str(lista))
