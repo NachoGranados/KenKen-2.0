@@ -14,14 +14,23 @@ class menu(tkinter.Tk):
         # La ventana del Menu Principal con sus respectivas caracteristicas.
         tkinter.Tk.__init__(menu)
         menu.title("KenKen")
-        menu.geometry("410x100")
+        menu.geometry("900x720")
+        menu.resizable(width = False, height = False)
+
+        # Esta sera una variable global necesaria porque se utilizara en distintas funciones.
+        global ImagenFondoMenu
+
+        # Esta sera la imagen que aparecera en la ventanas.
+        ImagenFondoMenu = PhotoImage(file = "Black-and-white-anime-wolves-29-cool-hd-wallpaper.png")
+        FondoMenu = Label(menu, image = ImagenFondoMenu)
+        FondoMenu.place(x = -2, y = -2) 
         
         # Estos seran todos los botones que apareceran en la ventana.
         menu.buttonJugar = Button(menu, text = "Jugar", activebackground = "#4285f4", fg = "white", bg = "#4285f4", font = ("Comic Sans Ms", 11), width = 20, heigh = 3, command = menu.JugarMenu)
         menu.buttonJugar.place(x = 10, y = 10)
 
         menu.buttonConfigurar = Button(menu, text = "Configurar", activebackground = "#4285f4", fg = "#4285f4", bg = "White", font = ("Comic Sans Ms", 11), width = 20, heigh = 3, command = menu.Configurar)
-        menu.buttonConfigurar.place(x = 210, y = 10)
+        menu.buttonConfigurar.place(x = 10, y = 100)
 
         # Esta sera la barra de menu que aparecera en la ventana con sus respectivas caracteristicas.
         menubar = Menu(menu)
@@ -180,15 +189,18 @@ class Jugar(tkinter.Tk):
         global listaI
         global listaD
         global tamaño
-        global hacer
+        global rehacer
+        global deshacer
         global puntero
         global T
 
-        puntero = -1
+        puntero = 0
 
         listaTop = []
 
-        hacer = []
+        rehacer = []
+
+        deshacer = []
 
         linea = archivo.readline()
 
@@ -862,9 +874,7 @@ class Jugar(tkinter.Tk):
            Cuadro == "91" or Cuadro == "92" or Cuadro == "93" or Cuadro == "94" or Cuadro == "95" or Cuadro == "96" or Cuadro == "97" or Cuadro == "98" or Cuadro == "99":
             
             posicion.delete(0,END)
-            hacer.append([Cuadro,posicion.get()])
-            puntero = puntero + 1
-
+            
     # Funcion que determinara la posicion del cursor para poder colocar el numero en dicho cuadro de texto.
     def CuadroDeTexto(self,num):
 
@@ -885,7 +895,8 @@ class Jugar(tkinter.Tk):
            Cuadro == "91" or Cuadro == "92" or Cuadro == "93" or Cuadro == "94" or Cuadro == "95" or Cuadro == "96" or Cuadro == "97" or Cuadro == "98" or Cuadro == "99":
 
             posicion.insert(END,num)
-            hacer.append([Cuadro,posicion.get()])
+            deshacer.append([Cuadro,""])
+            rehacer.append([Cuadro,posicion.get()])
             puntero = puntero + 1
 
     def Predicciones(self):
@@ -994,14 +1005,21 @@ class Jugar(tkinter.Tk):
     # Funcion que determinara la posicion del cursor para poder colocar el numero en dicho cuadro de texto.
     def Deshacer(self):
 
-        global hacer
+        global deshacer
         global puntero
+        global rehacer
 
         if puntero >= 0:
 
-            lista = hacer[puntero - 1]
-
             puntero = puntero - 1
+
+            if puntero < 0:
+                
+                messagebox.showinfo("Aviso", "No existen más jugadas.", icon = "warning")
+
+        if puntero < len(deshacer):
+
+            lista = deshacer[puntero]
 
             if lista[0] == "11":
 
@@ -1326,24 +1344,21 @@ class Jugar(tkinter.Tk):
             elif lista[0] == "99":
 
                 self.s99.set(lista[1])
-                
-        else:
-
-            messagebox.showinfo("Aviso", "No existen más jugadas.", icon = "warning")
 
     # Funcion que determinara la posicion del cursor para poder colocar el numero en dicho cuadro de texto.
     def Rehacer(self):
 
-        global hacer
+        global rehacer
+        global deshacer
         global puntero
 
         try:
 
-            if puntero < len(hacer):
+            puntero = puntero + 1
 
-                lista = hacer[puntero + 1]
-                
-                puntero = puntero + 1
+            if puntero >= 0:
+
+                lista = rehacer[puntero]
 
                 if lista[0] == "11":
 
@@ -1672,37 +1687,6 @@ class Jugar(tkinter.Tk):
         except IndexError:
 
             messagebox.showinfo("Aviso", "No existen más jugadas.", icon = "warning")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     # Funcion del boton asignado.
     def Validar(self):
@@ -5748,6 +5732,7 @@ class Configurar(tkinter.Tk):
         tkinter.Tk.__init__(self)
         self.title("Configurar")
         self.geometry("845x615")
+        self.resizable(width = False, height = False)
 
         # Esta sera una variable global necesaria porque se utilizara en distintas funciones.
         global ImagenFondo
@@ -5880,25 +5865,35 @@ class Configurar(tkinter.Tk):
     def Jugar(self):
 
         # Condicion que determina si se puede abrir la ventana de jugar o no
-        if (N == 1 or N == 2 or N == 3) and (S == 1 or S == 2):
+        try:
+            
+            if (N == 1 or N == 2 or N == 3) and (S == 1 or S == 2) and (T == 1 or T == 2 or T == 3 or T == 4 or T == 5 or T == 6 or T == 7 or T == 8):
 
-                if R == 1:
-                    # Se cerrara la ventana actual.
-                    self.destroy()
-                    # Se abrira la nueva ventana solicitada.
-                    Jugar().mainloop()
+                    if R == 1:
+                        # Se cerrara la ventana actual.
+                        self.destroy()
+                        # Se abrira la nueva ventana solicitada.
+                        Jugar().mainloop()
 
-                elif R == 2:
-                    # Se cerrara la ventana actual.
-                    self.destroy()
-                    # Se abrira la nueva ventana solicitada.
-                    Jugar().mainloop()
+                    elif R == 2:
+                        # Se cerrara la ventana actual.
+                        self.destroy()
+                        # Se abrira la nueva ventana solicitada.
+                        Jugar().mainloop()
 
-                elif R == 3:
-                    # Se cerrara la ventana actual.
-                    self.destroy()
-                    # Se abrira la nueva ventana solicitada.
-                    Timer().mainloop()
+                    elif R == 3:
+                        # Se cerrara la ventana actual.
+                        self.destroy()
+                        # Se abrira la nueva ventana solicitada.
+                        Timer().mainloop()
+                        
+            else:
+
+                messagebox.showinfo("Aviso", "Debe de configurar el modo de juego que desea.", icon = "warning")
+
+        except NameError:
+
+            messagebox.showinfo("Aviso", "Debe de configurar el modo de juego que desea.", icon = "warning")
 
     # Funcion del boton asignado.
     def RegresarMenu(self):
@@ -5936,6 +5931,7 @@ class Timer(tkinter.Tk):
         tkinter.Tk.__init__(self)
         self.title("Timer")
         self.geometry("750x500")
+        self.resizable(width = False, height = False)
 
         # Esta sera una variable global necesaria porque se utilizara en distintas funciones.
         global ImagenFondo
