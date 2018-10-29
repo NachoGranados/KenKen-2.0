@@ -80,15 +80,15 @@ class Jugar(tkinter.Tk):
         # La ventana de Jugar con sus respectivas caracteristicas.
         tkinter.Tk.__init__(self)
         self.title("Jugar")
-        self.geometry("1200x700")
+        self.geometry("1200x900")
 
         # Esta sera una variable global necesaria porque se utilizara en distintas funciones.
         global ImagenFondo
 
         # Esta sera la imagen que aparecera en la ventanas.
-        ImagenFondo = PhotoImage(file = "710239_geometric-wallpaper-hd.png")
+        ImagenFondo = PhotoImage(file = "1f503fcfd14bc5367f656a145975eeec.png")
         Fondo = Label(self, image = ImagenFondo)
-        Fondo.place(x = 0, y = 0)        
+        Fondo.place(x = -700, y = -175)        
 
         # Esta sera una variable global necesaria porque se utilizara en distintas funciones.
         global ImagenKenKen
@@ -96,7 +96,7 @@ class Jugar(tkinter.Tk):
         # Esta sera la imagen que aparecera en la ventanas.
         ImagenKenKen = PhotoImage(file = "coollogo_com-5652650.png")
         KenKen = Label(self, image = ImagenKenKen)
-        KenKen.place(x = 345, y = 100)
+        KenKen.place(x = 290, y = 100)
 
         self.labelNombre = Label(self, text = "Nombre del Jugador:", fg =  "#000000", font = ("Times New Roman", 17))
         self.labelNombre.place(x = 100, y = 567)
@@ -107,8 +107,8 @@ class Jugar(tkinter.Tk):
 
         # Variable Nivel que se utilizara para indicar el nivel que se pulso y su respetiva condicion que determina cual label mostar.
         Nivel = StringVar()
-        self.labelNivel = Label(self,textvariable = Nivel, width = 20, font = ("Serif", 17))
-        self.labelNivel.place(x = 44, y = 20)
+        self.labelNivel = Label(self,textvariable = Nivel, width = 8, font = ("Serif", 17))
+        self.labelNivel.place(x = 120, y = 20)
 
         if N == 1:
 
@@ -127,8 +127,8 @@ class Jugar(tkinter.Tk):
             
         # Variable Sonido que se utilizara para indicar si el nivel se completo con exito o no.
         Sonido = StringVar()
-        self.labelSonido = Label(self,textvariable = Sonido, width = 20, font = ("Serif", 17))
-        self.labelSonido.place(x = 44, y = 115)
+        self.labelSonido = Label(self,textvariable = Sonido, width = 6, font = ("Serif", 17))
+        self.labelSonido.place(x = 135, y = 115)
 
         if S == 1:
 
@@ -139,45 +139,10 @@ class Jugar(tkinter.Tk):
         elif S == 2:
 
             Sonido.set("Sonido \nNo")
-            pygame.mixer.music.stop()
             
         # Cuadricula con sus respectivas caracteristicas que se mostrara en pantalla la cual simbolizara las casillas del juego.
         cuadricula = Frame(self)
         cuadricula.grid(column = 6, row = 6, padx = (10,10), pady = (10,10))
-        
-        # Estas seran etiquetas vacias que se utilizaran para dar una mejor posicion a la cuadricula.
-        label00 = Label(self, width = 7, font = ("Serif", 13))
-        label00.grid(column = 0, row = 0)
-
-        label10 = Label(self, width = 7, font = ("Serif", 13))
-        label10.grid(column = 1, row = 0)
-
-        label20 = Label(self, width = 7, font = ("Serif", 13))
-        label20.grid(column = 2, row = 0)
-
-        label30 = Label(self, width = 7, font = ("Serif", 13))
-        label30.grid(column = 3, row = 0)
-
-        label41 = Label(self, width = 7, font = ("Serif", 13)) 
-        label41.grid(column = 4, row = 1)
-
-        label42 = Label(self, width = 7, font = ("Serif", 13)) 
-        label42.grid(column = 4, row = 2)
-
-        label43 = Label(self, width = 7, font = ("Serif", 13)) 
-        label43.grid(column = 4, row = 3)
-
-        label44 = Label(self, width = 7, font = ("Serif", 13)) 
-        label44.grid(column = 4, row = 4)
-
-        label45 = Label(self, width = 7, font = ("Serif", 13)) 
-        label45.grid(column = 4, row = 5)
-
-        label46 = Label(self, width = 7, font = ("Serif", 13)) 
-        label46.grid(column = 4, row = 6)
-
-        label47 = Label(self, width = 7, font = ("Serif", 13)) 
-        label47.grid(column = 4, row = 7)
 
         # Lectura del archivo que contiene las partidas.
         archivo = open("kenken_juegos.dat","r")
@@ -5555,6 +5520,8 @@ class Jugar(tkinter.Tk):
             self.textBoxJugador.delete(0,END)
 
     def RegresarMenu(self):
+
+        pygame.mixer.music.stop()
         # Se cerrara la ventana actual.
         self.destroy()
         # Se abrira la nueva ventana solicitada.
@@ -5731,16 +5698,16 @@ class Configurar(tkinter.Tk):
         # Ventana de configurar con sus respectivas caracteristicas.        
         tkinter.Tk.__init__(self)
         self.title("Configurar")
-        self.geometry("845x615")
+        self.geometry("1366x768")
         self.resizable(width = False, height = False)
 
         # Esta sera una variable global necesaria porque se utilizara en distintas funciones.
         global ImagenFondo
 
         # Esta sera la imagen que aparecera en la ventanas.
-        ImagenFondo = PhotoImage(file = "710239_geometric-wallpaper-hd - copia.png")
+        ImagenFondo = PhotoImage(file = "fairy-tail-anime-wallpaper-hd-airy-tail-wallpaper-iphone-hd-of-fairy-tail.png")
         Fondo = Label(self, image = ImagenFondo)
-        Fondo.place(x = 0, y = 0) 
+        Fondo.place(x = -2, y =-2) 
 
         global guiaN
 
@@ -5930,16 +5897,16 @@ class Timer(tkinter.Tk):
         # La ventana de Pronosticar Tiempo con sus respectivas caracteristicas.
         tkinter.Tk.__init__(self)
         self.title("Timer")
-        self.geometry("750x500")
+        self.geometry("1150x600")
         self.resizable(width = False, height = False)
 
         # Esta sera una variable global necesaria porque se utilizara en distintas funciones.
         global ImagenFondo
 
         # Esta sera la imagen que aparecera en la ventanas.
-        ImagenFondo = PhotoImage(file = "710239_geometric-wallpaper-hd - copia - copia.png")
+        ImagenFondo = PhotoImage(file = "Gaming-Wallpapers-Desktop-Photo.png")
         Fondo = Label(self, image = ImagenFondo)
-        Fondo.place(x = 0, y = 0)   
+        Fondo.place(x = -700, y = -260)   
 
         # Estas seran todas las etiquetas que apareceran en la ventana.
         self.titulo = Label(self, text = "TIMER", fg =  "#4285f4", font = ("Serif", 18))
