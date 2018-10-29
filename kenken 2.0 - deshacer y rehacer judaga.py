@@ -48,7 +48,7 @@ class menu(tkinter.Tk):
 
     def AcercaDe(menu):
         # Se abrira una nueva ventana con la informacion general del proyecto.
-        messagebox.showinfo("Acerca De", "Tecnológico de Costa Rica \nCurso: Taller de Programación \nProyecto 2: Kenken \nEstudiantes: \nDaniel Camacho \nJose Ignacio Granados \nSemestre II \n2018")
+        messagebox.showinfo("Acerca De", "Tecnológico de Costa Rica \nCurso: Taller de Programación \nProyecto 3: Kenken 2.0 \nEstudiantes: \nDaniel Camacho \nJose Ignacio Granados \nSemestre II \n2018")
         
     def Salir(menu):
         # Se abrira una nueva ventana con la opcion de salir del programa, si este es si, entonces el programa se finalizara.
@@ -72,6 +72,14 @@ class Jugar(tkinter.Tk):
         tkinter.Tk.__init__(self)
         self.title("Jugar")
         self.geometry("1200x700")
+
+        # Esta sera una variable global necesaria porque se utilizara en distintas funciones.
+        global ImagenFondo
+
+        # Esta sera la imagen que aparecera en la ventanas.
+        ImagenFondo = PhotoImage(file = "710239_geometric-wallpaper-hd.png")
+        Fondo = Label(self, image = ImagenFondo)
+        Fondo.place(x = 0, y = 0)        
 
         # Esta sera una variable global necesaria porque se utilizara en distintas funciones.
         global ImagenKenKen
@@ -429,6 +437,9 @@ class Jugar(tkinter.Tk):
         self.s14 = StringVar()
         self.s15 = StringVar()
         self.s16 = StringVar()
+        self.s17 = StringVar()
+        self.s18 = StringVar()
+        self.s19 = StringVar()
         
         self.s21 = StringVar()
         self.s22 = StringVar()
@@ -436,6 +447,9 @@ class Jugar(tkinter.Tk):
         self.s24 = StringVar()
         self.s25 = StringVar()
         self.s26 = StringVar()
+        self.s27 = StringVar()
+        self.s28 = StringVar()
+        self.s29 = StringVar()
         
         self.s31 = StringVar()
         self.s32 = StringVar()
@@ -443,6 +457,9 @@ class Jugar(tkinter.Tk):
         self.s34 = StringVar()
         self.s35 = StringVar()
         self.s36 = StringVar()
+        self.s37 = StringVar()
+        self.s38 = StringVar()
+        self.s39 = StringVar()
         
         self.s41 = StringVar()
         self.s42 = StringVar()
@@ -450,6 +467,9 @@ class Jugar(tkinter.Tk):
         self.s44 = StringVar()
         self.s45 = StringVar()
         self.s46 = StringVar()
+        self.s47 = StringVar()
+        self.s48 = StringVar()
+        self.s49 = StringVar()
         
         self.s51 = StringVar()
         self.s52 = StringVar()
@@ -457,6 +477,9 @@ class Jugar(tkinter.Tk):
         self.s54 = StringVar()
         self.s55 = StringVar()
         self.s56 = StringVar()
+        self.s57 = StringVar()
+        self.s58 = StringVar()
+        self.s59 = StringVar()
         
         self.s61 = StringVar()
         self.s62 = StringVar()
@@ -464,6 +487,39 @@ class Jugar(tkinter.Tk):
         self.s64 = StringVar()
         self.s65 = StringVar()
         self.s66 = StringVar()
+        self.s67 = StringVar()
+        self.s68 = StringVar()
+        self.s69 = StringVar()
+        
+        self.s71 = StringVar()
+        self.s72 = StringVar()
+        self.s73 = StringVar()
+        self.s74 = StringVar()
+        self.s75 = StringVar()
+        self.s76 = StringVar()
+        self.s77 = StringVar()
+        self.s78 = StringVar()
+        self.s79 = StringVar()
+
+        self.s81 = StringVar()
+        self.s82 = StringVar()
+        self.s83 = StringVar()
+        self.s84 = StringVar()
+        self.s85 = StringVar()
+        self.s86 = StringVar()
+        self.s87 = StringVar()
+        self.s88 = StringVar()
+        self.s89 = StringVar()
+
+        self.s91 = StringVar()
+        self.s92 = StringVar()
+        self.s93 = StringVar()
+        self.s94 = StringVar()
+        self.s95 = StringVar()
+        self.s96 = StringVar()
+        self.s97 = StringVar()
+        self.s98 = StringVar()
+        self.s99 = StringVar()
 
         """
 
@@ -514,15 +570,18 @@ class Jugar(tkinter.Tk):
         """
 
         # Lista que contendra todas las 36 casillas la cuadricula con un par de elementos para un mejor manejo de la lista.
-        SV = [[],[0,self.s11,self.s12,self.s13,self.s14,self.s15,self.s16],
-                [0,self.s21,self.s22,self.s23,self.s24,self.s25,self.s26],
-                [0,self.s31,self.s32,self.s33,self.s34,self.s35,self.s36],
-                [0,self.s41,self.s42,self.s43,self.s44,self.s45,self.s46],
-                [0,self.s51,self.s52,self.s53,self.s54,self.s55,self.s56],
-                [0,self.s61,self.s62,self.s63,self.s64,self.s65,self.s66]]
+        SV = [[],[0,self.s11,self.s12,self.s13,self.s14,self.s15,self.s16,self.s17,self.s18,self.s19],
+                 [0,self.s21,self.s22,self.s23,self.s24,self.s25,self.s26,self.s27,self.s28,self.s29],
+                 [0,self.s31,self.s32,self.s33,self.s34,self.s35,self.s36,self.s37,self.s38,self.s39],
+                 [0,self.s41,self.s42,self.s43,self.s44,self.s45,self.s46,self.s47,self.s48,self.s49],
+                 [0,self.s51,self.s52,self.s53,self.s54,self.s55,self.s56,self.s57,self.s58,self.s59],
+                 [0,self.s61,self.s62,self.s63,self.s64,self.s65,self.s66,self.s67,self.s68,self.s69],
+                 [0,self.s71,self.s72,self.s73,self.s74,self.s75,self.s76,self.s77,self.s78,self.s79],
+                 [0,self.s81,self.s82,self.s83,self.s84,self.s85,self.s86,self.s87,self.s88,self.s89],
+                 [0,self.s91,self.s92,self.s93,self.s94,self.s95,self.s96,self.s97,self.s98,self.s99]]
 
         # Lista de los colores que se pueden tomar para asignarselos a los cuadros de texto como fondo.
-        c = ["salmon","yellow","green","brown","light blue","sienna3", "thistle2", "gray", "pink", "magenta", "medium purple", "khaki2", "aqua", "rosybrown", "tomato", "peru", "cornsilk2","goldenrod","slateblue"]
+        c = ["salmon","yellow","green","brown","light blue","sienna3", "thistle2", "gray", "pink", "magenta", "medium purple", "khaki2", "aqua", "rosybrown", "tomato", "peru", "cornsilk2","goldenrod","slateblue", "maroon1", "cyan", "green3", "purple2", "gold3", "dodger blue", "light slate gray", "orange2", "brown3", "DarkOliveGreen3", "bisque2"]
 
         # Algoritmo para colocar los cuadros de texto segun la posicion de la cuadricula crada por el grid.
         for e in range(0,len(colores)):
@@ -542,7 +601,7 @@ class Jugar(tkinter.Tk):
                 
             c = c[1:]
 
-        c = ["salmon","yellow","green","brown","light blue","sienna3", "thistle2", "gray", "pink", "magenta", "medium purple", "khaki2", "aqua", "rosybrown", "tomato", "peru", "cornsilk2","goldenrod","slateblue"]
+        c = ["salmon","yellow","green","brown","light blue","sienna3", "thistle2", "gray", "pink", "magenta", "medium purple", "khaki2", "aqua", "rosybrown", "tomato", "peru", "cornsilk2","goldenrod","slateblue", "maroon1", "cyan", "green3", "purple2", "gold3", "dodger blue", "light slate gray", "orange2", "brown3", "DarkOliveGreen3", "bisque2"]
 
         cont = 0
 
@@ -555,11 +614,12 @@ class Jugar(tkinter.Tk):
         # Algoritmo para crea las etiquetas que indicaran la operacion matematica dentro de las casillas de la cuadricula.
         for e in range(0,len(lista)):
 
-            y = lista[e][1][0] * 23 + 201 - 23
+            y = ((lista[e][1][0] * 23) + 201) - 23
 
-            x = lista[e][1][1] * 68 + 278 - 68
+            x = ((lista[e][1][1] * 68) + 278) - 68
             
             Label(self, text = lista[e][0], width = 3, font = ("Serif", 8), bg = c[cont]).place(x = x, y = y)
+            
             cont = cont + 1
 
         # Estos seran todos los botones que apareceran en la ventana.
@@ -1269,7 +1329,7 @@ class Jugar(tkinter.Tk):
                 
         else:
 
-            messagebox.showinfo("Aviso", "No existen más jugadas", icon = "warning")
+            messagebox.showinfo("Aviso", "No existen más jugadas.", icon = "warning")
 
     # Funcion que determinara la posicion del cursor para poder colocar el numero en dicho cuadro de texto.
     def Rehacer(self):
@@ -1611,7 +1671,38 @@ class Jugar(tkinter.Tk):
 
         except IndexError:
 
-            messagebox.showinfo("Aviso", "No existen más jugadas", icon = "warning")
+            messagebox.showinfo("Aviso", "No existen más jugadas.", icon = "warning")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     # Funcion del boton asignado.
     def Validar(self):
@@ -1623,503 +1714,3727 @@ class Jugar(tkinter.Tk):
         # Algoritmo que determinara si el usuario no ha rellenado toda la cuadricula.
         while guia == 1:
 
-            # Obtencion de todos los valores presentes en los cuadros de texto de la cuadricula.
-            t11 = self.s11.get()
-            t12 = self.s12.get()
-            t13 = self.s13.get()
-            t14 = self.s14.get()
-            t15 = self.s15.get()
-            t16 = self.s16.get()
-
-            t21 = self.s21.get()
-            t22 = self.s22.get()
-            t23 = self.s23.get()
-            t24 = self.s24.get()
-            t25 = self.s25.get()
-            t26 = self.s26.get()
-
-            t31 = self.s31.get()
-            t32 = self.s32.get()
-            t33 = self.s33.get()
-            t34 = self.s34.get()
-            t35 = self.s35.get()
-            t36 = self.s36.get()
-
-            t41 = self.s41.get()
-            t42 = self.s42.get()
-            t43 = self.s43.get()
-            t44 = self.s44.get()
-            t45 = self.s45.get()
-            t46 = self.s46.get()
-
-            t51 = self.s51.get()
-            t52 = self.s52.get()
-            t53 = self.s53.get()
-            t54 = self.s54.get()
-            t55 = self.s55.get()
-            t56 = self.s56.get()
-
-            t61 = self.s61.get()
-            t62 = self.s62.get()
-            t63 = self.s63.get()
-            t64 = self.s64.get()
-            t65 = self.s65.get()
-            t66 = self.s66.get()
-
-            # Lista que contendra los valores ordenados por filas.
-            lista1 = [t11,t21,t31,t41,t51,t61]
-            lista2 = [t12,t22,t32,t42,t52,t62]
-            lista3 = [t13,t23,t33,t43,t53,t63]
-            lista4 = [t14,t24,t34,t44,t54,t64]
-            lista5 = [t15,t25,t35,t45,t55,t65]
-            lista6 = [t16,t26,t36,t46,t56,t66]
-
-            # Lista que contendra los valores ordenados por columnas.
-            lista7 = [t11,t12,t13,t14,t15,t16]
-            lista8 = [t21,t22,t23,t24,t25,t26]
-            lista9 = [t31,t32,t33,t34,t35,t36]
-            lista10 = [t41,t42,t43,t44,t45,t46]
-            lista11 = [t51,t52,t53,t54,t55,t56]
-            lista12 = [t61,t62,t63,t64,t65,t66]
-
-            # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
-            if ("" in lista1) == True:
-
-                messagebox.showinfo("Error", "Espacios en blanco en la fila 1.", icon = "warning")
-                espacio = True
-
-            # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
-            if ("" in lista2) == True:
+            if T == 1:
                 
-                messagebox.showinfo("Error", "Espacios en blanco en la fila 2.", icon = "warning")
-                espacio = True
-
-            # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
-
-                messagebox.showinfo("Error", "Espacios en blanco en la fila 3.", icon = "warning")
-                espacio = True
-
-            # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
-
-                messagebox.showinfo("Error", "Espacios en blanco en la fila 4.", icon = "warning")
-                espacio = True
-
-            # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
-            if ("" in lista5) == True:
-
-                messagebox.showinfo("Error", "Espacios en blanco en la fila 5.", icon = "warning")
-                espacio = True
-
-            # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
-            if ("" in lista6) == True:
-
-                messagebox.showinfo("Error", "Espacios en blanco en la fila 6.", icon = "warning")
-                espacio = True
-
-            # Si existe algun espacio en blanco en la cuadricula, se cerrara el ciclo while.
-            if espacio == True:
-
-                break
-
-            # Condicion que determina si en la fila especifica existen valores repetidos.
-            if guia == 1:
-
-                while lista1 != []:
-
-                    e = lista1[0]
-                    lista1.remove(e)
-
-                    if (str(e) in lista1) == True:
-
-                        guia = 0
-                        messagebox.showinfo("Error", "Errores en la fila 1.", icon = "warning")                        
-
-            # Condicion que determina si en la fila especifica existen valores repetidos.
-            if guia == 1:
-
-                while lista2 != []:
-
-                    e = lista2[0]
-                    lista2.remove(e)
-
-                    if (str(e) in lista2) == True:
-
-                        guia = 0
-                        messagebox.showinfo("Error", "Errores en la fila 2.", icon = "warning")                        
-
-            # Condicion que determina si en la fila especifica existen valores repetidos.
-            if guia == 1:
-
-                while lista3 != []:
-
-                    e = lista3[0]
-                    lista3.remove(e)
-
-                    if (str(e) in lista3) == True:
-
-                        guia = 0
-                        messagebox.showinfo("Error", "Errores en la fila 3.", icon = "warning")
-
-            # Condicion que determina si en la fila especifica existen valores repetidos.
-            if guia == 1:
-
-                while lista4 != []:
-
-                    e = lista4[0]
-                    lista4.remove(e)
-
-                    if (str(e) in lista4) == True:
-
-                        guia = 0
-                        messagebox.showinfo("Error", "Errores en la fila 4.", icon = "warning")
-
-            # Condicion que determina si en la fila especifica existen valores repetidos.
-            if guia == 1:
-
-                while lista5 != []:
-
-                    e = lista5[0]
-                    lista5.remove(e)
-
-                    if (str(e) in lista5) == True:
-
-                        guia = 0
-                        messagebox.showinfo("Error", "Errores en la fila 5.", icon = "warning")
-
-            # Condicion que determina si en la fila especifica existen valores repetidos.
-            if guia == 1:
-
-                while lista6 != []:
-
-                    e = lista6[0]
-                    lista6.remove(e)
-
-                    if (str(e) in lista6) == True:
-
-                        guia = 0
-                        messagebox.showinfo("Error", "Errores en la fila 6.", icon = "warning")
-
-            # Condicion que determina si en la colunma especifica existen valores repetidos.
-            if guia == 1:
-
-                while lista7 != []:
-
-                    e = lista7[0]
-                    lista7.remove(e)
-
-                    if (str(e) in lista7) == True:
-
-                        guia = 0
-                        messagebox.showinfo("Error", "Errores en la columna 1.", icon = "warning")
-
-            # Condicion que determina si en la colunma especifica existen valores repetidos.
-            if guia == 1:
-
-                while lista8 != []:
-
-                    e = lista8[0]
-                    lista8.remove(e)
-
-                    if (str(e) in lista8) == True:
-
-                        guia = 0
-                        messagebox.showinfo("Error", "Errores en la columna 2.", icon = "warning")
-
-            # Condicion que determina si en la colunma especifica existen valores repetidos.            
-            if guia == 1:
-
-                while lista9 != []:
-
-                    e = lista9[0]
-                    lista9.remove(e)
-
-                    if (str(e) in lista9) == True:
-
-                        guia = 0
-                        messagebox.showinfo("Error", "Errores en la columna 3.", icon = "warning")
-
-            # Condicion que determina si en la colunma especifica existen valores repetidos.
-            if guia == 1:
-
-                while lista10 != []:
-
-                    e = lista10[0]
-                    lista10.remove(e)
-
-                    if (str(e) in lista10) == True:
-
-                        guia = 0
-                        messagebox.showinfo("Error", "Errores en la columna 4.", icon = "warning")
-
-            # Condicion que determina si en la colunma especifica existen valores repetidos.
-            if guia == 1:
-
-                while lista11 != []:
-
-                    e = lista11[0]
-                    lista11.remove(e)
-
-                    if (str(e) in lista11) == True:
-
-                        guia = 0
-                        messagebox.showinfo("Error", "Errores en la columna 5.", icon = "warning")
-
-            # Condicion que determina si en la colunma especifica existen valores repetidos.
-            if guia == 1:
-
-                while lista12 != []:
-
-                    e = lista12[0]
-                    lista12.remove(e)
-
-                    if (str(e) in lista12) == True:
-
-                        guia = 0
-                        messagebox.showinfo("Error", "Errores en la columna 6.", icon = "warning")
-
-            # Algoritmo que determinara si las casillas relacionas con la operacion matematica respectiva, dan el resultado correcto.
-            for e in range(1,len(a) + 1):
-
-                tupla = a[e]
-
-                string = tupla[0]
-
-                paresOrdenados = tupla[1:]
-
-                nuevos = []
-
-                # Se determinaran cuales pares ordenados deben ir juntos con respecto al dicciorio utilizado.
-                for i in tupla[1:]:
-
-                    p = str(i[0]) + str(i[1])
-
-                    nuevos.append(p)
-
-                valores = []
-
-                # Algoritmo para identificar cuales valores se encuentran en las casillas respectivas.
-                for i in nuevos:
-
-                    if i == "11":
-
-                        valores.append(t11)
-
-                    elif i == "21":
-
-                        valores.append(t12)
-                        
-
-                    elif i == "31":
-
-                        valores.append(t13)
-
-                    elif i == "41":
-
-                        valores.append(t14)
-
-                    elif i == "51":
-
-                        valores.append(t15)
-
-                    elif i == "61":
-
-                        valores.append(t16)
-                        
-                    elif i == "12":
-
-                        valores.append(t21)
-
-                    elif i == "22":
-
-                        valores.append(t22)
-
-                    elif i == "32":
-
-                        valores.append(t23)
-
-                    elif i == "42":
-
-                        valores.append(t24)
-
-                    elif i == "52":
-
-                        valores.append(t25)
-
-                    elif i == "62":
-
-                        valores.append(t26)
-
-                    elif i == "13":
-
-                        valores.append(t31)
-
-                    elif i == "23":
-
-                        valores.append(t32)
-
-                    elif i == "33":
-
-                        valores.append(t33)
-
-                    elif i == "43":
-
-                        valores.append(t34)
-
-                    elif i == "53":
-
-                        valores.append(t35)
-
-                    elif i == "63":
-
-                        valores.append(t36)
-
-                    elif i == "14":
-
-                        valores.append(t41)
-
-                    elif i == "24":
-
-                        valores.append(t42)
-
-                    elif i == "34":
-
-                        valores.append(t43)
-
-                    elif i == "44":
-
-                        valores.append(t44)
-
-                    elif i == "54":
-
-                        valores.append(t45)
-
-                    elif i == "64":
-
-                        valores.append(t46)
-
-                    elif i == "15":
-
-                        valores.append(t51)
-
-                    elif i == "25":
-
-                        valores.append(t52)
-
-                    elif i == "35":
-
-                        valores.append(t53)
-
-                    elif i == "45":
-
-                        valores.append(t54)
-
-                    elif i == "55":
-
-                        valores.append(t55)
-
-                    elif i == "65":
-
-                        valores.append(t56)
-
-                    elif i == "16":
-
-                        valores.append(t61)
-
-                    elif i == "26":
-
-                        valores.append(t62)
-
-                    elif i == "36":
-
-                        valores.append(t63)
-
-                    elif i == "46":
-
-                        valores.append(t64)
-
-                    elif i == "56":
-
-                        valores.append(t65)
-
-                    elif i == "66":
-
-                        valores.append(t66)
-
-                # Se ordenara la lista de mayor a menor
-                valores.sort(reverse = True)
-
-                # Se asignara el string de la operacion matematica a la siguiente variable.
-                resultado = int(string[:-1])
-
-                # Simbolo de la operacion matematica.
-                s = string[-1]
-
-                resta = 0
-
-                # Condiciones necesarias para retornar el resultado correcto.
-                if s == "x":
-
-                    final = 1
-
-                elif s == "+" or s == "-":
-
-                    final = 0
-
-                if s == "+" or s == "-" or s == "x":
+                # Obtencion de todos los valores presentes en los cuadros de texto de la cuadricula.
+                t11 = self.s11.get()
+                t12 = self.s12.get()
+                t13 = self.s13.get()
+
+                t21 = self.s21.get()
+                t22 = self.s22.get()
+                t23 = self.s23.get()
+
+                t31 = self.s31.get()
+                t32 = self.s32.get()
+                t33 = self.s33.get()
+
+                # Lista que contendra los valores ordenados por filas.
+                lista1 = [t11,t21,t31]
+                lista2 = [t12,t22,t32]
+                lista3 = [t13,t23,t33]
+
+                # Lista que contendra los valores ordenados por columnas.
+                lista4 = [t11,t12,t13]
+                lista5 = [t21,t22,t23]
+                lista6 = [t31,t32,t33]
+                
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista1) == True:
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 1.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista2) == True:
                     
-                    for i in valores:
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 2.", icon = "warning")
+                    espacio = True
 
-                        if s == "+":
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista3) == True:
 
-                            final = final + int(i)
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 3.", icon = "warning")
+                    espacio = True
 
-                        elif s == "-":
+                # Si existe algun espacio en blanco en la cuadricula, se cerrara el ciclo while.
+                if espacio == True:
 
-                            if resta == 0:
+                    break
 
-                                final = final - int(i)
-                                resta = resta + 1
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
 
-                            else:
+                    while lista1 != []:
+
+                        e = lista1[0]
+                        lista1.remove(e)
+
+                        if (str(e) in lista1) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 1.", icon = "warning")                        
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista2 != []:
+
+                        e = lista2[0]
+                        lista2.remove(e)
+
+                        if (str(e) in lista2) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 2.", icon = "warning")                        
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista3 != []:
+
+                        e = lista3[0]
+                        lista3.remove(e)
+
+                        if (str(e) in lista3) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 3.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista4 != []:
+
+                        e = lista4[0]
+                        lista4.remove(e)
+
+                        if (str(e) in lista4) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 1.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista5 != []:
+
+                        e = lista5[0]
+                        lista5.remove(e)
+
+                        if (str(e) in lista5) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 2.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.            
+                if guia == 1:
+
+                    while lista6 != []:
+
+                        e = lista6[0]
+                        lista6.remove(e)
+
+                        if (str(e) in lista6) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 3.", icon = "warning")
+
+                # Algoritmo que determinara si las casillas relacionas con la operacion matematica respectiva, dan el resultado correcto.
+                for e in range(1,len(a) + 1):
+
+                    tupla = a[e]
+
+                    string = tupla[0]
+
+                    paresOrdenados = tupla[1:]
+
+                    nuevos = []
+
+                    # Se determinaran cuales pares ordenados deben ir juntos con respecto al dicciorio utilizado.
+                    for i in tupla[1:]:
+
+                        p = str(i[0]) + str(i[1])
+
+                        nuevos.append(p)
+
+                    valores = []
+
+                    # Algoritmo para identificar cuales valores se encuentran en las casillas respectivas.
+                    for i in nuevos:
+
+                        if i == "11":
+
+                            valores.append(t11)
+
+                        elif i == "21":
+
+                            valores.append(t12)
+                            
+                        elif i == "31":
+
+                            valores.append(t13)
+                            
+                        elif i == "12":
+
+                            valores.append(t21)
+
+                        elif i == "22":
+
+                            valores.append(t22)
+
+                        elif i == "32":
+
+                            valores.append(t23)
+
+                        elif i == "13":
+
+                            valores.append(t31)
+
+                        elif i == "23":
+
+                            valores.append(t32)
+
+                        elif i == "33":
+
+                            valores.append(t33)
+
+                    # Se ordenara la lista de mayor a menor
+                    valores.sort(reverse = True)
+
+                    # Se asignara el string de la operacion matematica a la siguiente variable.
+                    resultado = int(string[:-1])
+
+                    # Simbolo de la operacion matematica.
+                    s = string[-1]
+
+                    resta = 0
+
+                    # Condiciones necesarias para retornar el resultado correcto.
+                    if s == "x":
+
+                        final = 1
+
+                    elif s == "+" or s == "-":
+
+                        final = 0
+
+                    if s == "+" or s == "-" or s == "x":
+                        
+                        for i in valores:
+
+                            if s == "+":
 
                                 final = final + int(i)
 
-                        elif s == "x":
+                            elif s == "-":
 
-                            final = final * int(i)
+                                if resta == 0:
 
-                    if s == "-":
+                                    final = final - int(i)
+                                    resta = resta + 1
 
-                        final = abs(final)
+                                else:
 
-                else:
+                                    final = final + int(i)
 
-                    final = int(int(valores[0]) / int(valores[1]))
+                            elif s == "x":
 
-                # Condicion que determina si el resultado indicado por la etiqueta es el mismo resultado obtenido segun los valores digitados por el usuario.
-                if final != resultado:
+                                final = final * int(i)
 
-                    messagebox.showinfo("Error", "Revise las casillas de la operación " + string + ".", icon = "warning")
-                    guia = 0
+                        if s == "-":
 
-                # Se reinicia esta variable para no tenes todos los pares ordenados en una misma lista.
-                valores = []
+                            final = abs(final)
 
-            # Condicion que reproducira el sondio cuando se gane la partida.
-            if guia == 1:
+                    else:
 
-                # Condicion que determina si el usuario quiere reproducir el sonido o no.
-                if S == 1:
+                        final = int(int(valores[0]) / int(valores[1]))
+
+                    # Condicion que determina si el resultado indicado por la etiqueta es el mismo resultado obtenido segun los valores digitados por el usuario.
+                    if final != resultado:
+
+                        messagebox.showinfo("Error", "Revise las casillas de la operación " + string + ".", icon = "warning")
+                        guia = 0
+
+                    # Se reinicia esta variable para no tenes todos los pares ordenados en una misma lista.
+                    valores = []
+
+                # Condicion que reproducira el sondio cuando se gane la partida.
+                if guia == 1:
+
+                    # Condicion que determina si el usuario quiere reproducir el sonido o no.
+                    if S == 1:
+                        
+                        pygame.init()
+
+                        zelda = pygame.mixer.music.load("You win sound effect 5.mp3")
+
+                        pygame.mixer.music.play(1)
+
+                    messagebox.showinfo("Aviso", " Felicidades!!!\n Completaste el kenken.")
+
+                    break
+
+            if T == 2:
+
+                # Obtencion de todos los valores presentes en los cuadros de texto de la cuadricula.
+                t11 = self.s11.get()
+                t12 = self.s12.get()
+                t13 = self.s13.get()
+                t14 = self.s14.get()
+
+                t21 = self.s21.get()
+                t22 = self.s22.get()
+                t23 = self.s23.get()
+                t24 = self.s24.get()
+
+                t31 = self.s31.get()
+                t32 = self.s32.get()
+                t33 = self.s33.get()
+                t34 = self.s34.get()
+
+                t41 = self.s41.get()
+                t42 = self.s42.get()
+                t43 = self.s43.get()
+                t44 = self.s44.get()
+
+                t51 = self.s51.get()
+                t52 = self.s52.get()
+                t53 = self.s53.get()
+                t54 = self.s54.get()
+
+                t61 = self.s61.get()
+                t62 = self.s62.get()
+                t63 = self.s63.get()
+                t64 = self.s64.get()
+
+                # Lista que contendra los valores ordenados por filas.
+                lista1 = [t11,t21,t31,t41]
+                lista2 = [t12,t22,t32,t42]
+                lista3 = [t13,t23,t33,t43]
+                lista4 = [t14,t24,t34,t44]
+
+                # Lista que contendra los valores ordenados por columnas.
+                lista5 = [t11,t12,t13,t14]
+                lista6 = [t21,t22,t23,t24]
+                lista7 = [t31,t32,t33,t34]
+                lista8 = [t41,t42,t43,t44]
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista1) == True:
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 1.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista2) == True:
                     
-                    pygame.init()
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 2.", icon = "warning")
+                    espacio = True
 
-                    zelda = pygame.mixer.music.load("You win sound effect 5.mp3")
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista3) == True:
 
-                    pygame.mixer.music.play(1)
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 3.", icon = "warning")
+                    espacio = True
 
-                messagebox.showinfo("Aviso", " Felicidades!!!\n Completaste el kenken.")
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista4) == True:
 
-                break
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 4.", icon = "warning")
+                    espacio = True
+
+                # Si existe algun espacio en blanco en la cuadricula, se cerrara el ciclo while.
+                if espacio == True:
+
+                    break
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista1 != []:
+
+                        e = lista1[0]
+                        lista1.remove(e)
+
+                        if (str(e) in lista1) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 1.", icon = "warning")                        
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista2 != []:
+
+                        e = lista2[0]
+                        lista2.remove(e)
+
+                        if (str(e) in lista2) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 2.", icon = "warning")                        
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista3 != []:
+
+                        e = lista3[0]
+                        lista3.remove(e)
+
+                        if (str(e) in lista3) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 3.", icon = "warning")
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista4 != []:
+
+                        e = lista4[0]
+                        lista4.remove(e)
+
+                        if (str(e) in lista4) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 4.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista5 != []:
+
+                        e = lista5[0]
+                        lista5.remove(e)
+
+                        if (str(e) in lista5) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 1.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 6:
+
+                    while lista6 != []:
+
+                        e = lista6[0]
+                        lista6.remove(e)
+
+                        if (str(e) in lista6) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 2.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.            
+                if guia == 1:
+
+                    while lista7 != []:
+
+                        e = lista7[0]
+                        lista7.remove(e)
+
+                        if (str(e) in lista7) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 3.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista8 != []:
+
+                        e = lista8[0]
+                        lista8.remove(e)
+
+                        if (str(e) in lista8) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 4.", icon = "warning")
+
+                # Algoritmo que determinara si las casillas relacionas con la operacion matematica respectiva, dan el resultado correcto.
+                for e in range(1,len(a) + 1):
+
+                    tupla = a[e]
+
+                    string = tupla[0]
+
+                    paresOrdenados = tupla[1:]
+
+                    nuevos = []
+
+                    # Se determinaran cuales pares ordenados deben ir juntos con respecto al dicciorio utilizado.
+                    for i in tupla[1:]:
+
+                        p = str(i[0]) + str(i[1])
+
+                        nuevos.append(p)
+
+                    valores = []
+
+                    # Algoritmo para identificar cuales valores se encuentran en las casillas respectivas.
+                    for i in nuevos:
+
+                        if i == "11":
+
+                            valores.append(t11)
+
+                        elif i == "21":
+
+                            valores.append(t12)
+                            
+
+                        elif i == "31":
+
+                            valores.append(t13)
+
+                        elif i == "41":
+
+                            valores.append(t14)
+                            
+                        elif i == "12":
+
+                            valores.append(t21)
+
+                        elif i == "22":
+
+                            valores.append(t22)
+
+                        elif i == "32":
+
+                            valores.append(t23)
+
+                        elif i == "42":
+
+                            valores.append(t24)
+
+                        elif i == "13":
+
+                            valores.append(t31)
+
+                        elif i == "23":
+
+                            valores.append(t32)
+
+                        elif i == "33":
+
+                            valores.append(t33)
+
+                        elif i == "43":
+
+                            valores.append(t34)
+
+                        elif i == "14":
+
+                            valores.append(t41)
+
+                        elif i == "24":
+
+                            valores.append(t42)
+
+                        elif i == "34":
+
+                            valores.append(t43)
+
+                        elif i == "44":
+
+                            valores.append(t44)
+
+                    # Se ordenara la lista de mayor a menor
+                    valores.sort(reverse = True)
+
+                    # Se asignara el string de la operacion matematica a la siguiente variable.
+                    resultado = int(string[:-1])
+
+                    # Simbolo de la operacion matematica.
+                    s = string[-1]
+
+                    resta = 0
+
+                    # Condiciones necesarias para retornar el resultado correcto.
+                    if s == "x":
+
+                        final = 1
+
+                    elif s == "+" or s == "-":
+
+                        final = 0
+
+                    if s == "+" or s == "-" or s == "x":
+                        
+                        for i in valores:
+
+                            if s == "+":
+
+                                final = final + int(i)
+
+                            elif s == "-":
+
+                                if resta == 0:
+
+                                    final = final - int(i)
+                                    resta = resta + 1
+
+                                else:
+
+                                    final = final + int(i)
+
+                            elif s == "x":
+
+                                final = final * int(i)
+
+                        if s == "-":
+
+                            final = abs(final)
+
+                    else:
+
+                        final = int(int(valores[0]) / int(valores[1]))
+
+                    # Condicion que determina si el resultado indicado por la etiqueta es el mismo resultado obtenido segun los valores digitados por el usuario.
+                    if final != resultado:
+
+                        messagebox.showinfo("Error", "Revise las casillas de la operación " + string + ".", icon = "warning")
+                        guia = 0
+
+                    # Se reinicia esta variable para no tenes todos los pares ordenados en una misma lista.
+                    valores = []
+
+                # Condicion que reproducira el sondio cuando se gane la partida.
+                if guia == 1:
+
+                    # Condicion que determina si el usuario quiere reproducir el sonido o no.
+                    if S == 1:
+                        
+                        pygame.init()
+
+                        zelda = pygame.mixer.music.load("You win sound effect 5.mp3")
+
+                        pygame.mixer.music.play(1)
+
+                    messagebox.showinfo("Aviso", " Felicidades!!!\n Completaste el kenken.")
+
+                    break
+
+            if T == 3:
+
+                # Obtencion de todos los valores presentes en los cuadros de texto de la cuadricula.
+                t11 = self.s11.get()
+                t12 = self.s12.get()
+                t13 = self.s13.get()
+                t14 = self.s14.get()
+                t15 = self.s15.get()
+                
+                t21 = self.s21.get()
+                t22 = self.s22.get()
+                t23 = self.s23.get()
+                t24 = self.s24.get()
+                t25 = self.s25.get()
+
+                t31 = self.s31.get()
+                t32 = self.s32.get()
+                t33 = self.s33.get()
+                t34 = self.s34.get()
+                t35 = self.s35.get()
+
+                t41 = self.s41.get()
+                t42 = self.s42.get()
+                t43 = self.s43.get()
+                t44 = self.s44.get()
+                t45 = self.s45.get()
+
+                t51 = self.s51.get()
+                t52 = self.s52.get()
+                t53 = self.s53.get()
+                t54 = self.s54.get()
+                t55 = self.s55.get()
+
+                # Lista que contendra los valores ordenados por filas.
+                lista1 = [t11,t21,t31,t41,t51]
+                lista2 = [t12,t22,t32,t42,t52]
+                lista3 = [t13,t23,t33,t43,t53]
+                lista4 = [t14,t24,t34,t44,t54]
+                lista5 = [t15,t25,t35,t45,t55]
+
+                # Lista que contendra los valores ordenados por columnas.
+                lista6 = [t11,t12,t13,t14,t15]
+                lista7 = [t21,t22,t23,t24,t25]
+                lista8 = [t31,t32,t33,t34,t35]
+                lista9 = [t41,t42,t43,t44,t45]
+                lista10 = [t51,t52,t53,t54,t55]
+                
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista1) == True:
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 1.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista2) == True:
+                    
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 2.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista3) == True:
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 3.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista4) == True:
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 4.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista5) == True:
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 5.", icon = "warning")
+                    espacio = True
+
+                # Si existe algun espacio en blanco en la cuadricula, se cerrara el ciclo while.
+                if espacio == True:
+
+                    break
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista1 != []:
+
+                        e = lista1[0]
+                        lista1.remove(e)
+
+                        if (str(e) in lista1) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 1.", icon = "warning")                        
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista2 != []:
+
+                        e = lista2[0]
+                        lista2.remove(e)
+
+                        if (str(e) in lista2) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 2.", icon = "warning")                        
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista3 != []:
+
+                        e = lista3[0]
+                        lista3.remove(e)
+
+                        if (str(e) in lista3) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 3.", icon = "warning")
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista4 != []:
+
+                        e = lista4[0]
+                        lista4.remove(e)
+
+                        if (str(e) in lista4) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 4.", icon = "warning")
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista5 != []:
+
+                        e = lista5[0]
+                        lista5.remove(e)
+
+                        if (str(e) in lista5) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 5.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista6 != []:
+
+                        e = lista6[0]
+                        lista6.remove(e)
+
+                        if (str(e) in lista6) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 1.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista7 != []:
+
+                        e = lista7[0]
+                        lista7.remove(e)
+
+                        if (str(e) in lista7) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 2.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.            
+                if guia == 1:
+
+                    while lista8 != []:
+
+                        e = lista8[0]
+                        lista8.remove(e)
+
+                        if (str(e) in lista8) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 3.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista9 != []:
+
+                        e = lista9[0]
+                        lista9.remove(e)
+
+                        if (str(e) in lista9) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 4.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista10 != []:
+
+                        e = lista10[0]
+                        lista10.remove(e)
+
+                        if (str(e) in lista10) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 5.", icon = "warning")
+
+                # Algoritmo que determinara si las casillas relacionas con la operacion matematica respectiva, dan el resultado correcto.
+                for e in range(1,len(a) + 1):
+
+                    tupla = a[e]
+
+                    string = tupla[0]
+
+                    paresOrdenados = tupla[1:]
+
+                    nuevos = []
+
+                    # Se determinaran cuales pares ordenados deben ir juntos con respecto al dicciorio utilizado.
+                    for i in tupla[1:]:
+
+                        p = str(i[0]) + str(i[1])
+
+                        nuevos.append(p)
+
+                    valores = []
+
+                    # Algoritmo para identificar cuales valores se encuentran en las casillas respectivas.
+                    for i in nuevos:
+
+                        if i == "11":
+
+                            valores.append(t11)
+
+                        elif i == "21":
+
+                            valores.append(t12)
+                            
+
+                        elif i == "31":
+
+                            valores.append(t13)
+
+                        elif i == "41":
+
+                            valores.append(t14)
+
+                        elif i == "51":
+
+                            valores.append(t15)
+
+                        elif i == "61":
+
+                            valores.append(t16)
+                            
+                        elif i == "12":
+
+                            valores.append(t21)
+
+                        elif i == "22":
+
+                            valores.append(t22)
+
+                        elif i == "32":
+
+                            valores.append(t23)
+
+                        elif i == "42":
+
+                            valores.append(t24)
+
+                        elif i == "52":
+
+                            valores.append(t25)
+
+                        elif i == "62":
+
+                            valores.append(t26)
+
+                        elif i == "13":
+
+                            valores.append(t31)
+
+                        elif i == "23":
+
+                            valores.append(t32)
+
+                        elif i == "33":
+
+                            valores.append(t33)
+
+                        elif i == "43":
+
+                            valores.append(t34)
+
+                        elif i == "53":
+
+                            valores.append(t35)
+
+                        elif i == "63":
+
+                            valores.append(t36)
+
+                        elif i == "14":
+
+                            valores.append(t41)
+
+                        elif i == "24":
+
+                            valores.append(t42)
+
+                        elif i == "34":
+
+                            valores.append(t43)
+
+                        elif i == "44":
+
+                            valores.append(t44)
+
+                        elif i == "54":
+
+                            valores.append(t45)
+
+                        elif i == "64":
+
+                            valores.append(t46)
+
+                        elif i == "15":
+
+                            valores.append(t51)
+
+                        elif i == "25":
+
+                            valores.append(t52)
+
+                        elif i == "35":
+
+                            valores.append(t53)
+
+                        elif i == "45":
+
+                            valores.append(t54)
+
+                        elif i == "55":
+
+                            valores.append(t55)
+
+                        elif i == "65":
+
+                            valores.append(t56)
+
+                        elif i == "16":
+
+                            valores.append(t61)
+
+                        elif i == "26":
+
+                            valores.append(t62)
+
+                        elif i == "36":
+
+                            valores.append(t63)
+
+                        elif i == "46":
+
+                            valores.append(t64)
+
+                        elif i == "56":
+
+                            valores.append(t65)
+
+                        elif i == "66":
+
+                            valores.append(t66)
+
+                    # Se ordenara la lista de mayor a menor
+                    valores.sort(reverse = True)
+
+                    # Se asignara el string de la operacion matematica a la siguiente variable.
+                    resultado = int(string[:-1])
+
+                    # Simbolo de la operacion matematica.
+                    s = string[-1]
+
+                    resta = 0
+
+                    # Condiciones necesarias para retornar el resultado correcto.
+                    if s == "x":
+
+                        final = 1
+
+                    elif s == "+" or s == "-":
+
+                        final = 0
+
+                    if s == "+" or s == "-" or s == "x":
+                        
+                        for i in valores:
+
+                            if s == "+":
+
+                                final = final + int(i)
+
+                            elif s == "-":
+
+                                if resta == 0:
+
+                                    final = final - int(i)
+                                    resta = resta + 1
+
+                                else:
+
+                                    final = final + int(i)
+
+                            elif s == "x":
+
+                                final = final * int(i)
+
+                        if s == "-":
+
+                            final = abs(final)
+
+                    else:
+
+                        final = int(int(valores[0]) / int(valores[1]))
+
+                    # Condicion que determina si el resultado indicado por la etiqueta es el mismo resultado obtenido segun los valores digitados por el usuario.
+                    if final != resultado:
+
+                        messagebox.showinfo("Error", "Revise las casillas de la operación " + string + ".", icon = "warning")
+                        guia = 0
+
+                    # Se reinicia esta variable para no tenes todos los pares ordenados en una misma lista.
+                    valores = []
+
+                # Condicion que reproducira el sondio cuando se gane la partida.
+                if guia == 1:
+
+                    # Condicion que determina si el usuario quiere reproducir el sonido o no.
+                    if S == 1:
+                        
+                        pygame.init()
+
+                        zelda = pygame.mixer.music.load("You win sound effect 5.mp3")
+
+                        pygame.mixer.music.play(1)
+
+                    messagebox.showinfo("Aviso", " Felicidades!!!\n Completaste el kenken.")
+
+                    break
+
+            if T == 4:
+
+                # Obtencion de todos los valores presentes en los cuadros de texto de la cuadricula.
+                t11 = self.s11.get()
+                t12 = self.s12.get()
+                t13 = self.s13.get()
+                t14 = self.s14.get()
+                t15 = self.s15.get()
+                t16 = self.s16.get()
+
+                t21 = self.s21.get()
+                t22 = self.s22.get()
+                t23 = self.s23.get()
+                t24 = self.s24.get()
+                t25 = self.s25.get()
+                t26 = self.s26.get()
+
+                t31 = self.s31.get()
+                t32 = self.s32.get()
+                t33 = self.s33.get()
+                t34 = self.s34.get()
+                t35 = self.s35.get()
+                t36 = self.s36.get()
+
+                t41 = self.s41.get()
+                t42 = self.s42.get()
+                t43 = self.s43.get()
+                t44 = self.s44.get()
+                t45 = self.s45.get()
+                t46 = self.s46.get()
+
+                t51 = self.s51.get()
+                t52 = self.s52.get()
+                t53 = self.s53.get()
+                t54 = self.s54.get()
+                t55 = self.s55.get()
+                t56 = self.s56.get()
+
+                t61 = self.s61.get()
+                t62 = self.s62.get()
+                t63 = self.s63.get()
+                t64 = self.s64.get()
+                t65 = self.s65.get()
+                t66 = self.s66.get()
+
+                # Lista que contendra los valores ordenados por filas.
+                lista1 = [t11,t21,t31,t41,t51,t61]
+                lista2 = [t12,t22,t32,t42,t52,t62]
+                lista3 = [t13,t23,t33,t43,t53,t63]
+                lista4 = [t14,t24,t34,t44,t54,t64]
+                lista5 = [t15,t25,t35,t45,t55,t65]
+                lista6 = [t16,t26,t36,t46,t56,t66]
+
+                # Lista que contendra los valores ordenados por columnas.
+                lista7 = [t11,t12,t13,t14,t15,t16]
+                lista8 = [t21,t22,t23,t24,t25,t26]
+                lista9 = [t31,t32,t33,t34,t35,t36]
+                lista10 = [t41,t42,t43,t44,t45,t46]
+                lista11 = [t51,t52,t53,t54,t55,t56]
+                lista12 = [t61,t62,t63,t64,t65,t66]
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista1) == True:
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 1.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista2) == True:
+                    
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 2.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista3) == True:
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 3.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista4) == True:
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 4.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista5) == True:
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 5.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista6) == True:
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 6.", icon = "warning")
+                    espacio = True
+
+                # Si existe algun espacio en blanco en la cuadricula, se cerrara el ciclo while.
+                if espacio == True:
+
+                    break
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista1 != []:
+
+                        e = lista1[0]
+                        lista1.remove(e)
+
+                        if (str(e) in lista1) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 1.", icon = "warning")                        
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista2 != []:
+
+                        e = lista2[0]
+                        lista2.remove(e)
+
+                        if (str(e) in lista2) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 2.", icon = "warning")                        
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista3 != []:
+
+                        e = lista3[0]
+                        lista3.remove(e)
+
+                        if (str(e) in lista3) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 3.", icon = "warning")
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista4 != []:
+
+                        e = lista4[0]
+                        lista4.remove(e)
+
+                        if (str(e) in lista4) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 4.", icon = "warning")
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista5 != []:
+
+                        e = lista5[0]
+                        lista5.remove(e)
+
+                        if (str(e) in lista5) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 5.", icon = "warning")
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista6 != []:
+
+                        e = lista6[0]
+                        lista6.remove(e)
+
+                        if (str(e) in lista6) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 6.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista7 != []:
+
+                        e = lista7[0]
+                        lista7.remove(e)
+
+                        if (str(e) in lista7) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 1.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista8 != []:
+
+                        e = lista8[0]
+                        lista8.remove(e)
+
+                        if (str(e) in lista8) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 2.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.            
+                if guia == 1:
+
+                    while lista9 != []:
+
+                        e = lista9[0]
+                        lista9.remove(e)
+
+                        if (str(e) in lista9) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 3.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista10 != []:
+
+                        e = lista10[0]
+                        lista10.remove(e)
+
+                        if (str(e) in lista10) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 4.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista11 != []:
+
+                        e = lista11[0]
+                        lista11.remove(e)
+
+                        if (str(e) in lista11) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 5.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista12 != []:
+
+                        e = lista12[0]
+                        lista12.remove(e)
+
+                        if (str(e) in lista12) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 6.", icon = "warning")
+
+                # Algoritmo que determinara si las casillas relacionas con la operacion matematica respectiva, dan el resultado correcto.
+                for e in range(1,len(a) + 1):
+
+                    tupla = a[e]
+
+                    string = tupla[0]
+
+                    paresOrdenados = tupla[1:]
+
+                    nuevos = []
+
+                    # Se determinaran cuales pares ordenados deben ir juntos con respecto al dicciorio utilizado.
+                    for i in tupla[1:]:
+
+                        p = str(i[0]) + str(i[1])
+
+                        nuevos.append(p)
+
+                    valores = []
+
+                    # Algoritmo para identificar cuales valores se encuentran en las casillas respectivas.
+                    for i in nuevos:
+
+                        if i == "11":
+
+                            valores.append(t11)
+
+                        elif i == "21":
+
+                            valores.append(t12)
+                            
+
+                        elif i == "31":
+
+                            valores.append(t13)
+
+                        elif i == "41":
+
+                            valores.append(t14)
+
+                        elif i == "51":
+
+                            valores.append(t15)
+
+                        elif i == "61":
+
+                            valores.append(t16)
+                            
+                        elif i == "12":
+
+                            valores.append(t21)
+
+                        elif i == "22":
+
+                            valores.append(t22)
+
+                        elif i == "32":
+
+                            valores.append(t23)
+
+                        elif i == "42":
+
+                            valores.append(t24)
+
+                        elif i == "52":
+
+                            valores.append(t25)
+
+                        elif i == "62":
+
+                            valores.append(t26)
+
+                        elif i == "13":
+
+                            valores.append(t31)
+
+                        elif i == "23":
+
+                            valores.append(t32)
+
+                        elif i == "33":
+
+                            valores.append(t33)
+
+                        elif i == "43":
+
+                            valores.append(t34)
+
+                        elif i == "53":
+
+                            valores.append(t35)
+
+                        elif i == "63":
+
+                            valores.append(t36)
+
+                        elif i == "14":
+
+                            valores.append(t41)
+
+                        elif i == "24":
+
+                            valores.append(t42)
+
+                        elif i == "34":
+
+                            valores.append(t43)
+
+                        elif i == "44":
+
+                            valores.append(t44)
+
+                        elif i == "54":
+
+                            valores.append(t45)
+
+                        elif i == "64":
+
+                            valores.append(t46)
+
+                        elif i == "15":
+
+                            valores.append(t51)
+
+                        elif i == "25":
+
+                            valores.append(t52)
+
+                        elif i == "35":
+
+                            valores.append(t53)
+
+                        elif i == "45":
+
+                            valores.append(t54)
+
+                        elif i == "55":
+
+                            valores.append(t55)
+
+                        elif i == "65":
+
+                            valores.append(t56)
+
+                        elif i == "16":
+
+                            valores.append(t61)
+
+                        elif i == "26":
+
+                            valores.append(t62)
+
+                        elif i == "36":
+
+                            valores.append(t63)
+
+                        elif i == "46":
+
+                            valores.append(t64)
+
+                        elif i == "56":
+
+                            valores.append(t65)
+
+                        elif i == "66":
+
+                            valores.append(t66)
+
+                    # Se ordenara la lista de mayor a menor
+                    valores.sort(reverse = True)
+
+                    # Se asignara el string de la operacion matematica a la siguiente variable.
+                    resultado = int(string[:-1])
+
+                    # Simbolo de la operacion matematica.
+                    s = string[-1]
+
+                    resta = 0
+
+                    # Condiciones necesarias para retornar el resultado correcto.
+                    if s == "x":
+
+                        final = 1
+
+                    elif s == "+" or s == "-":
+
+                        final = 0
+
+                    if s == "+" or s == "-" or s == "x":
+                        
+                        for i in valores:
+
+                            if s == "+":
+
+                                final = final + int(i)
+
+                            elif s == "-":
+
+                                if resta == 0:
+
+                                    final = final - int(i)
+                                    resta = resta + 1
+
+                                else:
+
+                                    final = final + int(i)
+
+                            elif s == "x":
+
+                                final = final * int(i)
+
+                        if s == "-":
+
+                            final = abs(final)
+
+                    else:
+
+                        final = int(int(valores[0]) / int(valores[1]))
+
+                    # Condicion que determina si el resultado indicado por la etiqueta es el mismo resultado obtenido segun los valores digitados por el usuario.
+                    if final != resultado:
+
+                        messagebox.showinfo("Error", "Revise las casillas de la operación " + string + ".", icon = "warning")
+                        guia = 0
+
+                    # Se reinicia esta variable para no tenes todos los pares ordenados en una misma lista.
+                    valores = []
+
+                # Condicion que reproducira el sondio cuando se gane la partida.
+                if guia == 1:
+
+                    # Condicion que determina si el usuario quiere reproducir el sonido o no.
+                    if S == 1:
+                        
+                        pygame.init()
+
+                        zelda = pygame.mixer.music.load("You win sound effect 5.mp3")
+
+                        pygame.mixer.music.play(1)
+
+                    messagebox.showinfo("Aviso", " Felicidades!!!\n Completaste el kenken.")
+
+                    break
+
+            if T == 5:
+
+                # Obtencion de todos los valores presentes en los cuadros de texto de la cuadricula.
+                t11 = self.s11.get()
+                t12 = self.s12.get()
+                t13 = self.s13.get()
+                t14 = self.s14.get()
+                t15 = self.s15.get()
+                t16 = self.s16.get()
+                t17 = self.s17.get()
+
+                t21 = self.s21.get()
+                t22 = self.s22.get()
+                t23 = self.s23.get()
+                t24 = self.s24.get()
+                t25 = self.s25.get()
+                t26 = self.s26.get()
+                t27 = self.s27.get()
+
+                t31 = self.s31.get()
+                t32 = self.s32.get()
+                t33 = self.s33.get()
+                t34 = self.s34.get()
+                t35 = self.s35.get()
+                t36 = self.s36.get()
+                t37 = self.s37.get()
+
+                t41 = self.s41.get()
+                t42 = self.s42.get()
+                t43 = self.s43.get()
+                t44 = self.s44.get()
+                t45 = self.s45.get()
+                t46 = self.s46.get()
+                t47 = self.s47.get()
+
+                t51 = self.s51.get()
+                t52 = self.s52.get()
+                t53 = self.s53.get()
+                t54 = self.s54.get()
+                t55 = self.s55.get()
+                t56 = self.s56.get()
+                t57 = self.s57.get()
+
+                t61 = self.s61.get()
+                t62 = self.s62.get()
+                t63 = self.s63.get()
+                t64 = self.s64.get()
+                t65 = self.s65.get()
+                t66 = self.s66.get()
+                t67 = self.s67.get()
+
+                t71 = self.s71.get()
+                t72 = self.s72.get()
+                t73 = self.s73.get()
+                t74 = self.s74.get()
+                t75 = self.s75.get()
+                t76 = self.s76.get()
+                t77 = self.s77.get()
+
+                # Lista que contendra los valores ordenados por filas.
+                lista1 = [t11,t21,t31,t41,t51,t61,t71]
+                lista2 = [t12,t22,t32,t42,t52,t62,t72]
+                lista3 = [t13,t23,t33,t43,t53,t63,t73]
+                lista4 = [t14,t24,t34,t44,t54,t64,t74]
+                lista5 = [t15,t25,t35,t45,t55,t65,t75]
+                lista6 = [t16,t26,t36,t46,t56,t66,t76]
+                lista7 = [t17,t27,t37,t47,t57,t67,t77]
+
+                # Lista que contendra los valores ordenados por columnas.
+                lista8 = [t11,t12,t13,t14,t15,t16,t17]
+                lista9 = [t21,t22,t23,t24,t25,t26,t27]
+                lista10 = [t31,t32,t33,t34,t35,t36,t37]
+                lista11 = [t41,t42,t43,t44,t45,t46,t47]
+                lista12 = [t51,t52,t53,t54,t55,t56,t57]
+                lista13 = [t61,t62,t63,t64,t65,t66,t67]
+                lista14 = [t71,t72,t73,t74,t75,t76,t77]
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista1) == True:
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 1.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista2) == True:
+                    
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 2.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 3.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 4.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista5) == True:
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 5.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista6) == True:
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 6.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista7) == True:
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 7.", icon = "warning")
+                    espacio = True
+
+                # Si existe algun espacio en blanco en la cuadricula, se cerrara el ciclo while.
+                if espacio == True:
+
+                    break
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista1 != []:
+
+                        e = lista1[0]
+                        lista1.remove(e)
+
+                        if (str(e) in lista1) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 1.", icon = "warning")                        
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista2 != []:
+
+                        e = lista2[0]
+                        lista2.remove(e)
+
+                        if (str(e) in lista2) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 2.", icon = "warning")                        
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista3 != []:
+
+                        e = lista3[0]
+                        lista3.remove(e)
+
+                        if (str(e) in lista3) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 3.", icon = "warning")
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista4 != []:
+
+                        e = lista4[0]
+                        lista4.remove(e)
+
+                        if (str(e) in lista4) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 4.", icon = "warning")
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista5 != []:
+
+                        e = lista5[0]
+                        lista5.remove(e)
+
+                        if (str(e) in lista5) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 5.", icon = "warning")
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista6 != []:
+
+                        e = lista6[0]
+                        lista6.remove(e)
+
+                        if (str(e) in lista6) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 6.", icon = "warning")
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista7 != []:
+
+                        e = lista7[0]
+                        lista7.remove(e)
+
+                        if (str(e) in lista7) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 7.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista8 != []:
+
+                        e = lista8[0]
+                        lista8.remove(e)
+
+                        if (str(e) in lista8) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 1.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista9 != []:
+
+                        e = lista9[0]
+                        lista9.remove(e)
+
+                        if (str(e) in lista9) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 2.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.            
+                if guia == 1:
+
+                    while lista10 != []:
+
+                        e = lista10[0]
+                        lista10.remove(e)
+
+                        if (str(e) in lista10) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 3.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista11 != []:
+
+                        e = lista11[0]
+                        lista11.remove(e)
+
+                        if (str(e) in lista11) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 4.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista12 != []:
+
+                        e = lista12[0]
+                        lista12.remove(e)
+
+                        if (str(e) in lista12) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 5.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista13 != []:
+
+                        e = lista13[0]
+                        lista13.remove(e)
+
+                        if (str(e) in lista13) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 6.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista14 != []:
+
+                        e = lista14[0]
+                        lista14.remove(e)
+
+                        if (str(e) in lista14) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 7.", icon = "warning")
+
+                # Algoritmo que determinara si las casillas relacionas con la operacion matematica respectiva, dan el resultado correcto.
+                for e in range(1,len(a) + 1):
+
+                    tupla = a[e]
+
+                    string = tupla[0]
+
+                    paresOrdenados = tupla[1:]
+
+                    nuevos = []
+
+                    # Se determinaran cuales pares ordenados deben ir juntos con respecto al dicciorio utilizado.
+                    for i in tupla[1:]:
+
+                        p = str(i[0]) + str(i[1])
+
+                        nuevos.append(p)
+
+                    valores = []
+
+                    # Algoritmo para identificar cuales valores se encuentran en las casillas respectivas.
+                    for i in nuevos:
+
+                        if i == "11":
+
+                            valores.append(t11)
+
+                        elif i == "21":
+
+                            valores.append(t12)
+                            
+
+                        elif i == "31":
+
+                            valores.append(t13)
+
+                        elif i == "41":
+
+                            valores.append(t14)
+
+                        elif i == "51":
+
+                            valores.append(t15)
+
+                        elif i == "61":
+
+                            valores.append(t16)
+
+                        elif i == "71":
+
+                            valores.append(t17)
+                            
+                        elif i == "12":
+
+                            valores.append(t21)
+
+                        elif i == "22":
+
+                            valores.append(t22)
+
+                        elif i == "32":
+
+                            valores.append(t23)
+
+                        elif i == "42":
+
+                            valores.append(t24)
+
+                        elif i == "52":
+
+                            valores.append(t25)
+
+                        elif i == "62":
+
+                            valores.append(t26)
+
+                        elif i == "72":
+
+                            valores.append(t27)
+
+                        elif i == "13":
+
+                            valores.append(t31)
+
+                        elif i == "23":
+
+                            valores.append(t32)
+
+                        elif i == "33":
+
+                            valores.append(t33)
+
+                        elif i == "43":
+
+                            valores.append(t34)
+
+                        elif i == "53":
+
+                            valores.append(t35)
+
+                        elif i == "63":
+
+                            valores.append(t36)
+
+                        elif i == "73":
+
+                            valores.append(t37)
+
+                        elif i == "14":
+
+                            valores.append(t41)
+
+                        elif i == "24":
+
+                            valores.append(t42)
+
+                        elif i == "34":
+
+                            valores.append(t43)
+
+                        elif i == "44":
+
+                            valores.append(t44)
+
+                        elif i == "54":
+
+                            valores.append(t45)
+
+                        elif i == "64":
+
+                            valores.append(t46)
+
+                        elif i == "74":
+
+                            valores.append(t47)
+
+                        elif i == "15":
+
+                            valores.append(t51)
+
+                        elif i == "25":
+
+                            valores.append(t52)
+
+                        elif i == "35":
+
+                            valores.append(t53)
+
+                        elif i == "45":
+
+                            valores.append(t54)
+
+                        elif i == "55":
+
+                            valores.append(t55)
+
+                        elif i == "65":
+
+                            valores.append(t56)
+
+                        elif i == "75":
+
+                            valores.append(t57)
+
+                        elif i == "16":
+
+                            valores.append(t61)
+
+                        elif i == "26":
+
+                            valores.append(t62)
+
+                        elif i == "36":
+
+                            valores.append(t63)
+
+                        elif i == "46":
+
+                            valores.append(t64)
+
+                        elif i == "56":
+
+                            valores.append(t65)
+
+                        elif i == "66":
+
+                            valores.append(t66)
+
+                        elif i == "76":
+
+                            valores.append(t67)
+
+                        elif i == "17":
+
+                            valores.append(t71)
+
+                        elif i == "27":
+
+                            valores.append(t72)
+
+                        elif i == "37":
+
+                            valores.append(t73)
+
+                        elif i == "47":
+
+                            valores.append(t74)
+
+                        elif i == "57":
+
+                            valores.append(t75)
+
+                        elif i == "67":
+
+                            valores.append(t76)
+
+                        elif i == "77":
+
+                            valores.append(t77)
+
+                    # Se ordenara la lista de mayor a menor
+                    valores.sort(reverse = True)
+
+                    # Se asignara el string de la operacion matematica a la siguiente variable.
+                    resultado = int(string[:-1])
+
+                    # Simbolo de la operacion matematica.
+                    s = string[-1]
+
+                    resta = 0
+
+                    # Condiciones necesarias para retornar el resultado correcto.
+                    if s == "x":
+
+                        final = 1
+
+                    elif s == "+" or s == "-":
+
+                        final = 0
+
+                    if s == "+" or s == "-" or s == "x":
+                        
+                        for i in valores:
+
+                            if s == "+":
+
+                                final = final + int(i)
+
+                            elif s == "-":
+
+                                if resta == 0:
+
+                                    final = final - int(i)
+                                    resta = resta + 1
+
+                                else:
+
+                                    final = final + int(i)
+
+                            elif s == "x":
+
+                                final = final * int(i)
+
+                        if s == "-":
+
+                            final = abs(final)
+
+                    else:
+
+                        final = int(int(valores[0]) / int(valores[1]))
+
+                    # Condicion que determina si el resultado indicado por la etiqueta es el mismo resultado obtenido segun los valores digitados por el usuario.
+                    if final != resultado:
+
+                        messagebox.showinfo("Error", "Revise las casillas de la operación " + string + ".", icon = "warning")
+                        guia = 0
+
+                    # Se reinicia esta variable para no tenes todos los pares ordenados en una misma lista.
+                    valores = []
+
+                # Condicion que reproducira el sondio cuando se gane la partida.
+                if guia == 1:
+
+                    # Condicion que determina si el usuario quiere reproducir el sonido o no.
+                    if S == 1:
+                        
+                        pygame.init()
+
+                        zelda = pygame.mixer.music.load("You win sound effect 5.mp3")
+
+                        pygame.mixer.music.play(1)
+
+                    messagebox.showinfo("Aviso", " Felicidades!!!\n Completaste el kenken.")
+
+                    break
+
+            if T == 6:
+
+                # Obtencion de todos los valores presentes en los cuadros de texto de la cuadricula.
+                t11 = self.s11.get()
+                t12 = self.s12.get()
+                t13 = self.s13.get()
+                t14 = self.s14.get()
+                t15 = self.s15.get()
+                t16 = self.s16.get()
+                t17 = self.s17.get()
+                t18 = self.s18.get()
+
+                t21 = self.s21.get()
+                t22 = self.s22.get()
+                t23 = self.s23.get()
+                t24 = self.s24.get()
+                t25 = self.s25.get()
+                t26 = self.s26.get()
+                t27 = self.s27.get()
+                t28 = self.s28.get()
+
+                t31 = self.s31.get()
+                t32 = self.s32.get()
+                t33 = self.s33.get()
+                t34 = self.s34.get()
+                t35 = self.s35.get()
+                t36 = self.s36.get()
+                t37 = self.s37.get()
+                t38 = self.s38.get()
+
+                t41 = self.s41.get()
+                t42 = self.s42.get()
+                t43 = self.s43.get()
+                t44 = self.s44.get()
+                t45 = self.s45.get()
+                t46 = self.s46.get()
+                t47 = self.s47.get()
+                t48 = self.s48.get()
+
+                t51 = self.s51.get()
+                t52 = self.s52.get()
+                t53 = self.s53.get()
+                t54 = self.s54.get()
+                t55 = self.s55.get()
+                t56 = self.s56.get()
+                t57 = self.s57.get()
+                t58 = self.s58.get()
+
+                t61 = self.s61.get()
+                t62 = self.s62.get()
+                t63 = self.s63.get()
+                t64 = self.s64.get()
+                t65 = self.s65.get()
+                t66 = self.s66.get()
+                t67 = self.s67.get()
+                t68 = self.s68.get()
+
+                t71 = self.s71.get()
+                t72 = self.s72.get()
+                t73 = self.s73.get()
+                t74 = self.s74.get()
+                t75 = self.s75.get()
+                t76 = self.s76.get()
+                t77 = self.s77.get()
+                t78 = self.s78.get()
+
+                t81 = self.s81.get()
+                t82 = self.s82.get()
+                t83 = self.s83.get()
+                t84 = self.s84.get()
+                t85 = self.s85.get()
+                t86 = self.s86.get()
+                t87 = self.s87.get()
+                t88 = self.s88.get()
+
+                # Lista que contendra los valores ordenados por filas.
+                lista1 = [t11,t21,t31,t41,t51,t61,t71,t81]
+                lista2 = [t12,t22,t32,t42,t52,t62,t72,t82]
+                lista3 = [t13,t23,t33,t43,t53,t63,t73,t83]
+                lista4 = [t14,t24,t34,t44,t54,t64,t74,t84]
+                lista5 = [t15,t25,t35,t45,t55,t65,t75,t85]
+                lista6 = [t16,t26,t36,t46,t56,t66,t76,t86]
+                lista7 = [t17,t27,t37,t47,t57,t67,t77,t87]
+                lista8 = [t18,t28,t38,t48,t58,t68,t78,t88]
+
+                # Lista que contendra los valores ordenados por columnas.
+                lista9 = [t11,t12,t13,t14,t15,t16,t17,t18]
+                lista10 = [t21,t22,t23,t24,t25,t26,t27,t28]
+                lista11 = [t31,t32,t33,t34,t35,t36,t37,t38]
+                lista12 = [t41,t42,t43,t44,t45,t46,t47,t48]
+                lista13 = [t51,t52,t53,t54,t55,t56,t57,t58]
+                lista14 = [t61,t62,t63,t64,t65,t66,t67,t68]
+                lista15 = [t71,t72,t73,t74,t75,t76,t77,t78]
+                lista16 = [t81,t82,t83,t84,t85,t86,t87,t88]
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista1) == True:
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 1.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista2) == True:
+                    
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 2.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 3.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 4.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista5) == True:
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 5.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista6) == True:
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 6.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista7) == True:
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 7.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista8) == True:
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 8.", icon = "warning")
+                    espacio = True
+
+                # Si existe algun espacio en blanco en la cuadricula, se cerrara el ciclo while.
+                if espacio == True:
+
+                    break
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista1 != []:
+
+                        e = lista1[0]
+                        lista1.remove(e)
+
+                        if (str(e) in lista1) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 1.", icon = "warning")                        
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista2 != []:
+
+                        e = lista2[0]
+                        lista2.remove(e)
+
+                        if (str(e) in lista2) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 2.", icon = "warning")                        
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista3 != []:
+
+                        e = lista3[0]
+                        lista3.remove(e)
+
+                        if (str(e) in lista3) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 3.", icon = "warning")
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista4 != []:
+
+                        e = lista4[0]
+                        lista4.remove(e)
+
+                        if (str(e) in lista4) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 4.", icon = "warning")
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista5 != []:
+
+                        e = lista5[0]
+                        lista5.remove(e)
+
+                        if (str(e) in lista5) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 5.", icon = "warning")
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista6 != []:
+
+                        e = lista6[0]
+                        lista6.remove(e)
+
+                        if (str(e) in lista6) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 6.", icon = "warning")
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista7 != []:
+
+                        e = lista7[0]
+                        lista7.remove(e)
+
+                        if (str(e) in lista7) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 7.", icon = "warning")
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista8 != []:
+
+                        e = lista8[0]
+                        lista8.remove(e)
+
+                        if (str(e) in lista8) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 8.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista9 != []:
+
+                        e = lista9[0]
+                        lista9.remove(e)
+
+                        if (str(e) in lista9) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 1.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista10 != []:
+
+                        e = lista10[0]
+                        lista10.remove(e)
+
+                        if (str(e) in lista10) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 2.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.            
+                if guia == 1:
+
+                    while lista11 != []:
+
+                        e = lista11[0]
+                        lista11.remove(e)
+
+                        if (str(e) in lista11) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 3.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista12 != []:
+
+                        e = lista12[0]
+                        lista12.remove(e)
+
+                        if (str(e) in lista12) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 4.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista13 != []:
+
+                        e = lista13[0]
+                        lista12.remove(e)
+
+                        if (str(e) in lista13) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 5.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista14 != []:
+
+                        e = lista14[0]
+                        lista14.remove(e)
+
+                        if (str(e) in lista14) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 6.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista15 != []:
+
+                        e = lista15[0]
+                        lista15.remove(e)
+
+                        if (str(e) in lista15) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 7.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista16 != []:
+
+                        e = lista16[0]
+                        lista15.remove(e)
+
+                        if (str(e) in lista16) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 8.", icon = "warning")
+
+                # Algoritmo que determinara si las casillas relacionas con la operacion matematica respectiva, dan el resultado correcto.
+                for e in range(1,len(a) + 1):
+
+                    tupla = a[e]
+
+                    string = tupla[0]
+
+                    paresOrdenados = tupla[1:]
+
+                    nuevos = []
+
+                    # Se determinaran cuales pares ordenados deben ir juntos con respecto al dicciorio utilizado.
+                    for i in tupla[1:]:
+
+                        p = str(i[0]) + str(i[1])
+
+                        nuevos.append(p)
+
+                    valores = []
+
+                    # Algoritmo para identificar cuales valores se encuentran en las casillas respectivas.
+                    for i in nuevos:
+
+                        if i == "11":
+
+                            valores.append(t11)
+
+                        elif i == "21":
+
+                            valores.append(t12)
+                            
+
+                        elif i == "31":
+
+                            valores.append(t13)
+
+                        elif i == "41":
+
+                            valores.append(t14)
+
+                        elif i == "51":
+
+                            valores.append(t15)
+
+                        elif i == "61":
+
+                            valores.append(t16)
+
+                        elif i == "71":
+
+                            valores.append(t17)
+
+                        elif i == "81":
+
+                            valores.append(t18)
+                            
+                        elif i == "12":
+
+                            valores.append(t21)
+
+                        elif i == "22":
+
+                            valores.append(t22)
+
+                        elif i == "32":
+
+                            valores.append(t23)
+
+                        elif i == "42":
+
+                            valores.append(t24)
+
+                        elif i == "52":
+
+                            valores.append(t25)
+
+                        elif i == "62":
+
+                            valores.append(t26)
+
+                        elif i == "72":
+
+                            valores.append(t27)
+
+                        elif i == "82":
+
+                            valores.append(t28)
+
+                        elif i == "13":
+
+                            valores.append(t31)
+
+                        elif i == "23":
+
+                            valores.append(t32)
+
+                        elif i == "33":
+
+                            valores.append(t33)
+
+                        elif i == "43":
+
+                            valores.append(t34)
+
+                        elif i == "53":
+
+                            valores.append(t35)
+
+                        elif i == "63":
+
+                            valores.append(t36)
+
+                        elif i == "73":
+
+                            valores.append(t37)
+
+                        elif i == "83":
+
+                            valores.append(t38)
+
+                        elif i == "14":
+
+                            valores.append(t41)
+
+                        elif i == "24":
+
+                            valores.append(t42)
+
+                        elif i == "34":
+
+                            valores.append(t43)
+
+                        elif i == "44":
+
+                            valores.append(t44)
+
+                        elif i == "54":
+
+                            valores.append(t45)
+
+                        elif i == "64":
+
+                            valores.append(t46)
+
+                        elif i == "74":
+
+                            valores.append(t47)
+
+                        elif i == "84":
+
+                            valores.append(t48)
+
+                        elif i == "15":
+
+                            valores.append(t51)
+
+                        elif i == "25":
+
+                            valores.append(t52)
+
+                        elif i == "35":
+
+                            valores.append(t53)
+
+                        elif i == "45":
+
+                            valores.append(t54)
+
+                        elif i == "55":
+
+                            valores.append(t55)
+
+                        elif i == "65":
+
+                            valores.append(t56)
+
+                        elif i == "75":
+
+                            valores.append(t57)
+
+                        elif i == "85":
+
+                            valores.append(t58)
+
+                        elif i == "16":
+
+                            valores.append(t61)
+
+                        elif i == "26":
+
+                            valores.append(t62)
+
+                        elif i == "36":
+
+                            valores.append(t63)
+
+                        elif i == "46":
+
+                            valores.append(t64)
+
+                        elif i == "56":
+
+                            valores.append(t65)
+
+                        elif i == "66":
+
+                            valores.append(t66)
+
+                        elif i == "76":
+
+                            valores.append(t67)
+
+                        elif i == "86":
+
+                            valores.append(t68)
+
+                        elif i == "17":
+
+                            valores.append(t71)
+
+                        elif i == "27":
+
+                            valores.append(t72)
+
+                        elif i == "37":
+
+                            valores.append(t73)
+
+                        elif i == "47":
+
+                            valores.append(t74)
+
+                        elif i == "57":
+
+                            valores.append(t75)
+
+                        elif i == "67":
+
+                            valores.append(t76)
+
+                        elif i == "77":
+
+                            valores.append(t77)
+
+                        elif i == "87":
+
+                            valores.append(t78)
+
+                        elif i == "18":
+
+                            valores.append(t81)
+
+                        elif i == "28":
+
+                            valores.append(t82)
+
+                        elif i == "38":
+
+                            valores.append(t83)
+
+                        elif i == "48":
+
+                            valores.append(t84)
+
+                        elif i == "58":
+
+                            valores.append(t85)
+
+                        elif i == "68":
+
+                            valores.append(t86)
+
+                        elif i == "78":
+
+                            valores.append(t87)
+
+                        elif i == "88":
+
+                            valores.append(t88)
+
+                    # Se ordenara la lista de mayor a menor
+                    valores.sort(reverse = True)
+
+                    # Se asignara el string de la operacion matematica a la siguiente variable.
+                    resultado = int(string[:-1])
+
+                    # Simbolo de la operacion matematica.
+                    s = string[-1]
+
+                    resta = 0
+
+                    # Condiciones necesarias para retornar el resultado correcto.
+                    if s == "x":
+
+                        final = 1
+
+                    elif s == "+" or s == "-":
+
+                        final = 0
+
+                    if s == "+" or s == "-" or s == "x":
+                        
+                        for i in valores:
+
+                            if s == "+":
+
+                                final = final + int(i)
+
+                            elif s == "-":
+
+                                if resta == 0:
+
+                                    final = final - int(i)
+                                    resta = resta + 1
+
+                                else:
+
+                                    final = final + int(i)
+
+                            elif s == "x":
+
+                                final = final * int(i)
+
+                        if s == "-":
+
+                            final = abs(final)
+
+                    else:
+
+                        final = int(int(valores[0]) / int(valores[1]))
+
+                    # Condicion que determina si el resultado indicado por la etiqueta es el mismo resultado obtenido segun los valores digitados por el usuario.
+                    if final != resultado:
+
+                        messagebox.showinfo("Error", "Revise las casillas de la operación " + string + ".", icon = "warning")
+                        guia = 0
+
+                    # Se reinicia esta variable para no tenes todos los pares ordenados en una misma lista.
+                    valores = []
+
+                # Condicion que reproducira el sondio cuando se gane la partida.
+                if guia == 1:
+
+                    # Condicion que determina si el usuario quiere reproducir el sonido o no.
+                    if S == 1:
+                        
+                        pygame.init()
+
+                        zelda = pygame.mixer.music.load("You win sound effect 5.mp3")
+
+                        pygame.mixer.music.play(1)
+
+                    messagebox.showinfo("Aviso", " Felicidades!!!\n Completaste el kenken.")
+
+                    break
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+
+            if T == 7:
+
+                # Obtencion de todos los valores presentes en los cuadros de texto de la cuadricula.
+                t11 = self.s11.get()
+                t12 = self.s12.get()
+                t13 = self.s13.get()
+                t14 = self.s14.get()
+                t15 = self.s15.get()
+                t16 = self.s16.get()
+                t17 = self.s17.get()
+                t18 = self.s18.get()
+                t19 = self.s19.get()
+
+                t21 = self.s21.get()
+                t22 = self.s22.get()
+                t23 = self.s23.get()
+                t24 = self.s24.get()
+                t25 = self.s25.get()
+                t26 = self.s26.get()
+                t27 = self.s27.get()
+                t28 = self.s28.get()
+                t29 = self.s29.get()
+
+                t31 = self.s31.get()
+                t32 = self.s32.get()
+                t33 = self.s33.get()
+                t34 = self.s34.get()
+                t35 = self.s35.get()
+                t36 = self.s36.get()
+                t37 = self.s37.get()
+                t38 = self.s38.get()
+                t39 = self.s39.get()
+
+                t41 = self.s41.get()
+                t42 = self.s42.get()
+                t43 = self.s43.get()
+                t44 = self.s44.get()
+                t45 = self.s45.get()
+                t46 = self.s46.get()
+                t47 = self.s47.get()
+                t48 = self.s48.get()
+                t49 = self.s49.get()
+
+                t51 = self.s51.get()
+                t52 = self.s52.get()
+                t53 = self.s53.get()
+                t54 = self.s54.get()
+                t55 = self.s55.get()
+                t56 = self.s56.get()
+                t57 = self.s57.get()
+                t58 = self.s58.get()
+                t59 = self.s59.get()
+
+                t61 = self.s61.get()
+                t62 = self.s62.get()
+                t63 = self.s63.get()
+                t64 = self.s64.get()
+                t65 = self.s65.get()
+                t66 = self.s66.get()
+                t67 = self.s67.get()
+                t68 = self.s68.get()
+                t69 = self.s69.get()
+
+                t71 = self.s71.get()
+                t72 = self.s72.get()
+                t73 = self.s73.get()
+                t74 = self.s74.get()
+                t75 = self.s75.get()
+                t76 = self.s76.get()
+                t77 = self.s77.get()
+                t78 = self.s78.get()
+                t79 = self.s79.get()
+
+                t81 = self.s81.get()
+                t82 = self.s82.get()
+                t83 = self.s83.get()
+                t84 = self.s84.get()
+                t85 = self.s85.get()
+                t86 = self.s86.get()
+                t87 = self.s87.get()
+                t88 = self.s88.get()
+                t89 = self.s89.get()
+
+                t91 = self.s81.get()
+                t92 = self.s82.get()
+                t93 = self.s83.get()
+                t94 = self.s84.get()
+                t95 = self.s85.get()
+                t96 = self.s86.get()
+                t97 = self.s87.get()
+                t98 = self.s88.get()
+                t99 = self.s89.get()
+
+                # Lista que contendra los valores ordenados por filas.
+                lista1 = [t11,t21,t31,t41,t51,t61,t71,t81,t91]
+                lista2 = [t12,t22,t32,t42,t52,t62,t72,t82,t92]
+                lista3 = [t13,t23,t33,t43,t53,t63,t73,t83,t93]
+                lista4 = [t14,t24,t34,t44,t54,t64,t74,t84,t94]
+                lista5 = [t15,t25,t35,t45,t55,t65,t75,t85,t95]
+                lista6 = [t16,t26,t36,t46,t56,t66,t76,t86,t96]
+                lista7 = [t17,t27,t37,t47,t57,t67,t77,t87,t97]
+                lista8 = [t18,t28,t38,t48,t58,t68,t78,t88,t98]
+                lista9 = [t19,t29,t39,t49,t59,t69,t79,t89,t99]
+
+                # Lista que contendra los valores ordenados por columnas.
+                lista10 = [t11,t12,t13,t14,t15,t16,t17,t18,t19]
+                lista11 = [t21,t22,t23,t24,t25,t26,t27,t28,t29]
+                lista12 = [t31,t32,t33,t34,t35,t36,t37,t38,t39]
+                lista13 = [t41,t42,t43,t44,t45,t46,t47,t48,t49]
+                lista14 = [t51,t52,t53,t54,t55,t56,t57,t58,t59]
+                lista15 = [t61,t62,t63,t64,t65,t66,t67,t68,t69]
+                lista16 = [t71,t72,t73,t74,t75,t76,t77,t78,t79]
+                lista17 = [t81,t82,t83,t84,t85,t86,t87,t88,t89]
+                lista18 = [t91,t92,t93,t94,t95,t96,t97,t98,t99]
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista1) == True:
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 1.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista2) == True:
+                    
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 2.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 3.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 4.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista5) == True:
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 5.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista6) == True:
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 6.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista7) == True:
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 7.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista8) == True:
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 8.", icon = "warning")
+                    espacio = True
+
+                # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista9) == True:
+
+                    messagebox.showinfo("Error", "Espacios en blanco en la fila 9.", icon = "warning")
+                    espacio = True
+
+                # Si existe algun espacio en blanco en la cuadricula, se cerrara el ciclo while.
+                if espacio == True:
+
+                    break
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista1 != []:
+
+                        e = lista1[0]
+                        lista1.remove(e)
+
+                        if (str(e) in lista1) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 1.", icon = "warning")                        
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista2 != []:
+
+                        e = lista2[0]
+                        lista2.remove(e)
+
+                        if (str(e) in lista2) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 2.", icon = "warning")                        
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista3 != []:
+
+                        e = lista3[0]
+                        lista3.remove(e)
+
+                        if (str(e) in lista3) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 3.", icon = "warning")
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista4 != []:
+
+                        e = lista4[0]
+                        lista4.remove(e)
+
+                        if (str(e) in lista4) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 4.", icon = "warning")
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista5 != []:
+
+                        e = lista5[0]
+                        lista5.remove(e)
+
+                        if (str(e) in lista5) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 5.", icon = "warning")
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista6 != []:
+
+                        e = lista6[0]
+                        lista6.remove(e)
+
+                        if (str(e) in lista6) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 6.", icon = "warning")
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista7 != []:
+
+                        e = lista7[0]
+                        lista7.remove(e)
+
+                        if (str(e) in lista7) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 7.", icon = "warning")
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista8 != []:
+
+                        e = lista8[0]
+                        lista8.remove(e)
+
+                        if (str(e) in lista8) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 8.", icon = "warning")
+
+                # Condicion que determina si en la fila especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista9 != []:
+
+                        e = lista9[0]
+                        lista9.remove(e)
+
+                        if (str(e) in lista9) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la fila 9.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista10 != []:
+
+                        e = lista10[0]
+                        lista10.remove(e)
+
+                        if (str(e) in lista10) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 1.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista11 != []:
+
+                        e = lista11[0]
+                        lista11.remove(e)
+
+                        if (str(e) in lista11) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 2.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.            
+                if guia == 1:
+
+                    while lista12 != []:
+
+                        e = lista12[0]
+                        lista12.remove(e)
+
+                        if (str(e) in lista12) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 3.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista13 != []:
+
+                        e = lista13[0]
+                        lista13.remove(e)
+
+                        if (str(e) in lista13) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 4.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista14 != []:
+
+                        e = lista14[0]
+                        lista14.remove(e)
+
+                        if (str(e) in lista14) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 5.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista15 != []:
+
+                        e = lista15[0]
+                        lista15.remove(e)
+
+                        if (str(e) in lista15) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 6.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista16 != []:
+
+                        e = lista16[0]
+                        lista16.remove(e)
+
+                        if (str(e) in lista16) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 7.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista17 != []:
+
+                        e = lista17[0]
+                        lista17.remove(e)
+
+                        if (str(e) in lista17) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 8.", icon = "warning")
+
+                # Condicion que determina si en la colunma especifica existen valores repetidos.
+                if guia == 1:
+
+                    while lista18 != []:
+
+                        e = lista18[0]
+                        lista18.remove(e)
+
+                        if (str(e) in lista18) == True:
+
+                            guia = 0
+                            messagebox.showinfo("Error", "Errores en la columna 9.", icon = "warning")
+
+                # Algoritmo que determinara si las casillas relacionas con la operacion matematica respectiva, dan el resultado correcto.
+                for e in range(1,len(a) + 1):
+
+                    tupla = a[e]
+
+                    string = tupla[0]
+
+                    paresOrdenados = tupla[1:]
+
+                    nuevos = []
+
+                    # Se determinaran cuales pares ordenados deben ir juntos con respecto al dicciorio utilizado.
+                    for i in tupla[1:]:
+
+                        p = str(i[0]) + str(i[1])
+
+                        nuevos.append(p)
+
+                    valores = []
+
+                    # Algoritmo para identificar cuales valores se encuentran en las casillas respectivas.
+                    for i in nuevos:
+
+                        if i == "11":
+
+                            valores.append(t11)
+
+                        elif i == "21":
+
+                            valores.append(t12)
+                            
+
+                        elif i == "31":
+
+                            valores.append(t13)
+
+                        elif i == "41":
+
+                            valores.append(t14)
+
+                        elif i == "51":
+
+                            valores.append(t15)
+
+                        elif i == "61":
+
+                            valores.append(t16)
+
+                        elif i == "71":
+
+                            valores.append(t17)
+
+                        elif i == "81":
+
+                            valores.append(t18)
+
+                        elif i == "91":
+
+                            valores.append(t19)
+                            
+                        elif i == "12":
+
+                            valores.append(t21)
+
+                        elif i == "22":
+
+                            valores.append(t22)
+
+                        elif i == "32":
+
+                            valores.append(t23)
+
+                        elif i == "42":
+
+                            valores.append(t24)
+
+                        elif i == "52":
+
+                            valores.append(t25)
+
+                        elif i == "62":
+
+                            valores.append(t26)
+
+                        elif i == "72":
+
+                            valores.append(t27)
+
+                        elif i == "82":
+
+                            valores.append(t28)
+
+                        elif i == "92":
+
+                            valores.append(t29)
+
+                        elif i == "13":
+
+                            valores.append(t31)
+
+                        elif i == "23":
+
+                            valores.append(t32)
+
+                        elif i == "33":
+
+                            valores.append(t33)
+
+                        elif i == "43":
+
+                            valores.append(t34)
+
+                        elif i == "53":
+
+                            valores.append(t35)
+
+                        elif i == "63":
+
+                            valores.append(t36)
+
+                        elif i == "73":
+
+                            valores.append(t37)
+
+                        elif i == "83":
+
+                            valores.append(t38)
+
+                        elif i == "93":
+
+                            valores.append(t39)
+
+                        elif i == "14":
+
+                            valores.append(t41)
+
+                        elif i == "24":
+
+                            valores.append(t42)
+
+                        elif i == "34":
+
+                            valores.append(t43)
+
+                        elif i == "44":
+
+                            valores.append(t44)
+
+                        elif i == "54":
+
+                            valores.append(t45)
+
+                        elif i == "64":
+
+                            valores.append(t46)
+
+                        elif i == "74":
+
+                            valores.append(t47)
+
+                        elif i == "84":
+
+                            valores.append(t48)
+
+                        elif i == "94":
+
+                            valores.append(t49)
+
+                        elif i == "15":
+
+                            valores.append(t51)
+
+                        elif i == "25":
+
+                            valores.append(t52)
+
+                        elif i == "35":
+
+                            valores.append(t53)
+
+                        elif i == "45":
+
+                            valores.append(t54)
+
+                        elif i == "55":
+
+                            valores.append(t55)
+
+                        elif i == "65":
+
+                            valores.append(t56)
+
+                        elif i == "75":
+
+                            valores.append(t57)
+
+                        elif i == "85":
+
+                            valores.append(t58)
+
+                        elif i == "95":
+
+                            valores.append(t59)
+
+                        elif i == "16":
+
+                            valores.append(t61)
+
+                        elif i == "26":
+
+                            valores.append(t62)
+
+                        elif i == "36":
+
+                            valores.append(t63)
+
+                        elif i == "46":
+
+                            valores.append(t64)
+
+                        elif i == "56":
+
+                            valores.append(t65)
+
+                        elif i == "66":
+
+                            valores.append(t66)
+
+                        elif i == "76":
+
+                            valores.append(t67)
+
+                        elif i == "86":
+
+                            valores.append(t68)
+
+                        elif i == "96":
+
+                            valores.append(t69)
+
+                        elif i == "17":
+
+                            valores.append(t71)
+
+                        elif i == "27":
+
+                            valores.append(t72)
+
+                        elif i == "37":
+
+                            valores.append(t73)
+
+                        elif i == "47":
+
+                            valores.append(t74)
+
+                        elif i == "57":
+
+                            valores.append(t75)
+
+                        elif i == "67":
+
+                            valores.append(t76)
+
+                        elif i == "77":
+
+                            valores.append(t77)
+
+                        elif i == "87":
+
+                            valores.append(t78)
+
+                        elif i == "97":
+
+                            valores.append(t79)
+
+                        elif i == "18":
+
+                            valores.append(t81)
+
+                        elif i == "28":
+
+                            valores.append(t82)
+
+                        elif i == "38":
+
+                            valores.append(t83)
+
+                        elif i == "48":
+
+                            valores.append(t84)
+
+                        elif i == "58":
+
+                            valores.append(t85)
+
+                        elif i == "68":
+
+                            valores.append(t86)
+
+                        elif i == "78":
+
+                            valores.append(t87)
+
+                        elif i == "88":
+
+                            valores.append(t88)
+
+                        elif i == "98":
+
+                            valores.append(t89)
+
+                        elif i == "19":
+
+                            valores.append(t91)
+
+                        elif i == "29":
+
+                            valores.append(t92)
+
+                        elif i == "39":
+
+                            valores.append(t93)
+
+                        elif i == "49":
+
+                            valores.append(t94)
+
+                        elif i == "59":
+
+                            valores.append(t95)
+
+                        elif i == "69":
+
+                            valores.append(t96)
+
+                        elif i == "79":
+
+                            valores.append(t97)
+
+                        elif i == "89":
+
+                            valores.append(t98)
+
+                        elif i == "99":
+
+                            valores.append(t99)
+
+                    # Se ordenara la lista de mayor a menor
+                    valores.sort(reverse = True)
+
+                    # Se asignara el string de la operacion matematica a la siguiente variable.
+                    resultado = int(string[:-1])
+
+                    # Simbolo de la operacion matematica.
+                    s = string[-1]
+
+                    resta = 0
+
+                    # Condiciones necesarias para retornar el resultado correcto.
+                    if s == "x":
+
+                        final = 1
+
+                    elif s == "+" or s == "-":
+
+                        final = 0
+
+                    if s == "+" or s == "-" or s == "x":
+                        
+                        for i in valores:
+
+                            if s == "+":
+
+                                final = final + int(i)
+
+                            elif s == "-":
+
+                                if resta == 0:
+
+                                    final = final - int(i)
+                                    resta = resta + 1
+
+                                else:
+
+                                    final = final + int(i)
+
+                            elif s == "x":
+
+                                final = final * int(i)
+
+                        if s == "-":
+
+                            final = abs(final)
+
+                    else:
+
+                        final = int(int(valores[0]) / int(valores[1]))
+
+                    # Condicion que determina si el resultado indicado por la etiqueta es el mismo resultado obtenido segun los valores digitados por el usuario.
+                    if final != resultado:
+
+                        messagebox.showinfo("Error", "Revise las casillas de la operación " + string + ".", icon = "warning")
+                        guia = 0
+
+                    # Se reinicia esta variable para no tenes todos los pares ordenados en una misma lista.
+                    valores = []
+
+                # Condicion que reproducira el sondio cuando se gane la partida.
+                if guia == 1:
+
+                    # Condicion que determina si el usuario quiere reproducir el sonido o no.
+                    if S == 1:
+                        
+                        pygame.init()
+
+                        zelda = pygame.mixer.music.load("You win sound effect 5.mp3")
+
+                        pygame.mixer.music.play(1)
+
+                    messagebox.showinfo("Aviso", " Felicidades!!!\n Completaste el kenken.")
+
+                    break
 
     # Funcion del boton asignado.
     def Otro(self):
@@ -2434,6 +5749,14 @@ class Configurar(tkinter.Tk):
         self.title("Configurar")
         self.geometry("845x615")
 
+        # Esta sera una variable global necesaria porque se utilizara en distintas funciones.
+        global ImagenFondo
+
+        # Esta sera la imagen que aparecera en la ventanas.
+        ImagenFondo = PhotoImage(file = "710239_geometric-wallpaper-hd - copia.png")
+        Fondo = Label(self, image = ImagenFondo)
+        Fondo.place(x = 0, y = 0) 
+
         global guiaN
 
         guiaN = IntVar()
@@ -2613,6 +5936,14 @@ class Timer(tkinter.Tk):
         tkinter.Tk.__init__(self)
         self.title("Timer")
         self.geometry("750x500")
+
+        # Esta sera una variable global necesaria porque se utilizara en distintas funciones.
+        global ImagenFondo
+
+        # Esta sera la imagen que aparecera en la ventanas.
+        ImagenFondo = PhotoImage(file = "710239_geometric-wallpaper-hd - copia - copia.png")
+        Fondo = Label(self, image = ImagenFondo)
+        Fondo.place(x = 0, y = 0)   
 
         # Estas seran todas las etiquetas que apareceran en la ventana.
         self.titulo = Label(self, text = "TIMER", fg =  "#4285f4", font = ("Serif", 18))
