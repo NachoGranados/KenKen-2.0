@@ -72,6 +72,9 @@ class menu(tkinter.Tk):
 
 # Esta sera la ventana donde se encontrara la clase de Jugar.
 global Jugador
+global cargarpartida
+
+cargarpartida = False
 
 class Jugar(tkinter.Tk):
     
@@ -106,6 +109,9 @@ class Jugar(tkinter.Tk):
         self.textBoxJugador.place(x = 100, y = 600)
 
         # Variable Nivel que se utilizara para indicar el nivel que se pulso y su respetiva condicion que determina cual label mostar.
+        global Nivel
+        global N
+        
         Nivel = StringVar()
         self.labelNivel = Label(self,textvariable = Nivel, width = 8, font = ("Serif", 17))
         self.labelNivel.place(x = 120, y = 20)
@@ -113,19 +119,22 @@ class Jugar(tkinter.Tk):
         if N == 1:
 
             Nivel.set("Nivel \nFácil")
-            Nivel = "F"
+            n = "F"
             
         elif N == 2:
 
             Nivel.set("Nivel \nIntermedio")
-            Nivel = "I"
+            n = "I"
 
         elif N == 3:
 
             Nivel.set("Nivel \nDifícil")
-            Nivel = "D"
+            n = "D"
             
         # Variable Sonido que se utilizara para indicar si el nivel se completo con exito o no.
+        global Sonido
+        global S
+        
         Sonido = StringVar()
         self.labelSonido = Label(self,textvariable = Sonido, width = 6, font = ("Serif", 17))
         self.labelSonido.place(x = 135, y = 115)
@@ -144,9 +153,6 @@ class Jugar(tkinter.Tk):
         cuadricula = Frame(self)
         cuadricula.grid(column = 6, row = 6, padx = (10,10), pady = (10,10))
 
-        # Lectura del archivo que contiene las partidas.
-        archivo = open("kenken_juegos.dat","r")
-
         # Variables globales
         global linea
         global listaTop
@@ -157,239 +163,316 @@ class Jugar(tkinter.Tk):
         global rehacer
         global deshacer
         global puntero
+        global textboxes
+        global dic
+        global cargarpartida
+        global TiempoHoras
+        global TiempoMinutos
+        global TiempoSegundos
         global T
+        global R
 
-        puntero = 0
+        if cargarpartida == False:
 
-        listaTop = []
+            # Lectura del archivo que contiene las partidas.
+            archivo = open("kenken_juegos.dat","r")
 
-        rehacer = []
+            puntero = 0
 
-        deshacer = []
+            listaTop = []
 
-        linea = archivo.readline()
+            rehacer = []
 
-        dic = archivo.readlines()
+            deshacer = []
 
-        listaF = []
-        listaI = []
-        listaD = []
+            textboxes = []
 
-        # Algoritmo para poder extraer una partida aleatoria del archivo segun el nivel elegido.
-        try:
-            
-            if T == 1:
+            linea = archivo.readline()
 
-                tamaño = 3
+            dic = archivo.readlines()
 
-                for letra in dic:
+            listaF = []
+            listaI = []
+            listaD = []
 
-                    guia = letra[:2]
+            # Algoritmo para poder extraer una partida aleatoria del archivo segun el nivel elegido.
+            try:
+                
+                if T == 1:
 
-                    if guia[-1] == "3":
-                        
-                        if guia[0] == "F":
+                    tamaño = 3
 
-                            listaF.append(letra)
+                    for letra in dic:
 
-                        elif guia[0] == "I":
+                        guia = letra[:2]
 
-                            listaI.append(letra)
+                        if guia[-1] == "3":
+                            
+                            if guia[0] == "F":
 
-                        elif guia[0] == "D":
+                                listaF.append(letra)
 
-                            listaD.append(letra)
+                            elif guia[0] == "I":
 
-            elif T == 2:
+                                listaI.append(letra)
 
-                tamaño = 4
+                            elif guia[0] == "D":
 
-                for letra in dic:
+                                listaD.append(letra)
 
-                    guia = letra[:2]
+                elif T == 2:
 
-                    if guia[-1] == "4":
-                        
-                        if guia[0] == "F":
+                    tamaño = 4
 
-                            listaF.append(letra)
+                    for letra in dic:
 
-                        elif guia[0] == "I":
+                        guia = letra[:2]
 
-                            listaI.append(letra)
+                        if guia[-1] == "4":
+                            
+                            if guia[0] == "F":
 
-                        elif guia[0] == "D":
+                                listaF.append(letra)
 
-                            listaD.append(letra)
+                            elif guia[0] == "I":
 
-            elif T == 3:
+                                listaI.append(letra)
 
-                tamaño = 5
+                            elif guia[0] == "D":
 
-                for letra in dic:
+                                listaD.append(letra)
 
-                    guia = letra[:2]
+                elif T == 3:
 
-                    if guia[-1] == "5":
-                        
-                        if guia[0] == "F":
+                    tamaño = 5
 
-                            listaF.append(letra)
+                    for letra in dic:
 
-                        elif guia[0] == "I":
+                        guia = letra[:2]
 
-                            listaI.append(letra)
+                        if guia[-1] == "5":
+                            
+                            if guia[0] == "F":
 
-                        elif guia[0] == "D":
+                                listaF.append(letra)
 
-                            listaD.append(letra)
+                            elif guia[0] == "I":
 
-            elif T == 4:
+                                listaI.append(letra)
 
-                tamaño = 6
+                            elif guia[0] == "D":
 
-                for letra in dic:
+                                listaD.append(letra)
 
-                    guia = letra[:2]
+                elif T == 4:
 
-                    if guia[-1] == "6":
-                        
-                        if guia[0] == "F":
+                    tamaño = 6
 
-                            listaF.append(letra)
+                    for letra in dic:
 
-                        elif guia[0] == "I":
+                        guia = letra[:2]
 
-                            listaI.append(letra)
+                        if guia[-1] == "6":
+                            
+                            if guia[0] == "F":
 
-                        elif guia[0] == "D":
+                                listaF.append(letra)
 
-                            listaD.append(letra)
+                            elif guia[0] == "I":
 
-            elif T == 5:
+                                listaI.append(letra)
 
-                tamaño = 7
+                            elif guia[0] == "D":
 
-                for letra in dic:
+                                listaD.append(letra)
 
-                    guia = letra[:2]
+                elif T == 5:
 
-                    if guia[-1] == "7":
-                        
-                        if guia[0] == "F":
+                    tamaño = 7
 
-                            listaF.append(letra)
+                    for letra in dic:
 
-                        elif guia[0] == "I":
+                        guia = letra[:2]
 
-                            listaI.append(letra)
+                        if guia[-1] == "7":
+                            
+                            if guia[0] == "F":
 
-                        elif guia[0] == "D":
+                                listaF.append(letra)
 
-                            listaD.append(letra)
+                            elif guia[0] == "I":
 
-            elif T == 6:
+                                listaI.append(letra)
 
-                tamaño = 8
+                            elif guia[0] == "D":
 
-                for letra in dic:
+                                listaD.append(letra)
 
-                    guia = letra[:2]
+                elif T == 6:
 
-                    if guia[-1] == "8":
-                        
-                        if guia[0] == "F":
+                    tamaño = 8
 
-                            listaF.append(letra)
+                    for letra in dic:
 
-                        elif guia[0] == "I":
+                        guia = letra[:2]
 
-                            listaI.append(letra)
+                        if guia[-1] == "8":
+                            
+                            if guia[0] == "F":
 
-                        elif guia[0] == "D":
+                                listaF.append(letra)
 
-                            listaD.append(letra)
+                            elif guia[0] == "I":
 
-            elif T == 7:
+                                listaI.append(letra)
 
-                tamaño = 9
+                            elif guia[0] == "D":
 
-                for letra in dic:
+                                listaD.append(letra)
 
-                    guia = letra[:2]
+                elif T == 7:
 
-                    if guia[-1] == "9":
-                        
-                        if guia[0] == "F":
+                    tamaño = 9
 
-                            listaF.append(letra)
+                    for letra in dic:
 
-                        elif guia[0] == "I":
+                        guia = letra[:2]
 
-                            listaI.append(letra)
+                        if guia[-1] == "9":
+                            
+                            if guia[0] == "F":
 
-                        elif guia[0] == "D":
+                                listaF.append(letra)
 
-                            listaD.append(letra)
+                            elif guia[0] == "I":
 
-            """
+                                listaI.append(letra)
 
-            multitamano
+                            elif guia[0] == "D":
 
-            elif T == 8:
+                                listaD.append(letra)
 
-                for letra in dic:
+                """
 
-                    guia = letra[:2]
+                multitamano
 
-                    if guia[-1] == "4":
-                        
-                        if guia[0] == "F":
+                elif T == 8:
 
-                            listaF.append(letra)
+                    for letra in dic:
 
-                        elif guia[0] == "I":
+                        guia = letra[:2]
 
-                            listaI.append(letra)
+                        if guia[-1] == "4":
+                            
+                            if guia[0] == "F":
 
-                        elif guia[0] == "D":
+                                listaF.append(letra)
 
-                            listaD.append(letra)
+                            elif guia[0] == "I":
 
-            """
+                                listaI.append(letra)
 
-        except:
+                            elif guia[0] == "D":
 
-            pass
+                                listaD.append(letra)
 
-        if N == 1:
+                """
 
-            linea = random.choice(listaF)
+            except:
 
-        elif N == 2:
+                pass
 
-            linea = random.choice(listaI)
+            if N == 1:
 
-        elif N == 3:
+                linea = random.choice(listaF)
 
-            linea = random.choice(listaD)
+            elif N == 2:
 
-        for letra in archivo:
+                linea = random.choice(listaI)
 
-            if letra[0] == Nivel:
+            elif N == 3:
 
-                linea = letra
+                linea = random.choice(listaD)
 
-                break
-        
+            for letra in archivo:
+
+                if letra[0] == Nivel:
+
+                    linea = letra
+
+                    break
+
+        else:
+
+            cargarpartida = True
+
+            jugada = open("kenken_juegoactual.dat","r")
+
+            dic = eval(jugada.read())
+
+            self.textBoxJugador.insert(0,dic[0])
+
+            linea = dic[1]
+
+            r = dic[4]
+
+            if r == "1":
+
+                R = 1
+
+            elif r == "3":
+
+                R = 1
+
+            else:
+
+                pass
+
+            if dic[5] == "Nivel \nFácil":
+
+                N = 1
+                Nivel.set("Nivel \nFácil")
+                n = "F"
+
+            elif dic[5] == "Nivel \nIntermedio":
+                
+                N = 2
+                Nivel.set("Nivel \nIntermedio")
+                n = "I"
+
+            elif dic[5] == "Nivel \nDifiícil":
+
+                N = 3
+                Nivel.set("Nivel \nDifiícil")
+                n = "D"
+
+            s = dic[6]
+
+            if s == "Sí":
+
+                S = 1
+                Sonido.set("Sonido \nSí")
+
+            else:
+
+                S = 2
+                Sonido.set("Sonido \nNo")
+
+            rehacer = dic[7][0]
+
+            deshacer = dic[7][1]
+
+            puntero = dic[7][2]
+
         # Valor que se le asignara a la siguiente variable y sus respectivas caracteristicas.
-        labelPredicciones = Label(self, width = 12,text = "Predicciones", font = ("Serif", 16)) 
-        labelPredicciones.place(x = 950, y = 15)
         
         self.p = StringVar()
         self.p.set("")
-        self.Labelp = Label(self, textvariable = self.p, font = ("Serif", 16))
-        self.Labelp.place(x = 980, y = 50)
+        self.Labelp = Label(self, textvariable = self.p, font = ("Serif", 10))
+        self.Labelp.place(x = 980, y = 20)
+
+        labelPredicciones = Label(self, width = 12,text = "Predicciones", font = ("Serif", 16)) 
+        labelPredicciones.place(x = 950, y = 0)
 
         global a
                 
@@ -498,6 +581,334 @@ class Jugar(tkinter.Tk):
         self.s98 = StringVar()
         self.s99 = StringVar()
 
+        if cargarpartida == True:
+            
+            # Algoritmo para identificar cuales valores se encuentran en las casillas respectivas.
+            for i in dic[2]:
+
+                if i[0] == "11":
+
+                    self.s11.set(i[1])
+
+                elif i[0] == "21":
+
+                    self.s21.set(i[1])
+
+                elif i[0] == "31":
+
+                    self.s31.set(i[1])
+
+                elif i[0] == "41":
+
+                    self.s41.set(i[1])
+
+                elif i[0] == "51":
+
+                    self.s51.set(i[1])
+
+                elif i[0] == "61":
+
+                    self.s61.set(i[1])
+
+                elif i[0] == "71":
+
+                    self.s71.set(i[1])
+
+                elif i[0] == "81":
+
+                    self.s81.set(i[1])
+
+                elif i[0] == "91":
+
+                    self.s91.set(i[1])
+                    
+                elif i[0] == "12":
+
+                    self.s12.set(i[1])
+
+                elif i[0] == "22":
+
+                    self.s22.set(i[1])
+
+                elif i[0] == "32":
+
+                    self.s32.set(i[1])
+
+                elif i[0] == "42":
+
+                    self.s42.set(i[1])
+
+                elif i[0] == "52":
+
+                    self.s52.set(i[1])
+
+                elif i[0] == "62":
+
+                    self.s62.set(i[1])
+
+                elif i[0] == "72":
+
+                    self.s72.set(i[1])
+
+                elif i[0] == "82":
+
+                    self.s82.set(i[1])
+
+                elif i[0] == "92":
+
+                    self.s92.set(i[1])
+
+                elif i[0] == "13":
+
+                    self.s13.set(i[1])
+
+                elif i[0] == "23":
+
+                    self.s23.set(i[1])
+
+                elif i[0] == "33":
+
+                    self.s33.set(i[1])
+
+                elif i[0] == "43":
+
+                    self.s43.set(i[1])
+
+                elif i[0] == "53":
+
+                    self.s53.set(i[1])
+                    
+                elif i[0] == "63":
+
+                    self.s63.set(i[1])
+
+                elif i[0] == "73":
+
+                    self.s73.set(i[1])
+
+                elif i[0] == "83":
+                    
+                    self.s83.set(i[1])
+                    
+                elif i[0] == "93":
+
+                    self.s93.set(i[1])
+
+                elif i[0] == "14":
+
+                    self.s14.set(i[1])
+
+                elif i[0] == "24":
+
+                    self.s24.set(i[1])
+                    
+                elif i[0] == "34":
+
+                    self.s34.set(i[1])
+
+                elif i[0] == "44":
+
+                    self.s44.set(i[1])
+                elif i[0] == "54":
+
+                    self.s54.set(i[1])
+
+                elif i[0] == "64":
+
+                    self.s64.set(i[1])
+
+                elif i[0] == "74":
+
+                    self.s74.set(i[1])
+
+                elif i[0] == "84":
+
+                    self.s84.set(i[1])
+
+                elif i[0] == "94":
+
+                    self.s94.set(i[1])
+
+                elif i[0] == "15":
+
+                    self.s15.set(i[1])
+
+                elif i[0] == "25":
+
+                    self.s25.set(i[1])
+
+                elif i[0] == "35":
+
+                    self.s35.set(i[1])
+
+                elif i[0] == "45":
+
+                    self.s45.set(i[1])
+
+                elif i[0] == "55":
+
+                    self.s55.set(i[1])
+                    
+                elif i[0] == "65":
+
+                    self.s65.set(i[1])
+
+                elif i[0] == "75":
+
+                    self.s75.set(i[1])
+
+                elif i[0] == "85":
+
+                    self.s85.set(i[1])
+
+                elif i[0] == "95":
+
+                    self.s95.set(i[1])
+
+                elif i[0] == "16":
+
+                    self.s16.set(i[1])
+
+                elif i[0] == "26":
+
+                    self.s26.set(i[1])
+
+                elif i[0] == "36":
+
+                    self.s36.set(i[1])
+
+                elif i[0] == "46":
+
+                    self.s46.set(i[1])
+
+                elif i[0] == "56":
+
+                    self.s56.set(i[1])
+
+                elif i[0] == "66":
+
+                    self.s66.set(i[1])
+
+                elif i[0] == "76":
+
+                    self.s76.set(i[1])
+
+                elif i[0] == "86":
+                    
+                    self.s86.set(i[1])
+                    
+                elif i[0] == "96":
+
+                    self.s96.set(i[1])
+
+                elif i[0] == "17":
+
+                    self.s17.set(i[1])
+
+                elif i[0] == "27":
+
+                    self.s27.set(i[1])
+
+                elif i[0] == "37":
+
+                    self.s37.set(i[1])
+
+                elif i[0] == "47":
+
+                    self.s47.set(i[1])
+
+                elif i[0] == "57":
+
+                    self.s57.set(i[1])
+
+                elif i[0] == "67":
+                    
+                    self.s67.set(i[1])
+
+                elif i[0] == "77":
+
+                    self.s77.set(i[1])
+
+                elif i[0] == "87":
+
+                    self.s87.set(i[1])
+
+                elif i[0] == "97":
+                    
+                    self.s97.set(i[1])
+                    
+                elif i[0] == "18":
+
+                    self.s18.set(i[1])
+
+                elif i[0] == "28":
+
+                    self.s28.set(i[1])
+
+                elif i[0] == "38":
+
+                    self.s38.set(i[1])
+
+                elif i[0] == "48":
+
+                    self.s48.set(i[1])
+
+                elif i[0] == "58":
+
+                    self.s58.set(i[1])
+
+                elif i[0] == "68":
+
+                    self.s68.set(i[1])
+                    
+                elif i[0] == "78":
+
+                    self.s78.set(i[1])
+
+                elif i[0] == "88":
+
+                    self.s88.set(i[1])
+
+                elif i[0] == "98":
+
+                    self.s98.set(i[1])
+
+                elif i[0] == "19":
+
+                    self.s19.set(i[1])
+
+                elif i[0] == "29":
+
+                    self.s29.set(i[1])
+
+                elif i[0] == "39":
+
+                    self.s39.set(i[1])
+
+                elif i[0] == "49":
+
+                    self.s49.set(i[1])
+
+                elif i[0] == "59":
+
+                    self.s59.set(i[1])
+
+                elif i[0] == "69":
+
+                    self.s69.set(i[1])
+
+                elif i[0] == "79":
+
+                    self.s79.set(i[1])
+
+                elif i[0] == "89":
+
+                    self.s89.set(i[1])
+                    
+                elif i[0] == "99":
+                    
+                    self.s99.set(i[1])
+                    
         """
 
         Solucion 6x6 Facil
@@ -558,7 +969,7 @@ class Jugar(tkinter.Tk):
                  [0,self.s91,self.s92,self.s93,self.s94,self.s95,self.s96,self.s97,self.s98,self.s99]]
 
         # Lista de los colores que se pueden tomar para asignarselos a los cuadros de texto como fondo.
-        c = ["salmon","yellow","green","brown","light blue","sienna3", "thistle2", "gray", "pink", "magenta", "medium purple", "khaki2", "aqua", "rosybrown", "tomato", "peru", "cornsilk2","goldenrod","slateblue", "maroon1", "cyan", "green3", "purple2", "gold3", "dodger blue", "light slate gray", "orange2", "brown3", "DarkOliveGreen3", "bisque2"]
+        c = ["salmon","yellow","green","brown","light blue","cyan4", "thistle2", "gray", "pink", "magenta", "medium purple", "khaki2", "aqua", "rosybrown", "tomato", "peru", "cornsilk2","olive drab","slateblue", "maroon1", "DarkOrange1", "green3", "purple2", "gold3", "dodger blue", "light slate gray", "orange2", "brown3", "DarkOliveGreen3", "bisque2", "salmon1", "lemon chiffon", "dark sea green", "medium orchid", "DarkSlateGray2", "chocolate2", "magenta3", "gold", "SlateBlue2", "wheat3", "brown3", "SpringGreen2", "HotPink2", "coral3", "deep sky blue", "OrangeRed2", "VioletRed3", "steel blue", "yellow3", "LightBlue3"]
 
         # Algoritmo para colocar los cuadros de texto segun la posicion de la cuadricula crada por el grid.
         for e in range(0,len(colores)):
@@ -578,7 +989,7 @@ class Jugar(tkinter.Tk):
                 
             c = c[1:]
 
-        c = ["salmon","yellow","green","brown","light blue","sienna3", "thistle2", "gray", "pink", "magenta", "medium purple", "khaki2", "aqua", "rosybrown", "tomato", "peru", "cornsilk2","goldenrod","slateblue", "maroon1", "cyan", "green3", "purple2", "gold3", "dodger blue", "light slate gray", "orange2", "brown3", "DarkOliveGreen3", "bisque2"]
+        c = ["salmon","yellow","green","brown","light blue","cyan4", "thistle2", "gray", "pink", "magenta", "medium purple", "khaki2", "aqua", "rosybrown", "tomato", "peru", "cornsilk2","olive drab","slateblue", "maroon1", "DarkOrange1", "green3", "purple2", "gold3", "dodger blue", "light slate gray", "orange2", "brown3", "DarkOliveGreen3", "bisque2", "salmon1", "lemon chiffon", "dark sea green", "medium orchid", "DarkSlateGray2", "chocolate2", "magenta3", "gold", "SlateBlue2", "wheat3", "brown3", "SpringGreen2", "HotPink2", "coral3", "deep sky blue", "OrangeRed2", "VioletRed3", "steel blue", "yellow3", "LightBlue3"]
 
         cont = 0
 
@@ -621,39 +1032,11 @@ class Jugar(tkinter.Tk):
         self.buttonPredicciones = Button(self, text = "Predicciones", width = 10, activebackground = "#4285f4",command = self.Predicciones, fg = "White", bg = "#4285f4", font = ("Comic Sans Ms", 15))
         self.buttonPredicciones.place(x = 755, y = 115)
 
+        self.buttonGuardar = Button(self, text = "Guardar \n Juego", width = 8, activebackground = "#4285f4",command = self.Guardar, fg = "#4285f4", bg = "White", font = ("Comic Sans Ms", 15))
+        self.buttonGuardar.place(x = 593, y = 700) 
 
-
-
-
-
-
-
-
-
-
-
-
-
-        self.buttonGuardar = Button(self, text = "Guardar \n Juego", width = 10, activebackground = "#4285f4",command = self.Guardar, fg = "White", bg = "#4285f4", font = ("Comic Sans Ms", 15))
-        self.buttonGuardar.place(x = 955, y = 135)
-
-        self.buttonCargar = Button(self, text = "Cargar \n Juego", width = 10, activebackground = "#4285f4",command = self.Cargar, fg = "White", bg = "#4285f4", font = ("Comic Sans Ms", 15))
-        self.buttonCargar.place(x = 955, y = 335)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
+        self.buttonCargar = Button(self, text = "Cargar \n Juego", width = 8, activebackground = "#4285f4",command = self.Cargar, fg = "White", bg = "#4285f4", font = ("Comic Sans Ms", 15))
+        self.buttonCargar.place(x = 715, y = 700)  
 
         self.buttonDeshacer = Button(self, text = "Deshacer", width = 10, activebackground = "#4285f4",command = self.Deshacer, fg = "#4285f4", bg = "White", font = ("Comic Sans Ms", 15))
         self.buttonDeshacer.place(x = 813, y = 515)
@@ -726,7 +1109,7 @@ class Jugar(tkinter.Tk):
                 self.TiempoHoras.set(0)
                 self.labelTimepoHorasActivo = Label(self, textvariable = self.TiempoHoras, font = ("Serif", 15 ))
                 self.labelTimepoHorasActivo.place(x = 300, y = 60)
-
+                
                 self.TiempoMinutos = IntVar()
                 self.TiempoMinutos.set(0)
                 self.labelTimepoMinutosActivo = Label(self, textvariable = self.TiempoMinutos, font = ("Serif", 15 ))
@@ -858,6 +1241,7 @@ class Jugar(tkinter.Tk):
 
         global hacer
         global puntero
+        global textboxes
 
         posicion = self.focus_get()
         Cuadro = posicion.winfo_name()
@@ -873,12 +1257,23 @@ class Jugar(tkinter.Tk):
            Cuadro == "91" or Cuadro == "92" or Cuadro == "93" or Cuadro == "94" or Cuadro == "95" or Cuadro == "96" or Cuadro == "97" or Cuadro == "98" or Cuadro == "99":
             
             posicion.delete(0,END)
+
+            flag = 0
+
+            for i in textboxes:
+
+                if i[0] == Cuadro:
+
+                    del textboxes[flag]
+
+                flag = flag + 1
             
     # Funcion que determinara la posicion del cursor para poder colocar el numero en dicho cuadro de texto.
     def CuadroDeTexto(self,num):
 
         global hacer
         global puntero
+        global textboxes
 
         posicion = self.focus_get()
         Cuadro = posicion.winfo_name()
@@ -896,6 +1291,7 @@ class Jugar(tkinter.Tk):
             posicion.insert(END,num)
             deshacer.append([Cuadro,""])
             rehacer.append([Cuadro,posicion.get()])
+            textboxes.append([Cuadro,posicion.get()])
             puntero = puntero + 1
 
     def Predicciones(self):
@@ -3348,11 +3744,13 @@ class Jugar(tkinter.Tk):
                     espacio = True
 
                 # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista3) == True:
 
                     messagebox.showinfo("Error", "Espacios en blanco en la fila 3.", icon = "warning")
                     espacio = True
 
                 # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista4) == True:
 
                     messagebox.showinfo("Error", "Espacios en blanco en la fila 4.", icon = "warning")
                     espacio = True
@@ -3966,11 +4364,13 @@ class Jugar(tkinter.Tk):
                     espacio = True
 
                 # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista3) == True:
 
                     messagebox.showinfo("Error", "Espacios en blanco en la fila 3.", icon = "warning")
                     espacio = True
 
                 # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista4) == True:
 
                     messagebox.showinfo("Error", "Espacios en blanco en la fila 4.", icon = "warning")
                     espacio = True
@@ -4166,7 +4566,7 @@ class Jugar(tkinter.Tk):
                     while lista13 != []:
 
                         e = lista13[0]
-                        lista12.remove(e)
+                        lista13.remove(e)
 
                         if (str(e) in lista13) == True:
 
@@ -4205,7 +4605,7 @@ class Jugar(tkinter.Tk):
                     while lista16 != []:
 
                         e = lista16[0]
-                        lista15.remove(e)
+                        lista16.remove(e)
 
                         if (str(e) in lista16) == True:
 
@@ -4717,11 +5117,13 @@ class Jugar(tkinter.Tk):
                     espacio = True
 
                 # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista3) == True:
 
                     messagebox.showinfo("Error", "Espacios en blanco en la fila 3.", icon = "warning")
                     espacio = True
 
                 # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista4) == True:
 
                     messagebox.showinfo("Error", "Espacios en blanco en la fila 4.", icon = "warning")
                     espacio = True
@@ -5428,131 +5830,41 @@ class Jugar(tkinter.Tk):
             # Se abrira la nueva ventana solicitada.
             Jugar().mainloop()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     # Funcion del boton asignado.
     def Guardar(self):
 
         global Jugador
         global Activo
+        global Sonido
+        global textboxes
+        global deshacer
+        global rehacer
+        global puntero
 
         Activo = False
 
         s = Sonido.get()
         s = s[-2:]
 
-        lista = [Jugador,linea,["textboxes"],self.TiempoHoras.get(),self.TiempoMinutos.get(),self.TiempoSegundos.get(),R,Nivel.get(),s]
+        lista = [Jugador,linea,textboxes,[self.TiempoHoras.get(),self.TiempoMinutos.get(),self.TiempoSegundos.get()],R,Nivel.get(),s,[rehacer,deshacer,puntero]]
 
-        print(lista)
-
-        jugada = open("jugada.txt","w")
+        jugada = open("kenken_juegoactual.dat","w")
 
         jugada.write(str(lista))
 
         jugada.close
 
-        
-
-        
-
-
-
-
-
-
-
     # Funcion del boton asignado.
     def Cargar(self):
 
-        global R
+        global cargarpartida
 
-        jugada = open("jugada.txt","r")
+        cargarpartida = True
 
-        linea = eval(jugada.read())
-
-        self.textBoxJugador.insert(0,linea[0])
-
-        l = linea[1]
-
-        self.TiempoHoras.set(linea[3])
-        self.TiempoMinutos.set(linea[4])
-        self.TiempoSegundos.set(linea[5])
-
-        R = linea[6]
-
-        if linea[-1] == "Sí":
-
-            Sonido.set("Sonido \nSí")
-
-        else:
-
-            Sonido.set("Sonido \nNo")        
-
-        if linea[7] == "Nivel \nFácil":
-
-            Nivel.set("Nivel \nFácil")
-
-        elif linea[7] == "Nivel \nIntermedio":
-
-            Nivel.set("Nivel \nIntermedio")
-
-        elif linea[7] == "Nivel \nDifiícil":
-
-            Nivel.set("Nivel \nDifiícil")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
+        # Se cerrara la ventana actual.
+        self.destroy()
+        # Se abrira la nueva ventana solicitada.
+        Jugar().mainloop()
 
     # Funcion del boton asignado.
     def Reiniciar(self):
@@ -5628,8 +5940,10 @@ class Jugar(tkinter.Tk):
         global Jugador
         global listaTop
         global Activo
+        global cargarpartida
 
         Activo = False
+        cargarpartida = False
 
         # Se guardaran todos los datos que sean necesarios para otra funciones.
         horasjugador =  self.TiempoHoras.get()
@@ -5680,6 +5994,10 @@ class Jugar(tkinter.Tk):
             self.textBoxJugador.delete(0,END)
 
     def RegresarMenu(self):
+
+        global cargarpartida
+
+        cargarpartida = False
 
         pygame.mixer.music.stop()
         # Se cerrara la ventana actual.
