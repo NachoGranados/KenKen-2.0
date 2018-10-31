@@ -73,8 +73,10 @@ class menu(tkinter.Tk):
 # Esta sera la ventana donde se encontrara la clase de Jugar.
 global Jugador
 global cargarpartida
+global d
 
 cargarpartida = False
+d = ""
 
 class Jugar(tkinter.Tk):
     
@@ -163,14 +165,15 @@ class Jugar(tkinter.Tk):
         global rehacer
         global deshacer
         global puntero
-        global textboxes
         global dic
+        global textboxes
         global cargarpartida
         global TiempoHoras
         global TiempoMinutos
         global TiempoSegundos
         global T
         global R
+        global d
 
         if cargarpartida == False:
 
@@ -408,45 +411,45 @@ class Jugar(tkinter.Tk):
 
             jugada = open("kenken_juegoactual.dat","r")
 
-            dic = eval(jugada.read())
+            d = eval(jugada.read())
 
-            self.textBoxJugador.insert(0,dic[0])
+            self.textBoxJugador.insert(0,d[0])
 
-            linea = dic[1]
+            linea = d[1]
 
-            r = dic[4]
+            r = d[4]
 
-            if r == "1":
-
-                R = 1
-
-            elif r == "3":
+            if r == 1:
 
                 R = 1
+
+            elif r == 2:
+
+                R = 2
 
             else:
 
-                pass
+                R = 3
 
-            if dic[5] == "Nivel \nFácil":
+            if d[5] == "Nivel \nFácil":
 
                 N = 1
                 Nivel.set("Nivel \nFácil")
                 n = "F"
 
-            elif dic[5] == "Nivel \nIntermedio":
+            elif d[5] == "Nivel \nIntermedio":
                 
                 N = 2
                 Nivel.set("Nivel \nIntermedio")
                 n = "I"
 
-            elif dic[5] == "Nivel \nDifiícil":
+            elif d[5] == "Nivel \nDifiícil":
 
                 N = 3
                 Nivel.set("Nivel \nDifiícil")
                 n = "D"
 
-            s = dic[6]
+            s = d[6]
 
             if s == "Sí":
 
@@ -458,11 +461,11 @@ class Jugar(tkinter.Tk):
                 S = 2
                 Sonido.set("Sonido \nNo")
 
-            rehacer = dic[7][0]
+            rehacer = d[7][0]
 
-            deshacer = dic[7][1]
+            deshacer = d[7][1]
 
-            puntero = dic[7][2]
+            puntero = d[7][2]
 
         # Valor que se le asignara a la siguiente variable y sus respectivas caracteristicas.
         
@@ -584,7 +587,7 @@ class Jugar(tkinter.Tk):
         if cargarpartida == True:
             
             # Algoritmo para identificar cuales valores se encuentran en las casillas respectivas.
-            for i in dic[2]:
+            for i in d[2]:
 
                 if i[0] == "11":
 
@@ -1085,7 +1088,7 @@ class Jugar(tkinter.Tk):
 
         # Condicion que determinara si el reloj aparecera o no segun lo solicitado por el usuario.
         try:
-        
+    
             if R == 1:
                 
                 # Etiquetas que apareceran en la ventana respectiva con sus caracteristicas.
@@ -1106,17 +1109,32 @@ class Jugar(tkinter.Tk):
 
                 # Valores que se les asignaran a las siguientes variables junto con sus características.
                 self.TiempoHoras = IntVar()
-                self.TiempoHoras.set(0)
+                
+                if cargarpartida == False:
+                    self.TiempoHoras.set(0)
+                else:
+                    self.TiempoHoras.set(d[3][0])
+                    
                 self.labelTimepoHorasActivo = Label(self, textvariable = self.TiempoHoras, font = ("Serif", 15 ))
                 self.labelTimepoHorasActivo.place(x = 300, y = 60)
                 
                 self.TiempoMinutos = IntVar()
-                self.TiempoMinutos.set(0)
+
+                if cargarpartida == False:
+                    self.TiempoMinutos.set(0)
+                else:
+                    self.TiempoMinutos.set(d[3][1])
+
                 self.labelTimepoMinutosActivo = Label(self, textvariable = self.TiempoMinutos, font = ("Serif", 15 ))
                 self.labelTimepoMinutosActivo.place(x = 475, y = 60)
 
                 self.TiempoSegundos = IntVar()
-                self.TiempoSegundos.set(0)
+
+                if cargarpartida == False:
+                    self.TiempoSegundos.set(0)
+                else:
+                    self.TiempoSegundos.set(d[3][2])
+
                 self.labelTimepoSegundosActivo = Label(self, textvariable = self.TiempoSegundos, font = ("Serif", 15 ))
                 self.labelTimepoSegundosActivo.place(x = 640, y = 60)
 
@@ -1124,17 +1142,29 @@ class Jugar(tkinter.Tk):
 
                 # Valores que se les asignaran a las siguientes variables junto con sus características.
                 self.TiempoHoras = IntVar()
-                self.TiempoHoras.set(0)
+                
+                if cargarpartida == False:
+                    self.TiempoHoras.set(0)
+                else:
+                    self.TiempoHoras.set(d[3][0])
                 self.labelTimepoHorasActivo = Label(self, textvariable = self.TiempoHoras, font = ("Serif", 15 ))
                 self.labelTimepoHorasActivo.place(x = 300, y = 2000)
 
                 self.TiempoMinutos = IntVar()
-                self.TiempoMinutos.set(0)
+                
+                if cargarpartida == False:
+                    self.TiempoMinutos.set(0)
+                else:
+                    self.TiempoMinutos.set(d[3][1])
                 self.labelTimepoMinutosActivo = Label(self, textvariable = self.TiempoMinutos, font = ("Serif", 15 ))
                 self.labelTimepoMinutosActivo.place(x = 475, y = 2000)
 
                 self.TiempoSegundos = IntVar()
-                self.TiempoSegundos.set(0)
+                
+                if cargarpartida == False:
+                    self.TiempoSegundos.set(0)
+                else:
+                    self.TiempoSegundos.set(d[3][2])
                 self.labelTimepoSegundosActivo = Label(self, textvariable = self.TiempoSegundos, font = ("Serif", 15 ))
                 self.labelTimepoSegundosActivo.place(x = 640, y = 2000)
 
@@ -5821,6 +5851,21 @@ class Jugar(tkinter.Tk):
 
                     break
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+
     # Funcion del boton asignado.
     def Otro(self):
         opcion1 = messagebox.askquestion("Otro juego", "¿Está seguro de empezar otro juego?", icon = "warning")
@@ -5941,7 +5986,9 @@ class Jugar(tkinter.Tk):
         global listaTop
         global Activo
         global cargarpartida
+        global Jugador
 
+        Jugador = ""
         Activo = False
         cargarpartida = False
 
@@ -5956,7 +6003,11 @@ class Jugar(tkinter.Tk):
         opcion = messagebox.askquestion("Terminar Juego", "¿Está seguro de terminar juego?", icon = "warning")
         
         if opcion == "yes":
-            pygame.mixer.music.stop()
+            
+            if R == 1:
+                
+                pygame.mixer.music.stop()
+            
             Jugador = ""
             # Se cerrara la ventana actual.
             Jugar.destroy(self)
@@ -5996,10 +6047,12 @@ class Jugar(tkinter.Tk):
     def RegresarMenu(self):
 
         global cargarpartida
+        global Jugador
 
+        Jugador = ""
         cargarpartida = False
-
-        pygame.mixer.music.stop()
+        if R == 1:
+            pygame.mixer.music.stop()
         # Se cerrara la ventana actual.
         self.destroy()
         # Se abrira la nueva ventana solicitada.
@@ -6313,7 +6366,7 @@ class Configurar(tkinter.Tk):
         try:
             
             if (N == 1 or N == 2 or N == 3) and (S == 1 or S == 2) and (T == 1 or T == 2 or T == 3 or T == 4 or T == 5 or T == 6 or T == 7 or T == 8):
-
+                
                     if R == 1:
                         # Se cerrara la ventana actual.
                         self.destroy()
@@ -6331,7 +6384,7 @@ class Configurar(tkinter.Tk):
                         self.destroy()
                         # Se abrira la nueva ventana solicitada.
                         Timer().mainloop()
-                        
+                            
             else:
 
                 messagebox.showinfo("Aviso", "Debe de configurar el modo de juego que desea.", icon = "warning")

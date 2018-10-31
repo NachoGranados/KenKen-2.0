@@ -1483,6 +1483,7 @@ class Jugar(tkinter.Tk):
         Activo = False
 
         s = Sonido.get()
+        print(Sonido)
         s = s[-2:]
 
         lista = [Jugador,linea,["textboxes"],self.TiempoHoras.get(),self.TiempoMinutos.get(),self.TiempoSegundos.get(),R,Nivel.get(),s]
@@ -1834,6 +1835,7 @@ class Jugar(tkinter.Tk):
                 self.TiempoHoras.set(HorasT)
                 self.TiempoMinutos.set(MinutosT)
                 self.TiempoSegundos.set(SegundosT)
+                
 
             elif R == 3:
 
