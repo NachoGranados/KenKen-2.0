@@ -74,9 +74,11 @@ class menu(tkinter.Tk):
 global Jugador
 global cargarpartida
 global d
+global ptr
 
 cargarpartida = False
 d = ""
+ptr = 0
 
 class Jugar(tkinter.Tk):
     
@@ -174,6 +176,7 @@ class Jugar(tkinter.Tk):
         global T
         global R
         global d
+        global ptr
 
         if cargarpartida == False:
 
@@ -355,55 +358,80 @@ class Jugar(tkinter.Tk):
 
                                 listaD.append(letra)
 
-                """
-
-                multitamano
-
                 elif T == 8:
 
                     for letra in dic:
 
                         guia = letra[:2]
-
-                        if guia[-1] == "4":
                             
-                            if guia[0] == "F":
+                        if guia[0] == "F":
 
-                                listaF.append(letra)
+                            listaF.append(letra)
 
-                            elif guia[0] == "I":
+                        elif guia[0] == "I":
 
-                                listaI.append(letra)
+                            listaI.append(letra)
 
-                            elif guia[0] == "D":
+                        elif guia[0] == "D":
 
-                                listaD.append(letra)
-
-                """
+                            listaD.append(letra)
 
             except:
 
                 pass
 
-            if N == 1:
+            if T != 8:
 
-                linea = random.choice(listaF)
+                if N == 1:
 
-            elif N == 2:
+                    if ptr >= len(listaF):
 
-                linea = random.choice(listaI)
+                        ptr = 0
 
-            elif N == 3:
+                    linea = listaF[ptr]
 
-                linea = random.choice(listaD)
+                elif N == 2:
 
-            for letra in archivo:
+                    if ptr >= len(listaI):
 
-                if letra[0] == Nivel:
+                        ptr = 0
 
-                    linea = letra
+                    linea = listaI[ptr]
 
-                    break
+                elif N == 3:
+
+                    if ptr >= len(listaD):
+
+                        ptr = 0
+
+                    linea = listaD[ptr]
+
+
+            else:
+
+                if N == 1:
+
+                    if ptr >= len(listaF):
+
+                        ptr = 0
+
+                    linea = listaF[ptr]
+
+                elif N == 2:
+
+                    if ptr >= len(listaI):
+
+                        ptr = 0
+
+                    linea = listaI[ptr]
+
+                elif N == 3:
+
+                    if ptr >= len(listaD):
+
+                        ptr = 0
+
+                    linea = listaD[ptr]
 
         else:
 
@@ -478,8 +506,14 @@ class Jugar(tkinter.Tk):
         labelPredicciones.place(x = 950, y = 0)
 
         global a
+
+        if T != 8:
                 
-        a = eval(linea[2:-1])
+            a = eval(linea[2:-1])
+
+        else:
+
+            a = eval(linea[2:-1])
         
         nivel = linea[0]
 
@@ -5877,8 +5911,18 @@ class Jugar(tkinter.Tk):
 
     # Funcion del boton asignado.
     def Otro(self):
+        
+        global cargarpartida
+        global ptr
+        
         opcion1 = messagebox.askquestion("Otro juego", "¿Está seguro de empezar otro juego?", icon = "warning")
+        
         if opcion1 == "yes":
+            
+            cargarpartida == False
+
+            ptr = ptr + 1
+            
             # Se cerrara la ventana actual.
             self.destroy()
             # Se abrira la nueva ventana solicitada.
