@@ -1188,17 +1188,26 @@ class Jugar(tkinter.Tk):
 
                 # Valores que se les asignaran a las siguientes variables junto con sus características.
                 self.TiempoHoras = IntVar()
-                self.TiempoHoras.set(Horas)
+                if cargarpartida == False:
+                    self.TiempoHoras.set(Horas)
+                else:
+                    self.TiempoHoras.set(d[3][0])
                 self.labelTimepoHorasActivo = Label(self, textvariable = self.TiempoHoras, font = ("Serif", 15 ))
                 self.labelTimepoHorasActivo.place(x = 300, y = 60)
 
                 self.TiempoMinutos = IntVar()
-                self.TiempoMinutos.set(Minutos)
+                if cargarpartida == False:
+                    self.TiempoMinutos.set(Minutos)
+                else:
+                    self.TiempoMinutos.set(d[3][1])
                 self.labelTimepoMinutosActivo = Label(self, textvariable = self.TiempoMinutos, font = ("Serif", 15 ))
                 self.labelTimepoMinutosActivo.place(x = 475, y = 60)
 
                 self.TiempoSegundos = IntVar()
-                self.TiempoSegundos.set(Segundos)
+                if cargarpartida == False:
+                    self.TiempoSegundos.set(Segundos)
+                else:
+                    self.TiempoSegundos.set(d[3][2])
                 self.labelTimepoSegundosActivo = Label(self, textvariable = self.TiempoSegundos, font = ("Serif", 15 ))
                 self.labelTimepoSegundosActivo.place(x = 640, y = 60)
 
@@ -5888,16 +5897,23 @@ class Jugar(tkinter.Tk):
 
         Activo = False
 
-        s = Sonido.get()
-        s = s[-2:]
+        # Si no se ha digitado el nombre del jugador, aparecera el siguiente aviso.
+        if Jugador == "":
 
-        lista = [Jugador,linea,textboxes,[self.TiempoHoras.get(),self.TiempoMinutos.get(),self.TiempoSegundos.get()],R,Nivel.get(),s,[rehacer,deshacer,puntero]]
+            messagebox.showinfo("Error", "Por favor introduzca un nombre.", icon = "warning")
+            
+        else:
 
-        jugada = open("kenken_juegoactual.dat","w")
+            s = Sonido.get()
+            s = s[-2:]
 
-        jugada.write(str(lista))
+            lista = [Jugador,linea,textboxes,[self.TiempoHoras.get(),self.TiempoMinutos.get(),self.TiempoSegundos.get()],R,Nivel.get(),s,[rehacer,deshacer,puntero]]
 
-        jugada.close
+            jugada = open("kenken_juegoactual.dat","w")
+
+            jugada.write(str(lista))
+
+            jugada.close
 
     # Funcion del boton asignado.
     def Cargar(self):

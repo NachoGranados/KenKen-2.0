@@ -73,8 +73,10 @@ class menu(tkinter.Tk):
 # Esta sera la ventana donde se encontrara la clase de Jugar.
 global Jugador
 global cargarpartida
+global d
 
 cargarpartida = False
+d = ""
 
 class Jugar(tkinter.Tk):
     
@@ -110,6 +112,7 @@ class Jugar(tkinter.Tk):
 
         # Variable Nivel que se utilizara para indicar el nivel que se pulso y su respetiva condicion que determina cual label mostar.
         global Nivel
+        global N
         
         Nivel = StringVar()
         self.labelNivel = Label(self,textvariable = Nivel, width = 8, font = ("Serif", 17))
@@ -132,6 +135,7 @@ class Jugar(tkinter.Tk):
             
         # Variable Sonido que se utilizara para indicar si el nivel se completo con exito o no.
         global Sonido
+        global S
         
         Sonido = StringVar()
         self.labelSonido = Label(self,textvariable = Sonido, width = 6, font = ("Serif", 17))
@@ -161,10 +165,15 @@ class Jugar(tkinter.Tk):
         global rehacer
         global deshacer
         global puntero
-        global textboxes
         global dic
+        global textboxes
         global cargarpartida
+        global TiempoHoras
+        global TiempoMinutos
+        global TiempoSegundos
         global T
+        global R
+        global d
 
         if cargarpartida == False:
 
@@ -398,16 +407,75 @@ class Jugar(tkinter.Tk):
 
         else:
 
-            linea = dic
-        
+            cargarpartida = True
+
+            jugada = open("kenken_juegoactual.dat","r")
+
+            d = eval(jugada.read())
+
+            self.textBoxJugador.insert(0,d[0])
+
+            linea = d[1]
+
+            r = d[4]
+
+            if r == 1:
+
+                R = 1
+
+            elif r == 2:
+
+                R = 2
+
+            else:
+
+                R = 3
+
+            if d[5] == "Nivel \nFácil":
+
+                N = 1
+                Nivel.set("Nivel \nFácil")
+                n = "F"
+
+            elif d[5] == "Nivel \nIntermedio":
+                
+                N = 2
+                Nivel.set("Nivel \nIntermedio")
+                n = "I"
+
+            elif d[5] == "Nivel \nDifiícil":
+
+                N = 3
+                Nivel.set("Nivel \nDifiícil")
+                n = "D"
+
+            s = d[6]
+
+            if s == "Sí":
+
+                S = 1
+                Sonido.set("Sonido \nSí")
+
+            else:
+
+                S = 2
+                Sonido.set("Sonido \nNo")
+
+            rehacer = d[7][0]
+
+            deshacer = d[7][1]
+
+            puntero = d[7][2]
+
         # Valor que se le asignara a la siguiente variable y sus respectivas caracteristicas.
-        labelPredicciones = Label(self, width = 12,text = "Predicciones", font = ("Serif", 16)) 
-        labelPredicciones.place(x = 950, y = 15)
         
         self.p = StringVar()
         self.p.set("")
-        self.Labelp = Label(self, textvariable = self.p, font = ("Serif", 16))
-        self.Labelp.place(x = 980, y = 50)
+        self.Labelp = Label(self, textvariable = self.p, font = ("Serif", 10))
+        self.Labelp.place(x = 980, y = 20)
+
+        labelPredicciones = Label(self, width = 12,text = "Predicciones", font = ("Serif", 16)) 
+        labelPredicciones.place(x = 950, y = 0)
 
         global a
                 
@@ -516,6 +584,334 @@ class Jugar(tkinter.Tk):
         self.s98 = StringVar()
         self.s99 = StringVar()
 
+        if cargarpartida == True:
+            
+            # Algoritmo para identificar cuales valores se encuentran en las casillas respectivas.
+            for i in d[2]:
+
+                if i[0] == "11":
+
+                    self.s11.set(i[1])
+
+                elif i[0] == "21":
+
+                    self.s21.set(i[1])
+
+                elif i[0] == "31":
+
+                    self.s31.set(i[1])
+
+                elif i[0] == "41":
+
+                    self.s41.set(i[1])
+
+                elif i[0] == "51":
+
+                    self.s51.set(i[1])
+
+                elif i[0] == "61":
+
+                    self.s61.set(i[1])
+
+                elif i[0] == "71":
+
+                    self.s71.set(i[1])
+
+                elif i[0] == "81":
+
+                    self.s81.set(i[1])
+
+                elif i[0] == "91":
+
+                    self.s91.set(i[1])
+                    
+                elif i[0] == "12":
+
+                    self.s12.set(i[1])
+
+                elif i[0] == "22":
+
+                    self.s22.set(i[1])
+
+                elif i[0] == "32":
+
+                    self.s32.set(i[1])
+
+                elif i[0] == "42":
+
+                    self.s42.set(i[1])
+
+                elif i[0] == "52":
+
+                    self.s52.set(i[1])
+
+                elif i[0] == "62":
+
+                    self.s62.set(i[1])
+
+                elif i[0] == "72":
+
+                    self.s72.set(i[1])
+
+                elif i[0] == "82":
+
+                    self.s82.set(i[1])
+
+                elif i[0] == "92":
+
+                    self.s92.set(i[1])
+
+                elif i[0] == "13":
+
+                    self.s13.set(i[1])
+
+                elif i[0] == "23":
+
+                    self.s23.set(i[1])
+
+                elif i[0] == "33":
+
+                    self.s33.set(i[1])
+
+                elif i[0] == "43":
+
+                    self.s43.set(i[1])
+
+                elif i[0] == "53":
+
+                    self.s53.set(i[1])
+                    
+                elif i[0] == "63":
+
+                    self.s63.set(i[1])
+
+                elif i[0] == "73":
+
+                    self.s73.set(i[1])
+
+                elif i[0] == "83":
+                    
+                    self.s83.set(i[1])
+                    
+                elif i[0] == "93":
+
+                    self.s93.set(i[1])
+
+                elif i[0] == "14":
+
+                    self.s14.set(i[1])
+
+                elif i[0] == "24":
+
+                    self.s24.set(i[1])
+                    
+                elif i[0] == "34":
+
+                    self.s34.set(i[1])
+
+                elif i[0] == "44":
+
+                    self.s44.set(i[1])
+                elif i[0] == "54":
+
+                    self.s54.set(i[1])
+
+                elif i[0] == "64":
+
+                    self.s64.set(i[1])
+
+                elif i[0] == "74":
+
+                    self.s74.set(i[1])
+
+                elif i[0] == "84":
+
+                    self.s84.set(i[1])
+
+                elif i[0] == "94":
+
+                    self.s94.set(i[1])
+
+                elif i[0] == "15":
+
+                    self.s15.set(i[1])
+
+                elif i[0] == "25":
+
+                    self.s25.set(i[1])
+
+                elif i[0] == "35":
+
+                    self.s35.set(i[1])
+
+                elif i[0] == "45":
+
+                    self.s45.set(i[1])
+
+                elif i[0] == "55":
+
+                    self.s55.set(i[1])
+                    
+                elif i[0] == "65":
+
+                    self.s65.set(i[1])
+
+                elif i[0] == "75":
+
+                    self.s75.set(i[1])
+
+                elif i[0] == "85":
+
+                    self.s85.set(i[1])
+
+                elif i[0] == "95":
+
+                    self.s95.set(i[1])
+
+                elif i[0] == "16":
+
+                    self.s16.set(i[1])
+
+                elif i[0] == "26":
+
+                    self.s26.set(i[1])
+
+                elif i[0] == "36":
+
+                    self.s36.set(i[1])
+
+                elif i[0] == "46":
+
+                    self.s46.set(i[1])
+
+                elif i[0] == "56":
+
+                    self.s56.set(i[1])
+
+                elif i[0] == "66":
+
+                    self.s66.set(i[1])
+
+                elif i[0] == "76":
+
+                    self.s76.set(i[1])
+
+                elif i[0] == "86":
+                    
+                    self.s86.set(i[1])
+                    
+                elif i[0] == "96":
+
+                    self.s96.set(i[1])
+
+                elif i[0] == "17":
+
+                    self.s17.set(i[1])
+
+                elif i[0] == "27":
+
+                    self.s27.set(i[1])
+
+                elif i[0] == "37":
+
+                    self.s37.set(i[1])
+
+                elif i[0] == "47":
+
+                    self.s47.set(i[1])
+
+                elif i[0] == "57":
+
+                    self.s57.set(i[1])
+
+                elif i[0] == "67":
+                    
+                    self.s67.set(i[1])
+
+                elif i[0] == "77":
+
+                    self.s77.set(i[1])
+
+                elif i[0] == "87":
+
+                    self.s87.set(i[1])
+
+                elif i[0] == "97":
+                    
+                    self.s97.set(i[1])
+                    
+                elif i[0] == "18":
+
+                    self.s18.set(i[1])
+
+                elif i[0] == "28":
+
+                    self.s28.set(i[1])
+
+                elif i[0] == "38":
+
+                    self.s38.set(i[1])
+
+                elif i[0] == "48":
+
+                    self.s48.set(i[1])
+
+                elif i[0] == "58":
+
+                    self.s58.set(i[1])
+
+                elif i[0] == "68":
+
+                    self.s68.set(i[1])
+                    
+                elif i[0] == "78":
+
+                    self.s78.set(i[1])
+
+                elif i[0] == "88":
+
+                    self.s88.set(i[1])
+
+                elif i[0] == "98":
+
+                    self.s98.set(i[1])
+
+                elif i[0] == "19":
+
+                    self.s19.set(i[1])
+
+                elif i[0] == "29":
+
+                    self.s29.set(i[1])
+
+                elif i[0] == "39":
+
+                    self.s39.set(i[1])
+
+                elif i[0] == "49":
+
+                    self.s49.set(i[1])
+
+                elif i[0] == "59":
+
+                    self.s59.set(i[1])
+
+                elif i[0] == "69":
+
+                    self.s69.set(i[1])
+
+                elif i[0] == "79":
+
+                    self.s79.set(i[1])
+
+                elif i[0] == "89":
+
+                    self.s89.set(i[1])
+                    
+                elif i[0] == "99":
+                    
+                    self.s99.set(i[1])
+                    
         """
 
         Solucion 6x6 Facil
@@ -576,7 +972,7 @@ class Jugar(tkinter.Tk):
                  [0,self.s91,self.s92,self.s93,self.s94,self.s95,self.s96,self.s97,self.s98,self.s99]]
 
         # Lista de los colores que se pueden tomar para asignarselos a los cuadros de texto como fondo.
-        c = ["salmon","yellow","green","brown","light blue","sienna3", "thistle2", "gray", "pink", "magenta", "medium purple", "khaki2", "aqua", "rosybrown", "tomato", "peru", "cornsilk2","goldenrod","slateblue", "maroon1", "cyan", "green3", "purple2", "gold3", "dodger blue", "light slate gray", "orange2", "brown3", "DarkOliveGreen3", "bisque2"]
+        c = ["salmon","yellow","green","brown","light blue","cyan4", "thistle2", "gray", "pink", "magenta", "medium purple", "khaki2", "aqua", "rosybrown", "tomato", "peru", "cornsilk2","olive drab","slateblue", "maroon1", "DarkOrange1", "green3", "purple2", "gold3", "dodger blue", "light slate gray", "orange2", "brown3", "DarkOliveGreen3", "bisque2", "salmon1", "lemon chiffon", "dark sea green", "medium orchid", "DarkSlateGray2", "chocolate2", "magenta3", "gold", "SlateBlue2", "wheat3", "brown3", "SpringGreen2", "HotPink2", "coral3", "deep sky blue", "OrangeRed2", "VioletRed3", "steel blue", "yellow3", "LightBlue3"]
 
         # Algoritmo para colocar los cuadros de texto segun la posicion de la cuadricula crada por el grid.
         for e in range(0,len(colores)):
@@ -596,7 +992,7 @@ class Jugar(tkinter.Tk):
                 
             c = c[1:]
 
-        c = ["salmon","yellow","green","brown","light blue","sienna3", "thistle2", "gray", "pink", "magenta", "medium purple", "khaki2", "aqua", "rosybrown", "tomato", "peru", "cornsilk2","goldenrod","slateblue", "maroon1", "cyan", "green3", "purple2", "gold3", "dodger blue", "light slate gray", "orange2", "brown3", "DarkOliveGreen3", "bisque2"]
+        c = ["salmon","yellow","green","brown","light blue","cyan4", "thistle2", "gray", "pink", "magenta", "medium purple", "khaki2", "aqua", "rosybrown", "tomato", "peru", "cornsilk2","olive drab","slateblue", "maroon1", "DarkOrange1", "green3", "purple2", "gold3", "dodger blue", "light slate gray", "orange2", "brown3", "DarkOliveGreen3", "bisque2", "salmon1", "lemon chiffon", "dark sea green", "medium orchid", "DarkSlateGray2", "chocolate2", "magenta3", "gold", "SlateBlue2", "wheat3", "brown3", "SpringGreen2", "HotPink2", "coral3", "deep sky blue", "OrangeRed2", "VioletRed3", "steel blue", "yellow3", "LightBlue3"]
 
         cont = 0
 
@@ -639,39 +1035,11 @@ class Jugar(tkinter.Tk):
         self.buttonPredicciones = Button(self, text = "Predicciones", width = 10, activebackground = "#4285f4",command = self.Predicciones, fg = "White", bg = "#4285f4", font = ("Comic Sans Ms", 15))
         self.buttonPredicciones.place(x = 755, y = 115)
 
+        self.buttonGuardar = Button(self, text = "Guardar \n Juego", width = 8, activebackground = "#4285f4",command = self.Guardar, fg = "#4285f4", bg = "White", font = ("Comic Sans Ms", 15))
+        self.buttonGuardar.place(x = 593, y = 700) 
 
-
-
-
-
-
-
-
-
-
-
-
-
-        self.buttonGuardar = Button(self, text = "Guardar \n Juego", width = 10, activebackground = "#4285f4",command = self.Guardar, fg = "White", bg = "#4285f4", font = ("Comic Sans Ms", 15))
-        self.buttonGuardar.place(x = 955, y = 135)
-
-        self.buttonCargar = Button(self, text = "Cargar \n Juego", width = 10, activebackground = "#4285f4",command = self.Cargar, fg = "White", bg = "#4285f4", font = ("Comic Sans Ms", 15))
-        self.buttonCargar.place(x = 955, y = 335)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
+        self.buttonCargar = Button(self, text = "Cargar \n Juego", width = 8, activebackground = "#4285f4",command = self.Cargar, fg = "White", bg = "#4285f4", font = ("Comic Sans Ms", 15))
+        self.buttonCargar.place(x = 715, y = 700)  
 
         self.buttonDeshacer = Button(self, text = "Deshacer", width = 10, activebackground = "#4285f4",command = self.Deshacer, fg = "#4285f4", bg = "White", font = ("Comic Sans Ms", 15))
         self.buttonDeshacer.place(x = 813, y = 515)
@@ -720,7 +1088,7 @@ class Jugar(tkinter.Tk):
 
         # Condicion que determinara si el reloj aparecera o no segun lo solicitado por el usuario.
         try:
-        
+    
             if R == 1:
                 
                 # Etiquetas que apareceran en la ventana respectiva con sus caracteristicas.
@@ -741,17 +1109,32 @@ class Jugar(tkinter.Tk):
 
                 # Valores que se les asignaran a las siguientes variables junto con sus características.
                 self.TiempoHoras = IntVar()
-                self.TiempoHoras.set(0)
+                
+                if cargarpartida == False:
+                    self.TiempoHoras.set(0)
+                else:
+                    self.TiempoHoras.set(d[3][0])
+                    
                 self.labelTimepoHorasActivo = Label(self, textvariable = self.TiempoHoras, font = ("Serif", 15 ))
                 self.labelTimepoHorasActivo.place(x = 300, y = 60)
-
+                
                 self.TiempoMinutos = IntVar()
-                self.TiempoMinutos.set(0)
+
+                if cargarpartida == False:
+                    self.TiempoMinutos.set(0)
+                else:
+                    self.TiempoMinutos.set(d[3][1])
+
                 self.labelTimepoMinutosActivo = Label(self, textvariable = self.TiempoMinutos, font = ("Serif", 15 ))
                 self.labelTimepoMinutosActivo.place(x = 475, y = 60)
 
                 self.TiempoSegundos = IntVar()
-                self.TiempoSegundos.set(0)
+
+                if cargarpartida == False:
+                    self.TiempoSegundos.set(0)
+                else:
+                    self.TiempoSegundos.set(d[3][2])
+
                 self.labelTimepoSegundosActivo = Label(self, textvariable = self.TiempoSegundos, font = ("Serif", 15 ))
                 self.labelTimepoSegundosActivo.place(x = 640, y = 60)
 
@@ -759,17 +1142,29 @@ class Jugar(tkinter.Tk):
 
                 # Valores que se les asignaran a las siguientes variables junto con sus características.
                 self.TiempoHoras = IntVar()
-                self.TiempoHoras.set(0)
+                
+                if cargarpartida == False:
+                    self.TiempoHoras.set(0)
+                else:
+                    self.TiempoHoras.set(d[3][0])
                 self.labelTimepoHorasActivo = Label(self, textvariable = self.TiempoHoras, font = ("Serif", 15 ))
                 self.labelTimepoHorasActivo.place(x = 300, y = 2000)
 
                 self.TiempoMinutos = IntVar()
-                self.TiempoMinutos.set(0)
+                
+                if cargarpartida == False:
+                    self.TiempoMinutos.set(0)
+                else:
+                    self.TiempoMinutos.set(d[3][1])
                 self.labelTimepoMinutosActivo = Label(self, textvariable = self.TiempoMinutos, font = ("Serif", 15 ))
                 self.labelTimepoMinutosActivo.place(x = 475, y = 2000)
 
                 self.TiempoSegundos = IntVar()
-                self.TiempoSegundos.set(0)
+                
+                if cargarpartida == False:
+                    self.TiempoSegundos.set(0)
+                else:
+                    self.TiempoSegundos.set(d[3][2])
                 self.labelTimepoSegundosActivo = Label(self, textvariable = self.TiempoSegundos, font = ("Serif", 15 ))
                 self.labelTimepoSegundosActivo.place(x = 640, y = 2000)
 
@@ -793,17 +1188,26 @@ class Jugar(tkinter.Tk):
 
                 # Valores que se les asignaran a las siguientes variables junto con sus características.
                 self.TiempoHoras = IntVar()
-                self.TiempoHoras.set(Horas)
+                if cargarpartida == False:
+                    self.TiempoHoras.set(Horas)
+                else:
+                    self.TiempoHoras.set(d[3][0])
                 self.labelTimepoHorasActivo = Label(self, textvariable = self.TiempoHoras, font = ("Serif", 15 ))
                 self.labelTimepoHorasActivo.place(x = 300, y = 60)
 
                 self.TiempoMinutos = IntVar()
-                self.TiempoMinutos.set(Minutos)
+                if cargarpartida == False:
+                    self.TiempoMinutos.set(Minutos)
+                else:
+                    self.TiempoMinutos.set(d[3][1])
                 self.labelTimepoMinutosActivo = Label(self, textvariable = self.TiempoMinutos, font = ("Serif", 15 ))
                 self.labelTimepoMinutosActivo.place(x = 475, y = 60)
 
                 self.TiempoSegundos = IntVar()
-                self.TiempoSegundos.set(Segundos)
+                if cargarpartida == False:
+                    self.TiempoSegundos.set(Segundos)
+                else:
+                    self.TiempoSegundos.set(d[3][2])
                 self.labelTimepoSegundosActivo = Label(self, textvariable = self.TiempoSegundos, font = ("Serif", 15 ))
                 self.labelTimepoSegundosActivo.place(x = 640, y = 60)
 
@@ -3379,11 +3783,13 @@ class Jugar(tkinter.Tk):
                     espacio = True
 
                 # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista3) == True:
 
                     messagebox.showinfo("Error", "Espacios en blanco en la fila 3.", icon = "warning")
                     espacio = True
 
                 # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista4) == True:
 
                     messagebox.showinfo("Error", "Espacios en blanco en la fila 4.", icon = "warning")
                     espacio = True
@@ -3997,11 +4403,13 @@ class Jugar(tkinter.Tk):
                     espacio = True
 
                 # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista3) == True:
 
                     messagebox.showinfo("Error", "Espacios en blanco en la fila 3.", icon = "warning")
                     espacio = True
 
                 # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista4) == True:
 
                     messagebox.showinfo("Error", "Espacios en blanco en la fila 4.", icon = "warning")
                     espacio = True
@@ -4197,7 +4605,7 @@ class Jugar(tkinter.Tk):
                     while lista13 != []:
 
                         e = lista13[0]
-                        lista12.remove(e)
+                        lista13.remove(e)
 
                         if (str(e) in lista13) == True:
 
@@ -4236,7 +4644,7 @@ class Jugar(tkinter.Tk):
                     while lista16 != []:
 
                         e = lista16[0]
-                        lista15.remove(e)
+                        lista16.remove(e)
 
                         if (str(e) in lista16) == True:
 
@@ -4748,11 +5156,13 @@ class Jugar(tkinter.Tk):
                     espacio = True
 
                 # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista3) == True:
 
                     messagebox.showinfo("Error", "Espacios en blanco en la fila 3.", icon = "warning")
                     espacio = True
 
                 # Condicion que determina si se hna rellenado los cuadros de texto especificos o no.
+                if ("" in lista4) == True:
 
                     messagebox.showinfo("Error", "Espacios en blanco en la fila 4.", icon = "warning")
                     espacio = True
@@ -5450,6 +5860,21 @@ class Jugar(tkinter.Tk):
 
                     break
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+
     # Funcion del boton asignado.
     def Otro(self):
         opcion1 = messagebox.askquestion("Otro juego", "¿Está seguro de empezar otro juego?", icon = "warning")
@@ -5458,35 +5883,6 @@ class Jugar(tkinter.Tk):
             self.destroy()
             # Se abrira la nueva ventana solicitada.
             Jugar().mainloop()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     # Funcion del boton asignado.
     def Guardar(self):
@@ -5501,444 +5897,35 @@ class Jugar(tkinter.Tk):
 
         Activo = False
 
-        s = Sonido.get()
-        s = s[-2:]
+        # Si no se ha digitado el nombre del jugador, aparecera el siguiente aviso.
+        if Jugador == "":
 
-        lista = [Jugador,linea,textboxes,[self.TiempoHoras.get(),self.TiempoMinutos.get(),self.TiempoSegundos.get()],R,Nivel.get(),s,[rehacer,deshacer,puntero]]
+            messagebox.showinfo("Error", "Por favor introduzca un nombre.", icon = "warning")
+            
+        else:
 
-        print(lista)
+            s = Sonido.get()
+            s = s[-2:]
 
-        jugada = open("kenken_juegoactual.dat","w")
+            lista = [Jugador,linea,textboxes,[self.TiempoHoras.get(),self.TiempoMinutos.get(),self.TiempoSegundos.get()],R,Nivel.get(),s,[rehacer,deshacer,puntero]]
 
-        jugada.write(str(lista))
+            jugada = open("kenken_juegoactual.dat","w")
 
-        jugada.close
+            jugada.write(str(lista))
+
+            jugada.close
 
     # Funcion del boton asignado.
     def Cargar(self):
 
-        global R
-        global Nivel
-        global deshacer
-        global rehacer
-        global puntero
-        global linea
-        global dic
         global cargarpartida
 
         cargarpartida = True
-
-        jugada = open("kenken_juegoactual.dat","r")
-
-        lista = eval(jugada.read())
-
-        self.textBoxJugador.insert(0,lista[0])
-
-        dic = lista[1]
-
-        self.TiempoHoras.set(lista[3][0])
-        self.TiempoMinutos.set(lista[3][1])
-        self.TiempoSegundos.set(lista[3][2])
-
-        # Algoritmo para identificar cuales valores se encuentran en las casillas respectivas.
-        for i in lista[2]:
-
-            if i[0] == "11":
-
-                self.s11.set(i[1])
-
-            elif i[0] == "21":
-
-                self.s21.set(i[1])
-
-            elif i[0] == "31":
-
-                self.s31.set(i[1])
-
-            elif i[0] == "41":
-
-                self.s41.set(i[1])
-
-            elif i[0] == "51":
-
-                self.s51.set(i[1])
-
-            elif i[0] == "61":
-
-                self.s61.set(i[1])
-
-            elif i[0] == "71":
-
-                self.s71.set(i[1])
-
-            elif i[0] == "81":
-
-                self.s81.set(i[1])
-
-            elif i[0] == "91":
-
-                self.s91.set(i[1])
-                
-            elif i[0] == "12":
-
-                self.s12.set(i[1])
-
-            elif i[0] == "22":
-
-                self.s22.set(i[1])
-
-            elif i[0] == "32":
-
-                self.s32.set(i[1])
-
-            elif i[0] == "42":
-
-                self.s42.set(i[1])
-
-            elif i[0] == "52":
-
-                self.s52.set(i[1])
-
-            elif i[0] == "62":
-
-                self.s62.set(i[1])
-
-            elif i[0] == "72":
-
-                self.s72.set(i[1])
-
-            elif i[0] == "82":
-
-                self.s82.set(i[1])
-
-            elif i[0] == "92":
-
-                self.s92.set(i[1])
-
-            elif i[0] == "13":
-
-                self.s13.set(i[1])
-
-            elif i[0] == "23":
-
-                self.s23.set(i[1])
-
-            elif i[0] == "33":
-
-                self.s33.set(i[1])
-
-            elif i[0] == "43":
-
-                self.s43.set(i[1])
-
-            elif i[0] == "53":
-
-                self.s53.set(i[1])
-                
-            elif i[0] == "63":
-
-                self.s63.set(i[1])
-
-            elif i[0] == "73":
-
-                self.s73.set(i[1])
-
-            elif i[0] == "83":
-                
-                self.s83.set(i[1])
-                
-            elif i[0] == "93":
-
-                self.s93.set(i[1])
-
-            elif i[0] == "14":
-
-                self.s14.set(i[1])
-
-            elif i[0] == "24":
-
-                self.s24.set(i[1])
-                
-            elif i[0] == "34":
-
-                self.s34.set(i[1])
-
-            elif i[0] == "44":
-
-                self.s44.set(i[1])
-            elif i[0] == "54":
-
-                self.s54.set(i[1])
-
-            elif i[0] == "64":
-
-                self.s64.set(i[1])
-
-            elif i[0] == "74":
-
-                self.s74.set(i[1])
-
-            elif i[0] == "84":
-
-                self.s84.set(i[1])
-
-            elif i[0] == "94":
-
-                self.s94.set(i[1])
-
-            elif i[0] == "15":
-
-                self.s15.set(i[1])
-
-            elif i[0] == "25":
-
-                self.s25.set(i[1])
-
-            elif i[0] == "35":
-
-                self.s35.set(i[1])
-
-            elif i[0] == "45":
-
-                self.s45.set(i[1])
-
-            elif i[0] == "55":
-
-                self.s55.set(i[1])
-                
-            elif i[0] == "65":
-
-                self.s65.set(i[1])
-
-            elif i[0] == "75":
-
-                self.s75.set(i[1])
-
-            elif i[0] == "85":
-
-                self.s85.set(i[1])
-
-            elif i[0] == "95":
-
-                self.s95.set(i[1])
-
-            elif i[0] == "16":
-
-                self.s16.set(i[1])
-
-            elif i[0] == "26":
-
-                self.s26.set(i[1])
-
-            elif i[0] == "36":
-
-                self.s36.set(i[1])
-
-            elif i[0] == "46":
-
-                self.s46.set(i[1])
-
-            elif i[0] == "56":
-
-                self.s56.set(i[1])
-
-            elif i[0] == "66":
-
-                self.s66.set(i[1])
-
-            elif i[0] == "76":
-
-                self.s76.set(i[1])
-
-            elif i[0] == "86":
-                
-                self.s86.set(i[1])
-                
-            elif i[0] == "96":
-
-                self.s96.set(i[1])
-
-            elif i[0] == "17":
-
-                self.s17.set(i[1])
-
-            elif i[0] == "27":
-
-                self.s27.set(i[1])
-
-            elif i[0] == "37":
-
-                self.s37.set(i[1])
-
-            elif i[0] == "47":
-
-                self.s47.set(i[1])
-
-            elif i[0] == "57":
-
-                self.s57.set(i[1])
-
-            elif i[0] == "67":
-                
-                self.s67.set(i[1])
-
-            elif i[0] == "77":
-
-                self.s77.set(i[1])
-
-            elif i[0] == "87":
-
-                self.s87.set(i[1])
-
-            elif i[0] == "97":
-                
-                self.s97.set(i[1])
-                
-            elif i[0] == "18":
-
-                self.s18.set(i[1])
-
-            elif i[0] == "28":
-
-                self.s28.set(i[1])
-
-            elif i[0] == "38":
-
-                self.s38.set(i[1])
-
-            elif i[0] == "48":
-
-                self.s48.set(i[1])
-
-            elif i[0] == "58":
-
-                self.s58.set(i[1])
-
-            elif i[0] == "68":
-
-                self.s68.set(i[1])
-                
-            elif i[0] == "78":
-
-                self.s78.set(i[1])
-
-            elif i[0] == "88":
-
-                self.s88.set(i[1])
-
-            elif i[0] == "98":
-
-                self.s98.set(i[1])
-
-            elif i[0] == "19":
-
-                self.s19.set(i[1])
-
-            elif i[0] == "29":
-
-                self.s29.set(i[1])
-
-            elif i[0] == "39":
-
-                self.s39.set(i[1])
-
-            elif i[0] == "49":
-
-                self.s49.set(i[1])
-
-            elif i[0] == "59":
-
-                self.s59.set(i[1])
-
-            elif i[0] == "69":
-
-                self.s69.set(i[1])
-
-            elif i[0] == "79":
-
-                self.s79.set(i[1])
-
-            elif i[0] == "89":
-
-                self.s89.set(i[1])
-                
-            elif i[0] == "99":
-                
-                self.s99.set(i[1])            
-
-        R = lista[4]
-
-        if R == "1":
-
-            R = 1
-
-        elif R == 3:
-
-            R = 1
-
-        else:
-
-            pass
-
-        if lista[5] == "Nivel \nFácil":
-
-            Nivel.set("Nivel \nFácil")
-
-        elif lista[5] == "Nivel \nIntermedio":
-
-            Nivel.set("Nivel \nIntermedio")
-
-        elif lista[5] == "Nivel \nDifiícil":
-
-            Nivel.set("Nivel \nDifiícil")
-
-        s = lista[6]
-
-        if s == "Sí":
-
-            Sonido.set("Sonido \nSí")
-
-        else:
-
-            Sonido.set("Sonido \nNo")
-
-        rehacer = lista[7][0]
-
-        deshacer = lista[7][1]
-
-        puntero = lista[7][2]
 
         # Se cerrara la ventana actual.
         self.destroy()
         # Se abrira la nueva ventana solicitada.
         Jugar().mainloop()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
 
     # Funcion del boton asignado.
     def Reiniciar(self):
@@ -6015,7 +6002,9 @@ class Jugar(tkinter.Tk):
         global listaTop
         global Activo
         global cargarpartida
+        global Jugador
 
+        Jugador = ""
         Activo = False
         cargarpartida = False
 
@@ -6030,7 +6019,11 @@ class Jugar(tkinter.Tk):
         opcion = messagebox.askquestion("Terminar Juego", "¿Está seguro de terminar juego?", icon = "warning")
         
         if opcion == "yes":
-            pygame.mixer.music.stop()
+            
+            if R == 1:
+                
+                pygame.mixer.music.stop()
+            
             Jugador = ""
             # Se cerrara la ventana actual.
             Jugar.destroy(self)
@@ -6070,10 +6063,12 @@ class Jugar(tkinter.Tk):
     def RegresarMenu(self):
 
         global cargarpartida
+        global Jugador
 
+        Jugador = ""
         cargarpartida = False
-
-        pygame.mixer.music.stop()
+        if R == 1:
+            pygame.mixer.music.stop()
         # Se cerrara la ventana actual.
         self.destroy()
         # Se abrira la nueva ventana solicitada.
@@ -6387,7 +6382,7 @@ class Configurar(tkinter.Tk):
         try:
             
             if (N == 1 or N == 2 or N == 3) and (S == 1 or S == 2) and (T == 1 or T == 2 or T == 3 or T == 4 or T == 5 or T == 6 or T == 7 or T == 8):
-
+                
                     if R == 1:
                         # Se cerrara la ventana actual.
                         self.destroy()
@@ -6405,7 +6400,7 @@ class Configurar(tkinter.Tk):
                         self.destroy()
                         # Se abrira la nueva ventana solicitada.
                         Timer().mainloop()
-                        
+                            
             else:
 
                 messagebox.showinfo("Aviso", "Debe de configurar el modo de juego que desea.", icon = "warning")
