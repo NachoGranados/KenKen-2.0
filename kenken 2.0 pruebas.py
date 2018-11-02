@@ -40,10 +40,17 @@ class menu(tkinter.Tk):
         menu.config(menu = menubar)
         
     def JugarMenu(menu):
-        # Se cerrara la ventana actual.
-        menu.destroy()
-        # Se abrira la nueva ventana solicitada.
-        Jugar().mainloop()
+
+        try:
+            
+            # Se cerrara la ventana actual.
+            menu.destroy()
+            # Se abrira la nueva ventana solicitada.
+            Jugar().mainloop()
+            
+        except:
+
+            pass
 
     def Configurar(menu):
         # Se cerrara la ventana actual.
@@ -376,9 +383,15 @@ class Jugar(tkinter.Tk):
 
                             listaD.append(letra)
 
-            except:
+            # Manejor de errores mediante la utilizacion del metodo try - except.
+            except NameError:
 
-                pass
+                messagebox.showinfo("Aviso", "Debe de configurar el modo de juego que desea.", icon = "warning")
+
+                # Se cerrara la ventana actual.
+                self.destroy()
+                # Se abrira la nueva ventana solicitada.
+                Configurar().mainloop()
 
             if T != 8:
 
