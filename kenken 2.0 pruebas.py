@@ -449,7 +449,7 @@ class Jugar(tkinter.Tk):
 
             cargarpartida = True
 
-            jugada = open("kenken_juegoactual.dat","r")
+            jugada = open("kenken_juegos.dat","r")
 
             d = eval(jugada.read())
 
@@ -957,10 +957,99 @@ class Jugar(tkinter.Tk):
                 elif i[0] == "99":
                     
                     self.s99.set(i[1])
-                    
+
+        """
+
+        Solucion 3x3 Dificil
+
+        3+
+
+        self.s11.set(1)
+        self.s12.set(2)
+        self.s13.set(3)
+
+        self.s21.set(2)
+        self.s22.set(3)
+        self.s23.set(1)
+
+        self.s31.set(3)
+        self.s32.set(1)
+        self.s33.set(2)
+        
+
+        """
+
+        """
+
+        Solucion 4x4 Dificil
+
+        7+
+
+        self.s11.set(3)
+        self.s12.set(4)
+        self.s13.set(2)
+        self.s14.set(1)
+
+        self.s21.set(4)
+        self.s22.set(1)
+        self.s23.set(3)
+        self.s24.set(2)
+
+        self.s31.set(1)
+        self.s32.set(2)
+        self.s33.set(4)
+        self.s34.set(3)
+
+        self.s41.set(2)
+        self.s42.set(3)
+        self.s43.set(1)
+        self.s44.set(4)
+
+        """
+
+        """
+
+        Solucion 5x5 Dificil
+
+        2/
+
+        self.s11.set(2)
+        self.s12.set(1)
+        self.s13.set(4)
+        self.s14.set(5)
+        self.s15.set(3)
+
+        self.s21.set(4)
+        self.s22.set(5)
+        self.s23.set(1)
+        self.s24.set(3)
+        self.s25.set(2)
+
+        self.s31.set(1)
+        self.s32.set(4)
+        self.s33.set(3)
+        self.s34.set(2)
+        self.s35.set(5)
+
+        self.s41.set(5)
+        self.s42.set(3)
+        self.s43.set(2)
+        self.s44.set(1)
+        self.s45.set(4)
+
+        self.s51.set(3)
+        self.s52.set(2)
+        self.s53.set(5)
+        self.s54.set(4)
+        self.s55.set(1)
+
+        """
+  
         """
 
         Solucion 6x6 Facil
+
+        15+
 
         self.s11.set(3)
         self.s21.set(1)
@@ -1003,6 +1092,248 @@ class Jugar(tkinter.Tk):
         self.s46.set(3)
         self.s56.set(1)
         self.s66.set(2)
+
+        """
+
+        """
+
+        Solucion 7x7 Dificil
+
+        3-
+
+        self.s11.set(7)
+        self.s12.set(2)
+        self.s13.set(5)
+        self.s14.set(3)
+        self.s15.set(4)
+        self.s16.set(6)
+        self.s17.set(1)
+
+        self.s21.set(4)
+        self.s22.set(6)
+        self.s23.set(1)
+        self.s24.set(5)
+        self.s25.set(2)
+        self.s26.set(3)
+        self.s27.set(7)
+
+        self.s31.set(3)
+        self.s32.set(5)
+        self.s33.set(6)
+        self.s34.set(2)
+        self.s35.set(1)
+        self.s36.set(7)
+        self.s37.set(4)
+
+        self.s41.set(6)
+        self.s42.set(7)
+        self.s43.set(4)
+        self.s44.set(1)
+        self.s45.set(5)
+        self.s46.set(2)
+        self.s47.set(3)
+
+        self.s51.set(1)
+        self.s52.set(3)
+        self.s53.set(2)
+        self.s54.set(4)
+        self.s55.set(7)
+        self.s56.set(5)
+        self.s57.set(6)
+
+        self.s61.set(5)
+        self.s62.set(4)
+        self.s63.set(7)
+        self.s64.set(6)
+        self.s65.set(3)
+        self.s66.set(1)
+        self.s67.set(2)
+
+        self.s71.set(2)
+        self.s72.set(1)
+        self.s73.set(3)
+        self.s74.set(7)
+        self.s75.set(6)
+        self.s76.set(4)
+        self.s77.set(5)
+
+        """
+
+        """
+
+        Solucion 8x8 Dificil
+
+        36x
+
+        self.s11.set(6)
+        self.s12.set(1)
+        self.s13.set(2)
+        self.s14.set(8)
+        self.s15.set(7)
+        self.s16.set(3)
+        self.s17.set(5)
+        self.s18.set(4)
+
+        self.s21.set(3)
+        self.s22.set(6)
+        self.s23.set(7)
+        self.s24.set(5)
+        self.s25.set(4)
+        self.s26.set(8)
+        self.s27.set(2)
+        self.s28.set(1)
+
+        self.s31.set(2)
+        self.s32.set(5)
+        self.s33.set(6)
+        self.s34.set(4)
+        self.s35.set(3)
+        self.s36.set(7)
+        self.s37.set(1)
+        self.s38.set(8)
+
+        self.s41.set(7)
+        self.s42.set(2)
+        self.s43.set(3)
+        self.s44.set(1)
+        self.s45.set(8)
+        self.s46.set(4)
+        self.s47.set(6)
+        self.s48.set(5)
+
+        self.s51.set(5)
+        self.s52.set(8)
+        self.s53.set(1)
+        self.s54.set(7)
+        self.s55.set(6)
+        self.s56.set(2)
+        self.s57.set(4)
+        self.s58.set(3)
+
+        self.s61.set(1)
+        self.s62.set(4)
+        self.s63.set(5)
+        self.s64.set(3)
+        self.s65.set(2)
+        self.s66.set(6)
+        self.s67.set(8)
+        self.s68.set(7)
+
+        self.s71.set(4)
+        self.s72.set(7)
+        self.s73.set(8)
+        self.s74.set(6)
+        self.s75.set(5)
+        self.s76.set(1)
+        self.s77.set(3)
+        self.s78.set(2)
+
+        self.s81.set(8)
+        self.s82.set(3)
+        self.s83.set(4)
+        self.s84.set(2)
+        self.s85.set(1)
+        self.s86.set(5)
+        self.s87.set(7)
+        self.s88.set(6)
+
+        """
+
+        """
+
+        Solucion 9x9 Dificil
+
+        6+
+
+        self.s11.set(2)
+        self.s12.set(7)
+        self.s13.set(9)
+        self.s14.set(6)
+        self.s15.set(1)
+        self.s16.set(8)
+        self.s17.set(5)
+        self.s18.set(4)
+        self.s19.set(3)
+
+        self.s21.set(4)
+        self.s22.set(9)
+        self.s23.set(2)
+        self.s24.set(8)
+        self.s25.set(3)
+        self.s26.set(1)
+        self.s27.set(7)
+        self.s28.set(6)
+        self.s29.set(5)
+
+        self.s31.set(3)
+        self.s32.set(8)
+        self.s33.set(1)
+        self.s34.set(7)
+        self.s35.set(2)
+        self.s36.set(9)
+        self.s37.set(6)
+        self.s38.set(5)
+        self.s39.set(4)
+
+        self.s41.set(6)
+        self.s42.set(2)
+        self.s43.set(4)
+        self.s44.set(1)
+        self.s45.set(5)
+        self.s46.set(3)
+        self.s47.set(9)
+        self.s48.set(8)
+        self.s49.set(7)
+
+        self.s51.set(9)
+        self.s52.set(5)
+        self.s53.set(7)
+        self.s54.set(4)
+        self.s55.set(8)
+        self.s56.set(6)
+        self.s57.set(3)
+        self.s58.set(2)
+        self.s59.set(1)
+
+        self.s61.set(5)
+        self.s62.set(1)
+        self.s63.set(3)
+        self.s64.set(9)
+        self.s65.set(4)
+        self.s66.set(2)
+        self.s67.set(8)
+        self.s68.set(7)
+        self.s69.set(6)
+
+        self.s71.set(1)
+        self.s72.set(6)
+        self.s73.set(8)
+        self.s74.set(5)
+        self.s75.set(9)
+        self.s76.set(7)
+        self.s77.set(4)
+        self.s78.set(3)
+        self.s79.set(2)
+
+        self.s81.set(7)
+        self.s82.set(3)
+        self.s83.set(5)
+        self.s84.set(2)
+        self.s85.set(6)
+        self.s86.set(4)
+        self.s87.set(1)
+        self.s88.set(9)
+        self.s89.set(8)
+
+        self.s91.set(8)
+        self.s92.set(4)
+        self.s93.set(6)
+        self.s94.set(3)
+        self.s95.set(7)
+        self.s96.set(5)
+        self.s97.set(2)
+        self.s98.set(1)
+        self.s99.set(9)
 
         """
 
@@ -5053,27 +5384,6 @@ class Jugar(tkinter.Tk):
 
                     break
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                
-
             if T == 7:
 
                 # Obtencion de todos los valores presentes en los cuadros de texto de la cuadricula.
@@ -5157,15 +5467,15 @@ class Jugar(tkinter.Tk):
                 t88 = self.s88.get()
                 t89 = self.s89.get()
 
-                t91 = self.s81.get()
-                t92 = self.s82.get()
-                t93 = self.s83.get()
-                t94 = self.s84.get()
-                t95 = self.s85.get()
-                t96 = self.s86.get()
-                t97 = self.s87.get()
-                t98 = self.s88.get()
-                t99 = self.s89.get()
+                t91 = self.s91.get()
+                t92 = self.s92.get()
+                t93 = self.s93.get()
+                t94 = self.s94.get()
+                t95 = self.s95.get()
+                t96 = self.s96.get()
+                t97 = self.s97.get()
+                t98 = self.s98.get()
+                t99 = self.s99.get()               
 
                 # Lista que contendra los valores ordenados por filas.
                 lista1 = [t11,t21,t31,t41,t51,t61,t71,t81,t91]
