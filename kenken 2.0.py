@@ -376,26 +376,24 @@ class Jugar(tkinter.Tk):
 
                         if N == 1:
 
-                            if (guia[-1] in listaAuxF) == False:
+                            if (guia[-1] in listaAuxF) == False and letra != "\n":
 
                                 listaF.append(letra)
                                 listaAuxF.append(guia[-1])
 
                         elif N == 2:
 
-                            if (guia[-1] in listaAuxI) == False:
+                            if (guia[-1] in listaAuxI) == False and letra != "\n":
 
                                 listaI.append(letra)
                                 listaAuxI.append(guia[-1])
 
                         elif N == 3:
 
-                            if (guia[-1] in listaAuxD) == False:
+                            if (guia[-1] in listaAuxD) == False and letra != "\n":
 
                                 listaD.append(letra)
                                 listaAuxD.append(guia[-1])
-                                
-                    print(listaF)
 
             # Manejor de errores mediante la utilizacion del metodo try - except.
             except NameError:
@@ -434,8 +432,6 @@ class Jugar(tkinter.Tk):
                     linea = listaD[ptr]
 
             else:
-
-                print(listaF)
 
                 if N == 1:
 
