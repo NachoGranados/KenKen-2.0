@@ -25,7 +25,7 @@ class menu(tkinter.Tk):
         # Esta sera la imagen que aparecera en la ventanas.
         ImagenFondoMenu = PhotoImage(file = "Black-and-white-anime-wolves-29-cool-hd-wallpaper.png")
         FondoMenu = Label(menu, image = ImagenFondoMenu)
-        FondoMenu.place(x = -2, y = -2) 
+        FondoMenu.place(x = -2, y = -2)
         
         # Estos seran todos los botones que apareceran en la ventana.
         menu.buttonJugar = Button(menu, text = "Jugar", activebackground = "#4285f4", fg = "white", bg = "#4285f4", font = ("Comic Sans Ms", 11), width = 20, heigh = 3, command = menu.JugarMenu)
@@ -42,7 +42,7 @@ class menu(tkinter.Tk):
         menu.config(menu = menubar)
         
     def JugarMenu(menu):
-
+        # Manejo de excepciones para evitar la caida del programa.
         try:
             
             # Se cerrara la ventana actual.
@@ -80,11 +80,14 @@ class menu(tkinter.Tk):
 #####################################################################################################################################################################################################################
 
 # Esta sera la ventana donde se encontrara la clase de Jugar.
+
+# Definici de variables globales.
 global Jugador
 global cargarpartida
 global d
 global ptr
 
+# Valor que se asignara a las variables globales.
 cargarpartida = False
 d = ""
 ptr = 0
@@ -129,6 +132,7 @@ class Jugar(tkinter.Tk):
         self.labelNivel = Label(self,textvariable = Nivel, width = 8, font = ("Serif", 17))
         self.labelNivel.place(x = 120, y = 20)
 
+        # Condicion que determina cual sera el valor de la variable N segun la opcion marcada por el usuario.
         if N == 1:
 
             Nivel.set("Nivel \nFácil")
@@ -152,6 +156,7 @@ class Jugar(tkinter.Tk):
         self.labelSonido = Label(self,textvariable = Sonido, width = 6, font = ("Serif", 17))
         self.labelSonido.place(x = 135, y = 115)
 
+        # Condicion que determina cual sera el valor de la variable S segun la opcion marcada por el usuario.
         if S == 1:
 
             Sonido.set("Sonido \nSí")
@@ -186,11 +191,13 @@ class Jugar(tkinter.Tk):
         global d
         global ptr
 
+        # Condicion que determina se se ha pulsado el boton de cargar partida o no.
         if cargarpartida == False:
 
             # Lectura del archivo que contiene las partidas.
             archivo = open("kenken_juegos.dat","r")
 
+            # Asignacion de valores a las siguientes variables.
             puntero = 0
 
             rehacer = []
@@ -207,7 +214,7 @@ class Jugar(tkinter.Tk):
             listaI = []
             listaD = []
 
-            # Algoritmo para poder extraer una partida aleatoria del archivo segun el nivel elegido.
+            # Algoritmo para poder extraer una partida de archivo segun la opcion de tamaño que haya elegido el usuario.
             try:
                 
                 if T == 1:
@@ -370,6 +377,7 @@ class Jugar(tkinter.Tk):
                     listaAuxI = []
                     listaAuxD = []
 
+                    # Algoritmo creado exclusivamente para la opcion del multitamaño
                     for letra in dic:
 
                         guia = letra[:2]
@@ -405,60 +413,34 @@ class Jugar(tkinter.Tk):
                 # Se abrira la nueva ventana solicitada.
                 Configurar().mainloop()
 
-            if T != 8:
+            # Algoritmo que servira para cambiar de partida cuando se presiones el boton de otro juego.
+            if N == 1:
 
-                if N == 1:
+                if ptr >= len(listaF):
 
-                    if ptr >= len(listaF):
+                    ptr = 0
 
-                        ptr = 0
+                linea = listaF[ptr]
 
-                    linea = listaF[ptr]
+            elif N == 2:
 
-                elif N == 2:
+                if ptr >= len(listaI):
 
-                    if ptr >= len(listaI):
+                    ptr = 0
 
-                        ptr = 0
+                linea = listaI[ptr]
 
-                    linea = listaI[ptr]
+            elif N == 3:
 
-                elif N == 3:
+                if ptr >= len(listaD):
 
-                    if ptr >= len(listaD):
+                    ptr = 0
 
-                        ptr = 0
-
-                    linea = listaD[ptr]
-
-            else:
-
-                if N == 1:
-
-                    if ptr >= len(listaF):
-
-                        ptr = 0
-
-                    linea = listaF[ptr]
-
-                elif N == 2:
-
-                    if ptr >= len(listaI):
-
-                        ptr = 0
-
-                    linea = listaI[ptr]
-
-                elif N == 3:
-
-                    if ptr >= len(listaD):
-
-                        ptr = 0
-
-                    linea = listaD[ptr]
+                linea = listaD[ptr]
 
         else:
-
+            
+            # Algoritmo necesario para asignar la configuraciones anteriores segun la partida guardada.
             cargarpartida = True
 
             jugada = open("kenken_juegos.dat","r")
@@ -520,7 +502,6 @@ class Jugar(tkinter.Tk):
             puntero = d[7][2]
 
         # Valor que se le asignara a la siguiente variable y sus respectivas caracteristicas.
-        
         self.p = StringVar()
         self.Labelp = Label(self, textvariable = self.p, font = ("Serif", 10))
         self.Labelp.place(x = 980, y = 20)
@@ -528,15 +509,11 @@ class Jugar(tkinter.Tk):
         labelPredicciones = Label(self, width = 12,text = "Predicciones", font = ("Serif", 16)) 
         labelPredicciones.place(x = 950, y = 0)
 
+        # Definicion de la siguiente variable global.
         global a
 
-        if T != 8:
-                
-            a = eval(linea[2:-1])
-
-        else:
-
-            a = eval(linea[2:-1])
+        # Asignacion de valores a las siguientes variables.
+        a = eval(linea[2:-1])
         
         nivel = linea[0]
 
@@ -641,9 +618,10 @@ class Jugar(tkinter.Tk):
         self.s98 = StringVar()
         self.s99 = StringVar()
 
+        # Condicion que determina se se ha pulsado el boton de cargar partida o no.
         if cargarpartida == True:
             
-            # Algoritmo para identificar cuales valores se encuentran en las casillas respectivas.
+            # Algoritmo para identificar cuales valores se deben asignar a las casillas respectivas.
             for i in d[2]:
 
                 if i[0] == "11":
@@ -968,7 +946,9 @@ class Jugar(tkinter.Tk):
                 elif i[0] == "99":
                     
                     self.s99.set(i[1])
-                    
+
+        # Soluciones de algunas partidas por cada tamaño de cuadricula.
+        
         """
 
         Solucion 3x3 Dificil
@@ -1721,9 +1701,11 @@ class Jugar(tkinter.Tk):
             puntero = puntero + 1
 
     def Predicciones(self):
-
+    
+        # Asignacion de la siguiente variable global.
         global tamaño
 
+        # Asignacion de valores a las siguientes variables.
         posicion = self.focus_get()
         Cuadro = posicion.winfo_name()
 
@@ -1732,6 +1714,7 @@ class Jugar(tkinter.Tk):
         
         lista = []
 
+        # Algoritmo que formamara una variables especifica necesaria para el siguiente algoritmo.
         for i in a:
 
             s = a[i][0]
@@ -1745,6 +1728,7 @@ class Jugar(tkinter.Tk):
 
         resultado = "\n"
 
+        # Algoritmo encargado de asignar las posibles combinaciones a un widget que se mostrara en pantalla dependiendo de la operaciones matematica solicitada.
         if op[1] == "+":
 
             if len(op[2]) == 2:
@@ -1823,13 +1807,15 @@ class Jugar(tkinter.Tk):
 
         self.p.set(resultado)
 
-    # Funcion que determinara la posicion del cursor para poder colocar el numero en dicho cuadro de texto.
+    # Funcion del boton asignado.
     def Deshacer(self):
 
+        # Definicion de variables globales.
         global deshacer
         global puntero
         global rehacer
 
+        # Condicion que determina si existen mas jugadas por deshacer o no.
         if puntero >= 0:
 
             puntero = puntero - 1
@@ -1838,6 +1824,7 @@ class Jugar(tkinter.Tk):
                 
                 messagebox.showinfo("Aviso", "No existen más jugadas.", icon = "warning")
 
+        # Algoritmo para deshacer las jugadas segun las casillas con las que el usuario ha interactuado.
         if puntero < len(deshacer):
 
             lista = deshacer[puntero]
@@ -2166,15 +2153,18 @@ class Jugar(tkinter.Tk):
 
                 self.s99.set(lista[1])
 
-    # Funcion que determinara la posicion del cursor para poder colocar el numero en dicho cuadro de texto.
+    # Funcion del boton asignado.
     def Rehacer(self):
 
+        # Definicion de variables globales.
         global rehacer
         global deshacer
         global puntero
 
+        # Manejo de error para evitar la caida del programa.
         try:
 
+            # Algoritmo que rehace las jugadas hechas por el usuario.
             puntero = puntero + 1
 
             if puntero >= 0:
@@ -2507,10 +2497,13 @@ class Jugar(tkinter.Tk):
 
         except IndexError:
 
+            # Determina si existen mas jugadas por rehacer o no.
             messagebox.showinfo("Aviso", "No existen más jugadas.", icon = "warning")
 
     # Funcion del boton asignado.
     def Validar(self):
+
+        # Existe un validar por cada tipo y tamaño de cuadricula.
 
         global Activo
 
@@ -6491,6 +6484,7 @@ class Jugar(tkinter.Tk):
 
                     messagebox.showinfo("Aviso", " Felicidades!!!\n Completaste el kenken.")
 
+                    # Algoritmo que añade el puntaje  al top 10 del jugador que haya ganado el juego.
                     h = str(self.TiempoHoras.get())
                     
                     m = str(self.TiempoMinutos.get())
@@ -6567,7 +6561,6 @@ class Jugar(tkinter.Tk):
         global rehacer
         global puntero
         
-
         Activo = False
 
         # Si no se ha digitado el nombre del jugador, aparecera el siguiente aviso.
@@ -6577,6 +6570,7 @@ class Jugar(tkinter.Tk):
             
         else:
 
+            # Algoritmo que guadara la partida con cada una de las configuraciones y jugadas que haya hecho el usuario.
             s = Sonido.get()
             s = s[-2:]
 
@@ -6694,6 +6688,7 @@ class Jugar(tkinter.Tk):
             # Se abrira la nueva ventana solicitada.
             menu().mainloop()
 
+    # Funcion del boton asignado.
     def Pausa(self):
         # Se definira esta variale como global para un buen procesamiento de la funcion.
         global Activo
@@ -6710,7 +6705,8 @@ class Jugar(tkinter.Tk):
     global Jugador
     
     Jugador = ""
-    
+
+    # Funcion del boton asignado.
     def GuardarNombre(self):
 
         global Jugador
@@ -6724,6 +6720,7 @@ class Jugar(tkinter.Tk):
             messagebox.showinfo("Error", "El nombre del jugador debe contener de 3 a 30 caracteres.", icon = "warning")
             self.textBoxJugador.delete(0,END)
 
+    # Funcion del boton asignado.
     def RegresarMenu(self):
 
         global cargarpartida
@@ -7507,6 +7504,8 @@ class Timer(tkinter.Tk):
 
 # Ventana Top 10
 
+# Esta sera la ventana del Top 10.
+
 class Top(tkinter.Tk):
     
     def __init__(self):
@@ -7519,7 +7518,7 @@ class Top(tkinter.Tk):
         self.geometry("350x380")
         self.resizable(width = False, height = False)
 
-        # Etiquetas que apareceran en la ventana
+        # Etiquetas que apareceran en la ventana.
         self.labelPosiciones = Label(self, text = "N°", fg =  "#4285f4", font = ("Serif", 16))
         self.labelPosiciones.place(x = 50, y = 5)
         
@@ -7562,6 +7561,7 @@ class Top(tkinter.Tk):
             
             mostrar = sorted(lista_top[2])
 
+        # Asignacion de valores a las siguientes variables.
         t = ""
         j = ""
         n = ""
@@ -7570,6 +7570,7 @@ class Top(tkinter.Tk):
         guiaN = []
         cont = 0
 
+        # Algoritmo que servira para formar el tiempo, el jugador y la posicion para poder asignarlos a un widget en pantalla.
         for i in mostrar:
 
             t = t + str(i[0][0:2]) + ":" + str(i[0][2:4])+ ":" + str(i[0][4:]) + "\n"
@@ -7586,6 +7587,7 @@ class Top(tkinter.Tk):
 
             guiaN.append(str(cont))
 
+        # Etiquetas que apareceran en la ventana.
         self.labelJugador = Label(self, text = j, font = ("Serif", 16))
         self.labelJugador.place(x = 100, y = 50)
 
@@ -7595,6 +7597,7 @@ class Top(tkinter.Tk):
         self.labelNumeros = Label(self, text = n, font = ("Serif", 16))
         self.labelNumeros.place(x = 50, y = 50)
 
+        # Botones que apareceran en la ventana.
         self.buttonPDF = Button(self, text = "PDF", activebackground = "#4285f4", fg = "white", bg = "#4285f4", command = self.Abrir, font = ("Serif", 20), width = 4)
         self.buttonPDF.place(x = 55, y = 310)
 
@@ -7607,6 +7610,7 @@ class Top(tkinter.Tk):
 
         y = 550
 
+        # Algoritmo que acomodara la posicion del jugador en el pdf.
         for i in guiaN:
 
             pdf.drawString(200,y,i)
@@ -7617,6 +7621,7 @@ class Top(tkinter.Tk):
 
         y = 550
 
+        # Algoritmo que acomodara el nombre del jugador en el pdf.
         for i in guiaJ:
 
             pdf.drawString(250,y,i)
@@ -7627,22 +7632,26 @@ class Top(tkinter.Tk):
 
         y = 550
 
+        # Algoritmo que acomodara el tiempo del jugador en el pdf.
         for i in guiaT:
 
             pdf.drawString(350,y,i)
 
             y = y - 50
 
+        # Se agregara una imagen al pdf como titulo.
         imagen = "coollogo_com-180021670.png"
         
         pdf.drawImage(imagen,140, 650)
 
         pdf.save()
 
+    # Funcion del boton asignado
     def Abrir(self):
 
         webbrowser.open_new(r"kenken_top10.pdf")
 
+    # Funcion del boton asignado.
     def Regresar(self):
 
         self.destroy()
