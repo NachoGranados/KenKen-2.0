@@ -7539,9 +7539,20 @@ class Top(tkinter.Tk):
 
         lista_top = eval(lista_top)
 
-        if len(lista_top) > 10:
+        if len(lista_top[0]) > 10:
 
-            lista_top = lista_top[:10]
+            lista_top[0] = sorted(lista_top[0])
+            lista_top[0] = lista_top[0][:10]
+
+        if len(lista_top[1]) > 10:
+
+            lista_top[1] = sorted(lista_top[1])
+            lista_top[1] = lista_top[1][:10]
+
+        if len(lista_top[2]) > 10:
+
+            lista_top[2] = sorted(lista_top[2])
+            lista_top[2] = lista_top[2][:10]
 
         if N == 1:
 
@@ -7554,7 +7565,7 @@ class Top(tkinter.Tk):
         elif N == 3:                     
             
             mostrar = sorted(lista_top[2])
-            
+
         t = ""
         j = ""
         n = ""
