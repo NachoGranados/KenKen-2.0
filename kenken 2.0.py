@@ -166,7 +166,6 @@ class Jugar(tkinter.Tk):
 
         # Variables globales
         global linea
-        global listaTop
         global listaF
         global listaI
         global listaD
@@ -191,8 +190,6 @@ class Jugar(tkinter.Tk):
             archivo = open("kenken_juegos.dat","r")
 
             puntero = 0
-
-            listaTop = []
 
             rehacer = []
 
@@ -367,21 +364,36 @@ class Jugar(tkinter.Tk):
 
                 elif T == 8:
 
+                    listaAuxF = []
+                    listaAuxI = []
+                    listaAuxD = []
+
                     for letra in dic:
 
                         guia = letra[:2]
-                            
-                        if guia[0] == "F":
 
-                            listaF.append(letra)
+                        if N == 1:
 
-                        elif guia[0] == "I":
+                            if (guia[-1] in listaAuxF) == False:
 
-                            listaI.append(letra)
+                                listaF.append(letra)
+                                listaAuxF.append(guia[-1])
 
-                        elif guia[0] == "D":
+                        elif N == 2:
 
-                            listaD.append(letra)
+                            if (guia[-1] in listaAuxI) == False:
+
+                                listaI.append(letra)
+                                listaAuxI.append(guia[-1])
+
+                        elif N == 3:
+
+                            if (guia[-1] in listaAuxD) == False:
+
+                                listaD.append(letra)
+                                listaAuxD.append(guia[-1])
+                                
+                    print(listaF)
 
             # Manejor de errores mediante la utilizacion del metodo try - except.
             except NameError:
@@ -421,6 +433,8 @@ class Jugar(tkinter.Tk):
 
             else:
 
+                print(listaF)
+
                 if N == 1:
 
                     if ptr >= len(listaF):
@@ -449,7 +463,7 @@ class Jugar(tkinter.Tk):
 
             cargarpartida = True
 
-            jugada = open("kenken_juegoactual.dat","r")
+            jugada = open("kenken_juegos.dat","r")
 
             d = eval(jugada.read())
 
@@ -510,7 +524,6 @@ class Jugar(tkinter.Tk):
         # Valor que se le asignara a la siguiente variable y sus respectivas caracteristicas.
         
         self.p = StringVar()
-        self.p.set("")
         self.Labelp = Label(self, textvariable = self.p, font = ("Serif", 10))
         self.Labelp.place(x = 980, y = 20)
 
@@ -960,7 +973,95 @@ class Jugar(tkinter.Tk):
                     
         """
 
+        Solucion 3x3 Dificil
+
+        3+
+
+        self.s11.set(1)
+        self.s12.set(2)
+        self.s13.set(3)
+
+        self.s21.set(2)
+        self.s22.set(3)
+        self.s23.set(1)
+
+        self.s31.set(3)
+        self.s32.set(1)
+        self.s33.set(2)
+
+        """
+
+        """
+
+        Solucion 4x4 Dificil
+
+        7+
+
+        self.s11.set(3)
+        self.s12.set(4)
+        self.s13.set(2)
+        self.s14.set(1)
+
+        self.s21.set(4)
+        self.s22.set(1)
+        self.s23.set(3)
+        self.s24.set(2)
+
+        self.s31.set(1)
+        self.s32.set(2)
+        self.s33.set(4)
+        self.s34.set(3)
+
+        self.s41.set(2)
+        self.s42.set(3)
+        self.s43.set(1)
+        self.s44.set(4)
+        
+        """
+
+        """
+
+        Solucion 5x5 Dificil
+
+        2/
+
+        self.s11.set(2)
+        self.s12.set(1)
+        self.s13.set(4)
+        self.s14.set(5)
+        self.s15.set(3)
+
+        self.s21.set(4)
+        self.s22.set(5)
+        self.s23.set(1)
+        self.s24.set(3)
+        self.s25.set(2)
+
+        self.s31.set(1)
+        self.s32.set(4)
+        self.s33.set(3)
+        self.s34.set(2)
+        self.s35.set(5)
+
+        self.s41.set(5)
+        self.s42.set(3)
+        self.s43.set(2)
+        self.s44.set(1)
+        self.s45.set(4)
+
+        self.s51.set(3)
+        self.s52.set(2)
+        self.s53.set(5)
+        self.s54.set(4)
+        self.s55.set(1)
+
+        """
+  
+        """
+
         Solucion 6x6 Facil
+
+        15+
 
         self.s11.set(3)
         self.s21.set(1)
@@ -1003,6 +1104,248 @@ class Jugar(tkinter.Tk):
         self.s46.set(3)
         self.s56.set(1)
         self.s66.set(2)
+
+        """
+
+        """
+
+        Solucion 7x7 Dificil
+
+        3-
+
+        self.s11.set(7)
+        self.s12.set(2)
+        self.s13.set(5)
+        self.s14.set(3)
+        self.s15.set(4)
+        self.s16.set(6)
+        self.s17.set(1)
+
+        self.s21.set(4)
+        self.s22.set(6)
+        self.s23.set(1)
+        self.s24.set(5)
+        self.s25.set(2)
+        self.s26.set(3)
+        self.s27.set(7)
+
+        self.s31.set(3)
+        self.s32.set(5)
+        self.s33.set(6)
+        self.s34.set(2)
+        self.s35.set(1)
+        self.s36.set(7)
+        self.s37.set(4)
+
+        self.s41.set(6)
+        self.s42.set(7)
+        self.s43.set(4)
+        self.s44.set(1)
+        self.s45.set(5)
+        self.s46.set(2)
+        self.s47.set(3)
+
+        self.s51.set(1)
+        self.s52.set(3)
+        self.s53.set(2)
+        self.s54.set(4)
+        self.s55.set(7)
+        self.s56.set(5)
+        self.s57.set(6)
+
+        self.s61.set(5)
+        self.s62.set(4)
+        self.s63.set(7)
+        self.s64.set(6)
+        self.s65.set(3)
+        self.s66.set(1)
+        self.s67.set(2)
+
+        self.s71.set(2)
+        self.s72.set(1)
+        self.s73.set(3)
+        self.s74.set(7)
+        self.s75.set(6)
+        self.s76.set(4)
+        self.s77.set(5)
+
+        """
+
+        """
+
+        Solucion 8x8 Dificil
+
+        36x
+
+        self.s11.set(6)
+        self.s12.set(1)
+        self.s13.set(2)
+        self.s14.set(8)
+        self.s15.set(7)
+        self.s16.set(3)
+        self.s17.set(5)
+        self.s18.set(4)
+
+        self.s21.set(3)
+        self.s22.set(6)
+        self.s23.set(7)
+        self.s24.set(5)
+        self.s25.set(4)
+        self.s26.set(8)
+        self.s27.set(2)
+        self.s28.set(1)
+
+        self.s31.set(2)
+        self.s32.set(5)
+        self.s33.set(6)
+        self.s34.set(4)
+        self.s35.set(3)
+        self.s36.set(7)
+        self.s37.set(1)
+        self.s38.set(8)
+
+        self.s41.set(7)
+        self.s42.set(2)
+        self.s43.set(3)
+        self.s44.set(1)
+        self.s45.set(8)
+        self.s46.set(4)
+        self.s47.set(6)
+        self.s48.set(5)
+
+        self.s51.set(5)
+        self.s52.set(8)
+        self.s53.set(1)
+        self.s54.set(7)
+        self.s55.set(6)
+        self.s56.set(2)
+        self.s57.set(4)
+        self.s58.set(3)
+
+        self.s61.set(1)
+        self.s62.set(4)
+        self.s63.set(5)
+        self.s64.set(3)
+        self.s65.set(2)
+        self.s66.set(6)
+        self.s67.set(8)
+        self.s68.set(7)
+
+        self.s71.set(4)
+        self.s72.set(7)
+        self.s73.set(8)
+        self.s74.set(6)
+        self.s75.set(5)
+        self.s76.set(1)
+        self.s77.set(3)
+        self.s78.set(2)
+
+        self.s81.set(8)
+        self.s82.set(3)
+        self.s83.set(4)
+        self.s84.set(2)
+        self.s85.set(1)
+        self.s86.set(5)
+        self.s87.set(7)
+        self.s88.set(6)
+
+        """
+
+        """
+
+        Solucion 9x9 Dificil
+
+        6+
+
+        self.s11.set(2)
+        self.s12.set(7)
+        self.s13.set(9)
+        self.s14.set(6)
+        self.s15.set(1)
+        self.s16.set(8)
+        self.s17.set(5)
+        self.s18.set(4)
+        self.s19.set(3)
+
+        self.s21.set(4)
+        self.s22.set(9)
+        self.s23.set(2)
+        self.s24.set(8)
+        self.s25.set(3)
+        self.s26.set(1)
+        self.s27.set(7)
+        self.s28.set(6)
+        self.s29.set(5)
+
+        self.s31.set(3)
+        self.s32.set(8)
+        self.s33.set(1)
+        self.s34.set(7)
+        self.s35.set(2)
+        self.s36.set(9)
+        self.s37.set(6)
+        self.s38.set(5)
+        self.s39.set(4)
+
+        self.s41.set(6)
+        self.s42.set(2)
+        self.s43.set(4)
+        self.s44.set(1)
+        self.s45.set(5)
+        self.s46.set(3)
+        self.s47.set(9)
+        self.s48.set(8)
+        self.s49.set(7)
+
+        self.s51.set(9)
+        self.s52.set(5)
+        self.s53.set(7)
+        self.s54.set(4)
+        self.s55.set(8)
+        self.s56.set(6)
+        self.s57.set(3)
+        self.s58.set(2)
+        self.s59.set(1)
+
+        self.s61.set(5)
+        self.s62.set(1)
+        self.s63.set(3)
+        self.s64.set(9)
+        self.s65.set(4)
+        self.s66.set(2)
+        self.s67.set(8)
+        self.s68.set(7)
+        self.s69.set(6)
+
+        self.s71.set(1)
+        self.s72.set(6)
+        self.s73.set(8)
+        self.s74.set(5)
+        self.s75.set(9)
+        self.s76.set(7)
+        self.s77.set(4)
+        self.s78.set(3)
+        self.s79.set(2)
+
+        self.s81.set(7)
+        self.s82.set(3)
+        self.s83.set(5)
+        self.s84.set(2)
+        self.s85.set(6)
+        self.s86.set(4)
+        self.s87.set(1)
+        self.s88.set(9)
+        self.s89.set(8)
+
+        self.s91.set(8)
+        self.s92.set(4)
+        self.s93.set(6)
+        self.s94.set(3)
+        self.s95.set(7)
+        self.s96.set(5)
+        self.s97.set(2)
+        self.s98.set(1)
+        self.s99.set(9)
 
         """
 
@@ -2171,9 +2514,12 @@ class Jugar(tkinter.Tk):
     # Funcion del boton asignado.
     def Validar(self):
 
+        global Activo
+
         # Se le asignara un valor especifico a las siguientes variables.
         guia = 1
         espacio = False
+        Activo = False
 
         # Algoritmo que determinara si el usuario no ha rellenado toda la cuadricula.
         while guia == 1:
@@ -2436,6 +2782,50 @@ class Jugar(tkinter.Tk):
                         pygame.mixer.music.play(1)
 
                     messagebox.showinfo("Aviso", " Felicidades!!!\n Completaste el kenken.")
+
+                    h = str(self.TiempoHoras.get())
+                    
+                    m = str(self.TiempoMinutos.get())
+                    
+                    s = str(self.TiempoSegundos.get())
+
+                    if len(h) == 1:
+
+                        h = "0" + h
+
+                    if len(m) == 1:
+
+                        m = "0" + m
+
+                    if len(s) == 1:
+
+                        s = "0" + s
+
+                    string = h + m + s
+
+                    top = open("kenken_top10.dat","r")
+
+                    lista_top = top.readline()
+
+                    lista_top = eval(lista_top)
+
+                    if N == 1:
+
+                        lista_top[0].append([string,Jugador])
+
+                    elif N == 2:
+
+                        lista_top[1].append([string,Jugador])
+
+                    elif N == 3:                     
+                        
+                        lista_top[2].append([string,Jugador])
+
+                    top = open("kenken_top10.dat","w")
+
+                    top.write(str(lista_top))
+
+                    top.close
 
                     break
 
@@ -2778,6 +3168,50 @@ class Jugar(tkinter.Tk):
                         pygame.mixer.music.play(1)
 
                     messagebox.showinfo("Aviso", " Felicidades!!!\n Completaste el kenken.")
+
+                    h = str(self.TiempoHoras.get())
+                    
+                    m = str(self.TiempoMinutos.get())
+                    
+                    s = str(self.TiempoSegundos.get())
+
+                    if len(h) == 1:
+
+                        h = "0" + h
+
+                    if len(m) == 1:
+
+                        m = "0" + m
+
+                    if len(s) == 1:
+
+                        s = "0" + s
+
+                    string = h + m + s
+
+                    top = open("kenken_top10.dat","r")
+
+                    lista_top = top.readline()
+
+                    lista_top = eval(lista_top)
+
+                    if N == 1:
+
+                        lista_top[0].append([string,Jugador])
+
+                    elif N == 2:
+
+                        lista_top[1].append([string,Jugador])
+
+                    elif N == 3:                     
+                        
+                        lista_top[2].append([string,Jugador])
+
+                    top = open("kenken_top10.dat","w")
+
+                    top.write(str(lista_top))
+
+                    top.close
 
                     break
 
@@ -3234,6 +3668,50 @@ class Jugar(tkinter.Tk):
                         pygame.mixer.music.play(1)
 
                     messagebox.showinfo("Aviso", " Felicidades!!!\n Completaste el kenken.")
+
+                    h = str(self.TiempoHoras.get())
+                    
+                    m = str(self.TiempoMinutos.get())
+                    
+                    s = str(self.TiempoSegundos.get())
+
+                    if len(h) == 1:
+
+                        h = "0" + h
+
+                    if len(m) == 1:
+
+                        m = "0" + m
+
+                    if len(s) == 1:
+
+                        s = "0" + s
+
+                    string = h + m + s
+
+                    top = open("kenken_top10.dat","r")
+
+                    lista_top = top.readline()
+
+                    lista_top = eval(lista_top)
+
+                    if N == 1:
+
+                        lista_top[0].append([string,Jugador])
+
+                    elif N == 2:
+
+                        lista_top[1].append([string,Jugador])
+
+                    elif N == 3:                     
+                        
+                        lista_top[2].append([string,Jugador])
+
+                    top = open("kenken_top10.dat","w")
+
+                    top.write(str(lista_top))
+
+                    top.close
 
                     break
 
@@ -3736,6 +4214,50 @@ class Jugar(tkinter.Tk):
                         pygame.mixer.music.play(1)
 
                     messagebox.showinfo("Aviso", " Felicidades!!!\n Completaste el kenken.")
+
+                    h = str(self.TiempoHoras.get())
+                    
+                    m = str(self.TiempoMinutos.get())
+                    
+                    s = str(self.TiempoSegundos.get())
+
+                    if len(h) == 1:
+
+                        h = "0" + h
+
+                    if len(m) == 1:
+
+                        m = "0" + m
+
+                    if len(s) == 1:
+
+                        s = "0" + s
+
+                    string = h + m + s
+
+                    top = open("kenken_top10.dat","r")
+
+                    lista_top = top.readline()
+
+                    lista_top = eval(lista_top)
+
+                    if N == 1:
+
+                        lista_top[0].append([string,Jugador])
+
+                    elif N == 2:
+
+                        lista_top[1].append([string,Jugador])
+
+                    elif N == 3:                     
+                        
+                        lista_top[2].append([string,Jugador])
+
+                    top = open("kenken_top10.dat","w")
+
+                    top.write(str(lista_top))
+
+                    top.close
 
                     break
 
@@ -4338,6 +4860,50 @@ class Jugar(tkinter.Tk):
                         pygame.mixer.music.play(1)
 
                     messagebox.showinfo("Aviso", " Felicidades!!!\n Completaste el kenken.")
+
+                    h = str(self.TiempoHoras.get())
+                    
+                    m = str(self.TiempoMinutos.get())
+                    
+                    s = str(self.TiempoSegundos.get())
+
+                    if len(h) == 1:
+
+                        h = "0" + h
+
+                    if len(m) == 1:
+
+                        m = "0" + m
+
+                    if len(s) == 1:
+
+                        s = "0" + s
+
+                    string = h + m + s
+
+                    top = open("kenken_top10.dat","r")
+
+                    lista_top = top.readline()
+
+                    lista_top = eval(lista_top)
+
+                    if N == 1:
+
+                        lista_top[0].append([string,Jugador])
+
+                    elif N == 2:
+
+                        lista_top[1].append([string,Jugador])
+
+                    elif N == 3:                     
+                        
+                        lista_top[2].append([string,Jugador])
+
+                    top = open("kenken_top10.dat","w")
+
+                    top.write(str(lista_top))
+
+                    top.close
 
                     break
 
@@ -5051,28 +5617,51 @@ class Jugar(tkinter.Tk):
 
                     messagebox.showinfo("Aviso", " Felicidades!!!\n Completaste el kenken.")
 
+                    h = str(self.TiempoHoras.get())
+                    
+                    m = str(self.TiempoMinutos.get())
+                    
+                    s = str(self.TiempoSegundos.get())
+
+                    if len(h) == 1:
+
+                        h = "0" + h
+
+                    if len(m) == 1:
+
+                        m = "0" + m
+
+                    if len(s) == 1:
+
+                        s = "0" + s
+
+                    string = h + m + s
+
+                    top = open("kenken_top10.dat","r")
+
+                    lista_top = top.readline()
+
+                    lista_top = eval(lista_top)
+
+                    if N == 1:
+
+                        lista_top[0].append([string,Jugador])
+
+                    elif N == 2:
+
+                        lista_top[1].append([string,Jugador])
+
+                    elif N == 3:                     
+                        
+                        lista_top[2].append([string,Jugador])
+
+                    top = open("kenken_top10.dat","w")
+
+                    top.write(str(lista_top))
+
+                    top.close
+
                     break
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                
 
             if T == 7:
 
@@ -5157,15 +5746,15 @@ class Jugar(tkinter.Tk):
                 t88 = self.s88.get()
                 t89 = self.s89.get()
 
-                t91 = self.s81.get()
-                t92 = self.s82.get()
-                t93 = self.s83.get()
-                t94 = self.s84.get()
-                t95 = self.s85.get()
-                t96 = self.s86.get()
-                t97 = self.s87.get()
-                t98 = self.s88.get()
-                t99 = self.s89.get()
+                t91 = self.s91.get()
+                t92 = self.s92.get()
+                t93 = self.s93.get()
+                t94 = self.s94.get()
+                t95 = self.s95.get()
+                t96 = self.s96.get()
+                t97 = self.s97.get()
+                t98 = self.s98.get()
+                t99 = self.s99.get()               
 
                 # Lista que contendra los valores ordenados por filas.
                 lista1 = [t11,t21,t31,t41,t51,t61,t71,t81,t91]
@@ -5904,23 +6493,52 @@ class Jugar(tkinter.Tk):
 
                     messagebox.showinfo("Aviso", " Felicidades!!!\n Completaste el kenken.")
 
+                    h = str(self.TiempoHoras.get())
+                    
+                    m = str(self.TiempoMinutos.get())
+                    
+                    s = str(self.TiempoSegundos.get())
+
+                    if len(h) == 1:
+
+                        h = "0" + h
+
+                    if len(m) == 1:
+
+                        m = "0" + m
+
+                    if len(s) == 1:
+
+                        s = "0" + s
+
+                    string = h + m + s
+
+                    top = open("kenken_top10.dat","r")
+
+                    lista_top = top.readline()
+
+                    lista_top = eval(lista_top)
+
+                    if N == 1:
+
+                        lista_top[0].append([string,Jugador])
+
+                    elif N == 2:
+
+                        lista_top[1].append([string,Jugador])
+
+                    elif N == 3:                     
+                        
+                        lista_top[2].append([string,Jugador])
+
+                    top = open("kenken_top10.dat","w")
+
+                    top.write(str(lista_top))
+
+                    top.close
+
                     break
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 
-
     # Funcion del boton asignado.
     def Otro(self):
         
@@ -5950,6 +6568,7 @@ class Jugar(tkinter.Tk):
         global deshacer
         global rehacer
         global puntero
+        
 
         Activo = False
 
@@ -6055,21 +6674,12 @@ class Jugar(tkinter.Tk):
     def Terminar(self):
 
         global Jugador
-        global listaTop
         global Activo
         global cargarpartida
         global Jugador
 
-        Jugador = ""
         Activo = False
         cargarpartida = False
-
-        # Se guardaran todos los datos que sean necesarios para otra funciones.
-        horasjugador =  self.TiempoHoras.get()
-        minutosjugador = self.TiempoMinutos.get()
-        segundosjugador = self.TiempoSegundos.get()
-
-        listaTop = listaTop + [horasjugador, minutosjugador, segundosjugador, Jugador]
 
         # Se abrira una nueva ventana con la opcion de terminar la partida, si este es si, entonces la partida se terminara.
         opcion = messagebox.askquestion("Terminar Juego", "¿Está seguro de terminar juego?", icon = "warning")
@@ -6881,7 +7491,7 @@ class Timer(tkinter.Tk):
         except:
 
             pass
-            
+
     # Funcion del boton asignado.
     def JugarTimer(self):
 
@@ -6903,50 +7513,57 @@ class Top(tkinter.Tk):
     
     def __init__(self):
 
+        global N
+
         # Ventana del Top 10 con respectivas caracteristicas.
         tkinter.Tk.__init__(self)
         self.title("TOP 10")
         self.geometry("500x400")
-
-        # Se definiran estas variables como globaesl para un buen procesamiento de la funcion.
-        global Jugador
-        global listaTop
-        global horasjugador
-        global minutosjugador
-        global segundosjugador
-
-        # Se ordenara la siguiente lista de mayor a menor.
-        listaTop.sort(reverse = True)
+        self.resizable(width = False, height = False)
 
         # Etiquetas que apareceran en la ventana
-        self.labelJugador= Label(self, text = "Jugador", fg =  "#4285f4", font = ("Serif", 16))
-        self.labelJugador.place(x = 100, y = 5)
+        self.labelJugadorTitulo = Label(self, text = "Jugador", fg =  "#4285f4", font = ("Serif", 16))
+        self.labelJugadorTitulo.place(x = 100, y = 5)
 
-        self.labelNivel= Label(self, text = "Nivel 6x6", fg =  "#4285f4", font = ("Serif", 16))
-        self.labelNivel.place(x = 200, y = 5)
+        self.labelTiempoTitulo = Label(self, text = "Tiempo", fg =  "#4285f4", font = ("Serif", 16))
+        self.labelTiempoTitulo.place(x = 300, y = 5)
+        
+        top = open("kenken_top10.dat","r")
 
-        self.labelTiempo= Label(self, text= "Tiempo", fg =  "#4285f4", font = ("Serif", 16))
-        self.labelTiempo.place(x = 300, y = 5)
+        lista_top = top.readline()
 
-        y = 100
+        lista_top = eval(lista_top)
 
-        # Algoritmo que creara las etiquetas de los nombres de los jugadores.
-        for s in listaTop:
+        if len(lista_top) > 10:
 
-            Label(self, text = s[3], font = ("Serif", 15)).place(x = 100, y = y)
+            lista_top = lista_top[:10]
 
-            y = y + 100
+        if N == 1:
 
-        y = 100
+            mostrar = sorted(lista_top[0])
 
-        # Algoritmo que creara las etiquetas del tiempo de los jugadores
-        for s in listaTop:
+        elif N == 2:
 
-            t = str(s[0]) + ":" + str(s[1]) + ":" + str(s[2])
+            mostrar = sorted(lista_top[1])
 
-            Label(self, text = t, font = ("Serif", 15)).place(x = 300, y = y)
+        elif N == 3:                     
+            
+            mostrar = sorted(lista_top[2])
+            
+        t = ""
+        j = ""
 
-            y = y + 100
+        for i in mostrar:
+
+            t = t + str(i[0][0:2]) + ":" + str(i[0][2:4])+ ":" + str(i[0][4:]) + "\n"
+
+            j = j + str(i[1]) + "\n"
+
+        self.labelJugador = Label(self, text = j, font = ("Serif", 16))
+        self.labelJugador.place(x = 100, y = 50)
+
+        self.labelTiempo = Label(self, text = t, font = ("Serif", 16))
+        self.labelTiempo.place(x = 295, y = 50)
 
 #Loop de la ventana
 menu().mainloop()
