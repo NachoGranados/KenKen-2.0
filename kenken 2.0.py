@@ -5,6 +5,8 @@ import webbrowser
 import random
 import pygame,sys
 from pygame.locals import *
+from reportlab.pdfgen import canvas
+from reportlab.platypus import Image
 
 # Ventana Principal
 class menu(tkinter.Tk):
@@ -7518,15 +7520,18 @@ class Top(tkinter.Tk):
         # Ventana del Top 10 con respectivas caracteristicas.
         tkinter.Tk.__init__(self)
         self.title("TOP 10")
-        self.geometry("500x400")
+        self.geometry("350x380")
         self.resizable(width = False, height = False)
 
         # Etiquetas que apareceran en la ventana
+        self.labelPosiciones = Label(self, text = "N°", fg =  "#4285f4", font = ("Serif", 16))
+        self.labelPosiciones.place(x = 50, y = 5)
+        
         self.labelJugadorTitulo = Label(self, text = "Jugador", fg =  "#4285f4", font = ("Serif", 16))
         self.labelJugadorTitulo.place(x = 100, y = 5)
 
         self.labelTiempoTitulo = Label(self, text = "Tiempo", fg =  "#4285f4", font = ("Serif", 16))
-        self.labelTiempoTitulo.place(x = 300, y = 5)
+        self.labelTiempoTitulo.place(x = 210, y = 5)
         
         top = open("kenken_top10.dat","r")
 
@@ -7552,18 +7557,88 @@ class Top(tkinter.Tk):
             
         t = ""
         j = ""
+        n = ""
+        guiaJ = []
+        guiaT = []
+        guiaN = []
+        cont = 0
 
         for i in mostrar:
 
             t = t + str(i[0][0:2]) + ":" + str(i[0][2:4])+ ":" + str(i[0][4:]) + "\n"
 
-            j = j + str(i[1]) + "\n"
+            guiaT.append(str(i[0][0:2]) + ":" + str(i[0][2:4])+ ":" + str(i[0][4:]))
+
+            j =  j + str(i[1]) + "\n"
+
+            guiaJ.append(str(i[1]))
+
+            cont = cont + 1
+
+            n = n + str(cont) + "\n"
+
+            guiaN.append(str(cont))
 
         self.labelJugador = Label(self, text = j, font = ("Serif", 16))
         self.labelJugador.place(x = 100, y = 50)
 
         self.labelTiempo = Label(self, text = t, font = ("Serif", 16))
-        self.labelTiempo.place(x = 295, y = 50)
+        self.labelTiempo.place(x = 207, y = 50)
+
+        self.labelNumeros = Label(self, text = n, font = ("Serif", 16))
+        self.labelNumeros.place(x = 50, y = 50)
+
+        self.buttonPDF = Button(self, text = "PDF", activebackground = "#4285f4", fg = "white", bg = "#4285f4", command = self.Abrir, font = ("Serif", 20), width = 4)
+        self.buttonPDF.place(x = 55, y = 310)
+
+        self.buttonRegresar = Button(self, text = "Regresar", width = 8, activebackground = "#db4437", command = self.Regresar, fg = "white", bg = "#db4437", font = ("Serif", 20))
+        self.buttonRegresar.place(x = 155, y = 310)
+
+        pdf = canvas.Canvas("kenken_top10.pdf")
+
+        pdf.drawString(200, 600, "N°")
+
+        y = 550
+
+        for i in guiaN:
+
+            pdf.drawString(200,y,i)
+
+            y = y - 50
+
+        pdf.drawString(250, 600, "Jugador")
+
+        y = 550
+
+        for i in guiaJ:
+
+            pdf.drawString(250,y,i)
+
+            y = y - 50
+
+        pdf.drawString(350, 600, "Tiempo")
+
+        y = 550
+
+        for i in guiaT:
+
+            pdf.drawString(350,y,i)
+
+            y = y - 50
+
+        imagen = "coollogo_com-180021670.png"
+        
+        pdf.drawImage(imagen,140, 650)
+
+        pdf.save()
+
+    def Abrir(self):
+
+        webbrowser.open_new(r"kenken_top10.pdf")
+
+    def Regresar(self):
+
+        self.destroy()
 
 #Loop de la ventana
 menu().mainloop()
