@@ -443,7 +443,7 @@ class Jugar(tkinter.Tk):
             # Algoritmo necesario para asignar la configuraciones anteriores segun la partida guardada.
             cargarpartida = True
 
-            jugada = open("kenken_juegos.dat","r")
+            jugada = open("kenken_juegoactual.dat","r")
 
             d = eval(jugada.read())
 
@@ -1403,10 +1403,10 @@ class Jugar(tkinter.Tk):
         self.buttonPredicciones.place(x = 755, y = 115)
 
         self.buttonGuardar = Button(self, text = "Guardar \n Juego", width = 8, activebackground = "#4285f4",command = self.Guardar, fg = "#4285f4", bg = "White", font = ("Comic Sans Ms", 15))
-        self.buttonGuardar.place(x = 593, y = 700) 
+        self.buttonGuardar.place(x = 950, y = 600) 
 
         self.buttonCargar = Button(self, text = "Cargar \n Juego", width = 8, activebackground = "#4285f4",command = self.Cargar, fg = "White", bg = "#4285f4", font = ("Comic Sans Ms", 15))
-        self.buttonCargar.place(x = 715, y = 700)  
+        self.buttonCargar.place(x = 950, y = 500)  
 
         self.buttonDeshacer = Button(self, text = "Deshacer", width = 10, activebackground = "#4285f4",command = self.Deshacer, fg = "#4285f4", bg = "White", font = ("Comic Sans Ms", 15))
         self.buttonDeshacer.place(x = 813, y = 515)
